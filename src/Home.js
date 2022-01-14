@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import './App.css';
 import axios from 'axios';
 import Tilt from 'react-parallax-tilt';
 import Moment from 'react-moment';
 import { Card, Row, Col, Container, Image } from 'react-bootstrap';
+
 
 const Home = () => {
     const [data, setData] = useState({posts: []});
@@ -45,7 +47,7 @@ const Home = () => {
   {data.posts.map(post => (
         <Col key={post.id}>
         <Tilt style={{ height: 250, width: 250 }}>
-{/* <Nav.Link as={`/post/${post.slug}`} to={"/post/[slug]"}> */}
+        <Link className="App-link" to={`/blog/post/${post.slug}`}>
         <Card border="dark" style={{"height" : '120%', width: '18rem' }} id="shadowy">
         <Card.Img variant="top" src={post.feature_image} />
         <Card.Body>
@@ -57,7 +59,7 @@ const Home = () => {
         </Card.Text>
         </Card.Body>
         </Card>
-        {/* </Nav.Link> */}
+        </Link>
         </Tilt>
         <div id="divmesomespace"></div>
         </Col>

@@ -3,6 +3,17 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { ApolloProvider } from 'react-apollo';
+import ApolloClient from 'apollo-boost';
+// import dotenv from 'dotenv';
+
+// const graphqlAPI = process.env.REACT_APP_GCMS_URL;
+
+// dotenv.config();
+
+const apollo_client = new ApolloClient({
+  uri: 'https://api-us-east-1.graphcms.com/v2/cky85ol262n3s01z42208339l/master'
+});
 
 ReactDOM.render(
   <React.StrictMode>

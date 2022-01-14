@@ -265,4 +265,5 @@ h1 {
 
 .hometest {
   margin-top: 15vh;
+  background: var(--background-color);
 }

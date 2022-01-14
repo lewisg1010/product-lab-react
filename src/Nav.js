@@ -11,9 +11,9 @@ import Events from './Events';
 import Blog from './Blog';
 import Faqs from './Faqs';
 import Getinvolved from './Getinvolved';
-import ThemeToggle from "./ThemeToggle";
 import DarkMode from './DarkMode';
-
+import Switch from '@mui/material/Switch';
+import Post from './Post';
 
 export default class Navb extends Component {
     render() {
@@ -34,8 +34,8 @@ export default class Navb extends Component {
                 <NavDropdown.Item as={Link} to={"/blog"} id="navdropdownitem">Blog</NavDropdown.Item>
                 <NavDropdown.Item as={Link} to={"/faqs"} id="navdropdownitem">FAQs</NavDropdown.Item>
               </NavDropdown>
-              <Nav.Link href="/getinvolved"> <Button variant="contained" color="secondary" id="partnerbutton"><span id="bold">Partner with us</span></Button></Nav.Link>
-            <DarkMode />
+              <Nav.Link href="/getinvolved"><Button variant="contained" color="secondary" id="partnerbutton"><span id="bold">Partner with us</span></Button></Nav.Link>
+              <DarkMode />
             </Nav>
           </Navbar.Collapse>
         </Container>
@@ -47,7 +47,8 @@ export default class Navb extends Component {
         <Route path="/clients" element={<Clients />} />
         <Route path="/students" element={<Students />} />
         <Route path="/events" element={<Events />} />
-        <Route path="/blog" element={<Blog />} />
+        <Route path="/blog" element={<Blog />} exact />
+        <Route path='/blog/post/:slug' element={<Post />} />
         <Route path="/faqs" element={<Faqs />} /> 
         <Route path="/getinvolved" element={<Getinvolved />} /> 
       </Routes>

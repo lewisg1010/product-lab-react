@@ -1,11 +1,10 @@
 import React, { Component, useState, useEffect } from 'react';
 import './App.css';
 import { request } from 'graphql-request';
-import PastEvents from './PastEvents';
 // import Moment from 'react-moment';
 
 
-function Events() {
+function PastEvents() {
 
     const [events, setEvents] = useState(null);
 
@@ -13,7 +12,7 @@ function Events() {
         const fetchEvents = async() => {
             const { events } = await request('https://api-us-east-1.graphcms.com/v2/cky85ol262n3s01z42208339l/master', 
             `{
-            events(where: {date_gte: TODAY}) {
+            events(where: {date_lt: TODAY}) {
                 date
                 description
                 location
@@ -36,11 +35,6 @@ function Events() {
 
         return (
             <div>
-                <h1>Delete these later</h1>
-                <h1>Delete these later</h1>
-                <h1>Delete these later</h1>
-                <h1>Delete these later</h1>
-                <h1>Upcoming Events</h1>
                 {!events ? (
                     'Loading'
                 ) : (
@@ -53,10 +47,8 @@ function Events() {
                             ))}
                         </ul>
                 )}
-                <h1>Past Events</h1>
-                <PastEvents />
             </div>
         );
     };
 
-export default Events;
+export default PastEvents;
