@@ -22,8 +22,9 @@ const Blog = () => {
     }, []);
     return(
 <div id="container">
-  <h1>Blog</h1>
-  <h3>A showcase for the projects and ideas of our members</h3>
+  <h1 class="center">Blog</h1>
+  <h3 class="center">A showcase for the projects and ideas of our members</h3>
+  <div id="divmesomespacesmall" />
 
   <Container fluid id="alignfeatured">
   
@@ -32,11 +33,11 @@ const Blog = () => {
         <Col key={post.id}>
         <Tilt style={{ height: 250, width: 250 }}>
         <Link className="App-link" to={`/blog/post/${post.slug}`}>
-        <Card border="dark" style={{"height" : '120%', width: '18rem' }} id="shadowy">
+        <Card style={{"height" : '120%', width: '18rem' }} id="shadowy">
         <Card.Img variant="top" src={post.feature_image} />
         <Card.Body>
         <Card.Title>
-            <a id="cardtitlefont">{post.title}</a>
+            <p>{post.title}</p>
         </Card.Title>
         <Card.Text>
         <a id="cardtextfont">Posted: <Moment format="MMM DD, YYYY">{post.updated_at}</Moment></a>

@@ -45,7 +45,8 @@ function Faqs() {
 
         return (
             <div id="container">
-                <h1>Faqs</h1>
+                <h1 class="center">Frequently asked questions</h1>
+                <div id="divmesomespacesmall" />
                 {!faqs ? (
                     'Loading'
                 ) : (
@@ -55,12 +56,12 @@ function Faqs() {
                             {faqs.map((faq, i) => (
                                 
                                 <Col key={faq.question}>
-                                <Card border="dark" style={{"height" : '120%', width: '75vw'}} id="faqcard">
+                                <Card style={{"height" : '120%', width: '75vw'}} id="faqcard">
                                   <Card.Body>
                                     <Card.Title>
-                                        <a id="cardtitlefont">{faq.question}</a>
+                                        <a>{faq.question}</a>
                                     </Card.Title>
-                                    <Card.Text id="overrideabouttextcolor">
+                                    <Card.Text>
                                   {faq.answer}
                                   </Card.Text>
                                   </Card.Body>

@@ -17,10 +17,11 @@ import Button from 'react-bootstrap/Button';
 export default class Clients extends Component {
     render() {
         return (
-            <div id="container">
+            <div id="container" class="center">
     <h1>Clients</h1>
     <p>Each spring, Product Lab collaborates with a limited number of companies and organizations to advance their product vision & strategy. Current clients range from seed-stage startups to Fortune 500 companies.</p>
     <Button id="button" href="/getinvolved">Become a client</Button>
+    <div id="divmesomespace"></div>
     <h2>Our Process: Typical Engagement Structure</h2>
     <Timeline position="alternate">
       <TimelineItem>

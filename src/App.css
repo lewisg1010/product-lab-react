@@ -5,7 +5,7 @@
 :root {
   --blue: blue;
   --white: white;
-  --background-ease: background 0.5s ease-in-out;
+  /* --background-ease: background 0.5s ease-in-out; */
 }
 
 /* body {
@@ -16,6 +16,7 @@
 
 body.light {
   --background-color: white;
+  --navbar-bg-color: rgba(255, 255, 255, 0.75);
   --text-color: black;
   /* --font-weight: 400; */
   /* helpful for replacing image based on dark mode */
@@ -23,6 +24,7 @@ body.light {
 }
 body.dark {
   --background-color: #0f182a;
+  --navbar-bg-color: rgba(15, 24, 42, 0.75);
   --text-color: white;
   /* --font-weight: 400; */
   /* helpful for replacing image based on dark mode */
@@ -51,7 +53,7 @@ body.dark {
 #container {
   background: var(--background-color);
   color: var(--text-color);
-  transition: var(--background-ease);
+  /* transition: var(--background-ease); */
   font-family: 'Montserrat', sans-serif;
   padding-top: 15vh;
   padding-bottom: 25vh;
@@ -93,10 +95,14 @@ body {
   box-shadow: 8px 8px 6px #3c3c3c;
   /* position relative enables me to bottom align the 'last updated' text */
   position: relative;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  border-color: var(--text-color);
   /* next line is what makes all the blog cards the same height
   min-height: 42vh; */
   cursor: pointer;
 }
+
 
   #divmesomespace {
 /* these 2 lines stop cards from overlapping. also the g-5 in the row tag of index and content  */
@@ -104,16 +110,15 @@ body {
       padding-bottom: 4rem;
     }
 
-    #cardtitlefont {
-      font-family: 'Montserrat', sans-serif;
+    .cardtitlefont {
       font-weight: 700;
       text-decoration: none;
-      color: black;
+      color: var(--text-color);
     }
     #cardtextfont {
       font-family: 'Montserrat', sans-serif;
       font-weight: 300;
-      color: grey;
+      color: var(--text-color);
       font-size: 0.7rem;
 /* bottom aligns the text with 3px padding */
       position: absolute;
@@ -127,8 +132,9 @@ body {
 /* NAVBAR CSS */
 
 #nav {
-  background: var(--background-color);
-  transition: var(--background-ease);
+  background: var(--navbar-bg-color);
+  /* transition: var(--background-ease); */
+  backdrop-filter: blur(2px);
 }
 #navdropdownitem {
   color: #000000;
@@ -220,7 +226,9 @@ body {
     width: 22vw;
     transition: all 0.4s;
     transition-timing-function:cubic-bezier(0.5, 3, 0, 1);
-    background: white;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    border-color: var(--text-color);
     position: relative;
     }
   #aboutcard:hover {
@@ -228,26 +236,36 @@ body {
     box-shadow: 8px 8px 6px #3c3c3c;
 }
 
-#overrideabouttextcolor {
-  color: #000000;
+#overridefont {
   font-family: 'Montserrat', sans-serif;
 }
 
 #accordian {
   position: absolute;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  border-color: var(--text-color);
   bottom: 0px;
   width: fill;
+}
+
+#expandmoreicon{
+  color: var(--text-color);
 }
 
 #advisorcard {
     transition: all 0.4s;
     margin-inline: auto;
     transition-timing-function:cubic-bezier(0.5, 3, 0, 1);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    border-color: var(--text-color);
     }
   #advisorcard:hover {
     transform: scale(1.1);
     box-shadow: 8px 8px 6px #3c3c3c;
 }
+
 
 /* STUDENTS PAGE CSS */
 
@@ -281,11 +299,18 @@ body {
     max-width: max(400px, 25vw);
     transition: all 0.4s;
     margin-inline: auto;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    border-color: var(--text-color);
     transition-timing-function: cubic-bezier(0.5, 3, 0, 1);
     }
   #upcomingeventscard:hover {
     transform: scale(1.1);
     box-shadow: 8px 8px 6px #3c3c3c;
+}
+
+.bold {
+  font-weight: 700;
 }
 
 #upcomingeventsphoto {
@@ -295,12 +320,18 @@ body {
 #center {
   text-align: center;
 }
+.center {
+  text-align: center;
+}
 
 #pasteventscard {
   /* next line is what makes all the blog cards the same height */
     min-height: max(40vh, 450px);
     transition: all 0.4s;
     margin-inline: auto;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    border-color: var(--text-color);
     transition-timing-function:cubic-bezier(0.5, 3, 0, 1);
     }
   #pasteventscard:hover {
@@ -310,13 +341,15 @@ body {
 
 #eventaccordian {
   position: absolute;
+  min-width: inherit;
   bottom: 0px;
-  border: none;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  border-color: var(--text-color);
 }
 
 #eventdescription {
   padding-top: 10px;
-  color: #000000;
   font-family: 'Montserrat', sans-serif;
 }
 
@@ -327,7 +360,7 @@ body {
 #postcontainer {
   background: var(--background-color);
   color: var(--text-color);
-  transition: var(--background-ease);
+  /* transition: var(--background-ease); */
   font-family: 'Montserrat', sans-serif;
   align-content: center;
   padding-top: 9vh;
@@ -363,9 +396,12 @@ body {
       }
 
 #faqcard {
-    transition: all 0.4s;
+    transition: transform 0.4s;
     margin-inline: auto;
-    transition-timing-function:cubic-bezier(0.5, 3, 0, 1);
+    transition-timing-function: cubic-bezier(0.5, 3, 0, 1);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    border-color: var(--text-color);
   }
 #faqcard:hover {
     transform: scale(1.1);

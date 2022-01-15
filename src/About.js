@@ -47,44 +47,47 @@ function About() {
 
 
         return (
-            <div id="container">
+            <div id="container" class="center">
                 {!bios ? (
                     'Loading'
                 ) : (
                     <div>
                     <section>
-                    <h1>What is Product Lab?</h1>
+                    <h1>About Product Lab</h1>
+                    <div id="divmesomespacesmall" />
                       <p>Launched in September 2021, Product Lab is the first student organization dedicated to the education and advancement of product management at Harvard. Our group was founded with support from Harvard Computer Society as well as faculty leaders in the PM discipline at Harvard Business School. Product Lab aims to expand access to resources & hands-on experiences in product management.</p>
                       <p>Through training programs, industry experience, and mentorship, Product Lab helps creative problem solvers from diverse backgrounds grow into future product leaders.</p>
                   </section>
                   <section>
+                    <div id="divmesomespacesmall" />
                     <h1>Board Members</h1>
+                    <div id="divmesomespacesmall" />
                   </section>
                   
     <Container fluid id="alignfeatured">
     <Row xs={1} sm={1} md={2} lg={2} xl={3} className="g-3 align-items-center d-flex card-block">
         {bios.map((bio, i) => (
     <Col key={bio.name}>
-    <Card border="dark" style={{"height" : '120%', width: '20rem'}} id="aboutcard">
+    <Card style={{"height" : '120%', width: '20rem'}} id="aboutcard">
       <Card.Img variant="top" src={bio.photo.url} />
       <Card.Body>
         <Card.Title>
-            <a id="cardtitlefont">{bio.name}</a>
+            <a class="cardtitlefont">{bio.name}</a>
         </Card.Title>
         <Card.Text>
-        <p id="overrideabouttextcolor">{bio.title}</p>
+        <p>{bio.title}</p>
         </Card.Text>
       </Card.Body>
       <Accordion id="accordian">
     <AccordionSummary
-      expandIcon={<ExpandMoreIcon />}
+      expandIcon={<ExpandMoreIcon id="expandmoreicon" />}
       aria-controls="panel1a-content"
       id="panel1a-header"
     >
-      <Typography id="overrideabouttextcolor">About {bio.name.split(" ")[0]}</Typography>
+      <Typography id="overridefont">About {bio.name.split(" ")[0]}</Typography>
     </AccordionSummary>
     <AccordionDetails>
-      <Typography id="overrideabouttextcolor">
+      <Typography id="overridefont">
       {bio.aboutme}
       </Typography>
     </AccordionDetails>
@@ -99,19 +102,20 @@ function About() {
                 )}
                 <section>
   <h1>Our Advisory Board</h1>
+  <div id="divmesomespacesmall" />
 </section>
 
 <Container fluid>
     <Row xs={1} sm={1} md={2} lg={3} xl={3} className="g-1 align-items-center d-flex card-block">
         <Col>
-        <Card border="dark" style={{"height" : '120%', width: '18rem'}} id="advisorcard">
+        <Card style={{"height" : '120%', width: '18rem'}} id="advisorcard">
           <Card.Img variant="top" src={'./tomphoto.jpg'} />
           <Card.Body>
             <Card.Title>
                 <a id="cardtitlefont">Tom Eisenmann</a>
             </Card.Title>
             <Card.Text>
-            <p id="overrideabouttextcolor">Professor of Entrepreneurship at Harvard Business School & Faculty Chair of Harvard Innovation Lab. Author of &quot;The Fail-Safe Startup&quot;.</p>
+            <p>Professor of Entrepreneurship at Harvard Business School & Faculty Chair of Harvard Innovation Lab. Author of &quot;The Fail-Safe Startup&quot;.</p>
             </Card.Text>
           </Card.Body>
           
@@ -119,28 +123,28 @@ function About() {
         <div id="divmesomespace"></div>
         </Col>
         <Col>
-        <Card border="dark" style={{"height" : '120%', width: '18rem'}} id="advisorcard">
+        <Card style={{"height" : '120%', width: '18rem'}} id="advisorcard">
           <Card.Img variant="top" src={'./deborahphoto.png'} />
           <Card.Body>
             <Card.Title>
                 <a id="cardtitlefont">Deborah Liu</a>
             </Card.Title>
             <Card.Text>
-            <p id="overrideabouttextcolor">CEO of Ancestry.com & Founder of Women in Product. Previously VP of Product at Facebook & Director of Product at eBay.</p>
+            <p>CEO of Ancestry.com & Founder of Women in Product. Previously VP of Product at Facebook & Director of Product at eBay.</p>
             </Card.Text>
           </Card.Body>
         </Card>
         <div id="divmesomespace"></div>
         </Col>
         <Col>
-        <Card border="dark" style={{"height" : '120%', width: '18rem'}} id="advisorcard">
+        <Card style={{"height" : '120%', width: '18rem'}} id="advisorcard">
           <Card.Img variant="top" src={'./jeffphoto.png'} />
           <Card.Body>
             <Card.Title>
                 <a id="cardtitlefont">Jeffrey Bussgang</a>
             </Card.Title>
             <Card.Text>
-            <p id="overrideabouttextcolor">Senior Lecturer at Harvard Business School, Co-Founder & General Partner at Flybridge Capital Partners, & Co-Founder at Hack.Diversity.</p>
+            <p>Senior Lecturer at Harvard Business School, Co-Founder & General Partner at Flybridge Capital Partners, & Co-Founder at Hack.Diversity.</p>
             </Card.Text>
           </Card.Body>
         </Card>

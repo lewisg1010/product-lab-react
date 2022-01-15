@@ -56,28 +56,28 @@ function PastEvents() {
                     <Row xs={1} sm={1} md={2} lg={2} xl={3} className="g-1 align-items-center d-flex card-block">
                             {events.map((event, i) => (
                                 <Col key={events.name}>
-                                <Card border="dark" style={{"height" : '120%', width: '18rem'}} id="pasteventscard">
+                                <Card style={{"height" : '120%', width: '18rem'}} id="pasteventscard">
                                   <Card.Img variant="top" src={event.photo.url} />
                                   <Card.Body>
                                     <Card.Title>
-                                    <p id="overrideabouttextcolor">{event.title}</p>
+                                    <p>{event.title}</p>
                                     </Card.Title>
+                                    </Card.Body>
 
                                     <Accordion id="eventaccordian">
                                         <AccordionSummary
-                                        expandIcon={<ExpandMoreIcon />}
+                                        expandIcon={<ExpandMoreIcon id="expandmoreicon" />}
                                         aria-controls="panel1a-content"
                                         id="panel1a-header"
                                         >
-                                        <Typography id="overrideabouttextcolor">About this event</Typography>
+                                        <Typography id="overridefont">About this event</Typography>
                                         </AccordionSummary>
                                         <AccordionDetails>
-                                        <Typography id="overrideabouttextcolor">
+                                        <Typography id="overridefont">
                                         {event.description}
                                         </Typography>
                                         </AccordionDetails>
                                     </Accordion>
-                                  </Card.Body>
                                 </Card>
                                 <div id="divmesomespace"></div>
                                 </Col>

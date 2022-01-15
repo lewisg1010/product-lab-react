@@ -48,18 +48,19 @@ const Home = () => {
 </section>
 
 <section id="homesection">
-<h3>Featured Content</h3>
+<h3 class="center">Featured Blog Posts</h3>
+<div id="divmesomespacesmall" />
 <Container fluid>
 <Row xs={1} sm={1} md={2} lg={3} xl={4} className="g-5 align-items-center">
 {data.posts.map(post => (
     <Col key={post.id}>
     <Tilt style={{ height: 250, width: 250 }}>
     <Link className="App-link" to={`/blog/post/${post.slug}`}>
-    <Card border="dark" style={{"height" : '120%', width: '18rem' }} id="shadowy">
+    <Card style={{"height" : '120%', width: '18rem' }} id="shadowy">
     <Card.Img variant="top" src={post.feature_image} />
     <Card.Body>
     <Card.Title>
-        <a id="cardtitlefont">{post.title}</a>
+        <a>{post.title}</a>
     </Card.Title>
     <Card.Text>
     <a id="cardtextfont">Posted: <Moment format="MMM DD, YYYY">{post.updated_at}</Moment></a>

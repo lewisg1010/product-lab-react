@@ -21,7 +21,7 @@ export default class Navb extends Component {
             <Router>
 <Navbar expand="lg" fixed="top" id="nav">
         <Container>
-          <Navbar.Brand id="productlabbrand"><Image src="/sitehomelogogeneral.svg" alt="Product Lab Logo" id="homelogo"></Image> Product Lab</Navbar.Brand>
+          <Navbar.Brand id="productlabbrand"><Link to="/"><Image src="/sitehomelogogeneral.svg" alt="Product Lab Logo" id="homelogo"></Image></Link> Product Lab</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" id="navbartoggle"/>
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
@@ -34,7 +34,7 @@ export default class Navb extends Component {
                 <NavDropdown.Item as={Link} to={"/blog"} id="navdropdownitem">Blog</NavDropdown.Item>
                 <NavDropdown.Item as={Link} to={"/faqs"} id="navdropdownitem">FAQs</NavDropdown.Item>
               </NavDropdown>
-              <Nav.Link href="/getinvolved"><Button id="partnerbutton"><span id="bold">Partner with us</span></Button></Nav.Link>
+              <Nav.Link href="/getinvolved"><Button id="button"><span id="bold">Partner with us</span></Button></Nav.Link>
               <DarkMode />
             </Nav>
           </Navbar.Collapse>

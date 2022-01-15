@@ -54,7 +54,8 @@ function Events() {
 
         return (
             <div id="container">
-                <h1>Upcoming Events</h1>
+                <h1 class="center">Upcoming Events</h1>
+                <div id="divmesomespacesmall" />
                 {!events ? (
                     'Loading'
                 ) : (
@@ -63,14 +64,14 @@ function Events() {
                     
                             {events.map((event, i) => (
                                 <Col key={event.name}>
-                                <Card border="dark" id="upcomingeventscard">
+                                <Card id="upcomingeventscard">
                                   <Card.Img variant="top" src={event.photo.url} id="upcomingeventsphoto"/>
                                   <Card.Body id="center">
                                     <Card.Title>
-                                      <p id="overrideabouttextcolor">{event.title}</p>
+                                      <p class="bold">{event.title}</p>
                                     </Card.Title>
                                     <Card.Text>
-                                    <p id="overrideabouttextcolor"><span><Moment format="MMM DD, YYYY">{event.date}</Moment></span> | <span>{event.time}</span> | <span>{event.location}</span></p>
+                                    <p><span><Moment format="MMM DD, YYYY">{event.date}</Moment></span> | <span>{event.time}</span> | <span>{event.location}</span></p>
                                     <ExternalLink href={event.rsvp}><Button id="button">RSVP</Button></ExternalLink>
                                     <p id="eventdescription">{event.description}</p>
                                     </Card.Text>
@@ -82,7 +83,8 @@ function Events() {
                         </Row>
                         </Container>
                 )}
-                <h1>Past Events</h1>
+                <h1 class="center">Past Events</h1>
+                <div id="divmesomespacesmall" />
                 <PastEvents />
             </div>
         );
