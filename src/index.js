@@ -11,9 +11,9 @@ import ApolloClient from 'apollo-boost';
 
 // dotenv.config();
 
-const apollo_client = new ApolloClient({
-  uri: 'https://api-us-east-1.graphcms.com/v2/cky85ol262n3s01z42208339l/master'
-});
+// const apollo_client = new ApolloClient({
+//   uri: 'https://api-us-east-1.graphcms.com/v2/cky85ol262n3s01z42208339l/master'
+// });
 
 ReactDOM.render(
   <React.StrictMode>

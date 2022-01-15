@@ -24,13 +24,13 @@ const Post = () => {
         fetchData();
     }, [slug]);
     return(
-<div id="container">
+<div id="postcontainer">
   <h3>Post Page</h3>
   {data.posts[0] && (
       <React.Fragment>
           <h1>{data.posts[0].title}</h1>
           <p>{data.posts[0].custom_excerpt}</p>
-          <div dangerouslySetInnerHTML={{ __html: data.posts[0].html}}></div>
+          <div dangerouslySetInnerHTML={{ __html: data.posts[0].html}} class="postbody"></div>
       </React.Fragment>
   )}
 

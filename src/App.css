@@ -5,27 +5,26 @@
 :root {
   --blue: blue;
   --white: white;
+  --background-ease: background 0.5s ease-in-out;
 }
 
-body {
-  font-family: 'Montserrat', sans-serif;
-  background: var(--background-color);
+/* body {
   color: var(--text-color);
   font-weight: var(--font-weight);
   transition: background 0.3s ease-in-out, color 0.6s ease-in-out;
-}
+} */
 
 body.light {
-  --background-color: var(--white);
-  --text-color: var(--blue);
-  --font-weight: 400;
+  --background-color: white;
+  --text-color: black;
+  /* --font-weight: 400; */
   /* helpful for replacing image based on dark mode */
   /* --image: url("../day.jpg"); */
 }
 body.dark {
-  --background-color: var(--blue);
-  --text-color: var(--white);
-  --font-weight: 400;
+  --background-color: #0f182a;
+  --text-color: white;
+  /* --font-weight: 400; */
   /* helpful for replacing image based on dark mode */
   /* --image: url("../night.jpg"); */
 }
@@ -34,6 +33,34 @@ body.dark {
   background-image: var(--image);
 } */
 
+#button {
+  box-shadow: 4px 4px 3px #3c3c3c;
+  background-color: #ffe665;
+  color: black;
+  font-weight: bold;
+  border: none;
+  transition: all 0.4s;
+  transition-timing-function:cubic-bezier(0.5, 3, 0, 1);
+}
+#button:hover {
+  transform: scale(1.1);
+  box-shadow: 8px 8px 6px #3c3c3c;
+  background-color: #ffe665;
+}
+
+#container {
+  background: var(--background-color);
+  color: var(--text-color);
+  transition: var(--background-ease);
+  font-family: 'Montserrat', sans-serif;
+  padding-top: 15vh;
+  padding-bottom: 25vh;
+  min-height: 100vh;
+  padding-right: 3.5vw;
+  padding-left: 3vw;
+  position: relative;
+  background-size: cover;
+}
 
 /* 
 body,
@@ -57,13 +84,7 @@ body {
   font-family: 'Montserrat', sans-serif;
   transition: background 0.5s ease-in-out;
 }
-h1 {
-  color: var(--color-text-secondary);
-}
-#overridetextcolor {
-  color: #000000;
-  font-family: 'Montserrat', sans-serif;
-}
+
 #alignfeatured {
   padding-left: 5%;
   padding-top: 3%;
@@ -76,15 +97,7 @@ h1 {
   min-height: 42vh; */
   cursor: pointer;
 }
-#shadowy2 {
-/* next line is what makes all the blog cards the same height */
-    min-height: 42vh;
-    transition: transform .2s;
-  }
-  #shadowy2:hover {
-    transform: scale(1.1);
-    box-shadow: 8px 8px 6px #3c3c3c;
-  }
+
   #divmesomespace {
 /* these 2 lines stop cards from overlapping. also the g-5 in the row tag of index and content  */
       padding-top: 4rem;
@@ -94,6 +107,7 @@ h1 {
     #cardtitlefont {
       font-family: 'Montserrat', sans-serif;
       font-weight: 700;
+      text-decoration: none;
       color: black;
     }
     #cardtextfont {
@@ -114,8 +128,30 @@ h1 {
 
 #nav {
   background: var(--background-color);
-  transition: background 0.5s ease-in-out;
+  transition: var(--background-ease);
 }
+#navdropdownitem {
+  color: #000000;
+  font-family: 'Montserrat', sans-serif;
+  transition: background 0.5s ease-in-out;
+  color: black;
+}
+#navlinkoverridetextcolor {
+  font-family: 'Montserrat', sans-serif;
+  margin-top: 8px;
+  color: var(--text-color);
+}
+#productlabbrand {
+  color: var(--text-color);
+  font-family: 'Montserrat', sans-serif;
+  transition: background 0.5s ease-in-out;
+  padding-top: 3px;
+  padding-bottom: 0px;
+}
+#navbartoggle {
+  background: white;
+}
+
 /* @media screen and (max-width: 991px) {
   #nav {
   background: var(--color-bg-navbar-mobile);
@@ -132,16 +168,7 @@ h1 {
     color: black;
   }
 }
-#navdropdownitem {
-  color: #000000;
-  font-family: 'Montserrat', sans-serif;
-  transition: background 0.5s ease-in-out;
-}
-#productlabbrand {
-  color: var(--color-text-primary);
-  font-family: 'Montserrat', sans-serif;
-  transition: background 0.5s ease-in-out;
-}
+
 @media screen and (max-width: 991px) {
   #productlabbrand {
     color: #000000;
@@ -164,40 +191,69 @@ h1 {
   font-weight: 700;
 }
 #partnerbutton {
-  transition: transform .2s;
   box-shadow: 4px 4px 3px #3c3c3c;
+  transition: all 0.4s;
+  transition-timing-function:cubic-bezier(0.5, 3, 0, 1);
+  background: rgb(205, 25, 255);
+  border: none;
 }
 #partnerbutton:hover {
   transform: scale(1.1);
   box-shadow: 8px 8px 6px #3c3c3c;
-  background-color: #fe2b75;
 }
 
 
 /* INDEX CSS */
-#container {
-  background: var(--background-color);
-  padding-top: 15vh;
-  padding-bottom: 25vh;
-  height: fit-content;
-  padding-right: 3.5vw;
-  position: relative;
-  background-size: cover;
-}
-#tilt {
-  width: 30vw;
-  height: auto;
+
+#homesection {
+  padding-top: 5vh;
+  padding-bottom: 5vh;
 }
 
 
 /* ABOUT PAGE CSS */
 
+#aboutcard {
+  /* next line is what makes all the blog cards the same height */
+    min-height: max(40vh, 400px);
+    margin-inline: auto;
+    width: 22vw;
+    transition: all 0.4s;
+    transition-timing-function:cubic-bezier(0.5, 3, 0, 1);
+    background: white;
+    position: relative;
+    }
+  #aboutcard:hover {
+    transform: scale(1.1);
+    box-shadow: 8px 8px 6px #3c3c3c;
+}
+
+#overrideabouttextcolor {
+  color: #000000;
+  font-family: 'Montserrat', sans-serif;
+}
+
+#accordian {
+  position: absolute;
+  bottom: 0px;
+  width: fill;
+}
+
+#advisorcard {
+    transition: all 0.4s;
+    margin-inline: auto;
+    transition-timing-function:cubic-bezier(0.5, 3, 0, 1);
+    }
+  #advisorcard:hover {
+    transform: scale(1.1);
+    box-shadow: 8px 8px 6px #3c3c3c;
+}
 
 /* STUDENTS PAGE CSS */
 
 #studentspics {
   margin-left: 5vw;
-  width: 30vw;
+  width: 20vw;
   height: auto;
 }
 
@@ -217,9 +273,62 @@ h1 {
   font-weight: 800;
 }
 
-/* SLUG POST CSS */
+/* EVENTS PAGE CSS */
+
+#upcomingeventscard {
+  /* next line is what makes all the blog cards the same height */
+    min-height: fit-content;
+    max-width: max(400px, 25vw);
+    transition: all 0.4s;
+    margin-inline: auto;
+    transition-timing-function: cubic-bezier(0.5, 3, 0, 1);
+    }
+  #upcomingeventscard:hover {
+    transform: scale(1.1);
+    box-shadow: 8px 8px 6px #3c3c3c;
+}
+
+#upcomingeventsphoto {
+  max-width: min(400px, 25vw);
+  margin-inline: auto;
+}
+#center {
+  text-align: center;
+}
+
+#pasteventscard {
+  /* next line is what makes all the blog cards the same height */
+    min-height: max(40vh, 450px);
+    transition: all 0.4s;
+    margin-inline: auto;
+    transition-timing-function:cubic-bezier(0.5, 3, 0, 1);
+    }
+  #pasteventscard:hover {
+    transform: scale(1.1);
+    box-shadow: 8px 8px 6px #3c3c3c;
+}
+
+#eventaccordian {
+  position: absolute;
+  bottom: 0px;
+  border: none;
+}
+
+#eventdescription {
+  padding-top: 10px;
+  color: #000000;
+  font-family: 'Montserrat', sans-serif;
+}
+
+
+
+/* POST PAGE CSS */
 
 #postcontainer {
+  background: var(--background-color);
+  color: var(--text-color);
+  transition: var(--background-ease);
+  font-family: 'Montserrat', sans-serif;
   align-content: center;
   padding-top: 9vh;
   padding-bottom: 25vh;
@@ -238,11 +347,48 @@ h1 {
     padding-right: 8vw;
   }
 }
-#postbody {
+.postbody {
   padding-top: 30px;
   font-weight: 400;
   line-height: 2;
   width: 100%;
+}
+
+/* FAQS PAGE CSS */
+
+#divmesomespacesmall {
+  /* these 2 lines stop cards from overlapping. also the g-5 in the row tag of index and content  */
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+      }
+
+#faqcard {
+    transition: all 0.4s;
+    margin-inline: auto;
+    transition-timing-function:cubic-bezier(0.5, 3, 0, 1);
+  }
+#faqcard:hover {
+    transform: scale(1.1);
+    box-shadow: 8px 8px 6px #3c3c3c;
+}
+
+/* GET INVOLVED PAGE CSS */
+
+#input {
+  background: rgba(0, 0, 0, 0);
+  border-radius: 15px;
+  border-color: #ffe665;
+  padding: 5px;
+  width: max(33vw, 300px);
+  font-weight: 300;
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+  color: var(--text-color);
+}
+
+#formposition {
+  margin-inline: auto;
+  text-align: center;
 }
 
 
@@ -262,8 +408,3 @@ h1 {
   background-image: url('../public/tcss7.jpg');
   background-size: cover;
 } */
-
-.hometest {
-  margin-top: 15vh;
-  background: var(--background-color);
-}

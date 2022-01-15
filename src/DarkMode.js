@@ -21,6 +21,7 @@ const BootstrapTooltip = styled(({ className, ...props }) => (
 
 
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({
+    margin: 9,
     width: 62,
     height: 34,
     padding: 7,

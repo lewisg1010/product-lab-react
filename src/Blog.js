@@ -6,7 +6,6 @@ import Moment from 'react-moment';
 import { Link } from 'react-router-dom';
 import { Card, Row, Col, Container, Image } from 'react-bootstrap';
 
-
 const Blog = () => {
     const [data, setData] = useState({posts: []});
     useEffect(() => {
@@ -23,7 +22,8 @@ const Blog = () => {
     }, []);
     return(
 <div id="container">
-  <h3>Blog</h3>
+  <h1>Blog</h1>
+  <h3>A showcase for the projects and ideas of our members</h3>
 
   <Container fluid id="alignfeatured">
   
