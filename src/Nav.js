@@ -19,20 +19,20 @@ export default class Navb extends Component {
     render() {
         return(
             <Router>
-<Navbar expand="lg" fixed="top" id="nav">
+      <Navbar collapseOnSelect expand="lg" fixed="top" id="nav">
         <Container>
           <Navbar.Brand id="productlabbrand"><Link to="/"><Image src="/sitehomelogogeneral.svg" alt="Product Lab Logo" id="homelogo"></Image></Link> Product Lab</Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" id="navbartoggle"/>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" id="navbartoggle" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link as={Link} to={"/"} id="navlinkoverridetextcolor">Home</Nav.Link>
-              <Nav.Link as={Link} to={"/about"} id="navlinkoverridetextcolor">About</Nav.Link>
-              <Nav.Link as={Link} to={"/clients"} id="navlinkoverridetextcolor">Clients</Nav.Link>
-              <Nav.Link as={Link} to={"/students"} id="navlinkoverridetextcolor">Students</Nav.Link>
-              <Nav.Link as={Link} to={"/events"} id="navlinkoverridetextcolor">Events</Nav.Link>
+              <Nav.Link eventKey="1" as={Link} to={"/"} id="navlinkoverridetextcolor">Home</Nav.Link>
+              <Nav.Link eventKey="2" as={Link} to={"/about"} id="navlinkoverridetextcolor">About</Nav.Link>
+              <Nav.Link eventKey="3" as={Link} to={"/clients"} id="navlinkoverridetextcolor">Clients</Nav.Link>
+              <Nav.Link eventKey="4" as={Link} to={"/students"} id="navlinkoverridetextcolor">Students</Nav.Link>
+              <Nav.Link eventKey="5" as={Link} to={"/events"} id="navlinkoverridetextcolor">Events</Nav.Link>
               <NavDropdown title="Resources" id="navlinkoverridetextcolor">
-                <NavDropdown.Item as={Link} to={"/blog"} id="navdropdownitem">Blog</NavDropdown.Item>
-                <NavDropdown.Item as={Link} to={"/faqs"} id="navdropdownitem">FAQs</NavDropdown.Item>
+                <NavDropdown.Item eventKey="6" as={Link} to={"/blog"} id="navdropdownitem">Blog</NavDropdown.Item>
+                <NavDropdown.Item eventKey="7" as={Link} to={"/faqs"} id="navdropdownitem">FAQs</NavDropdown.Item>
               </NavDropdown>
               <Nav.Link href="/getinvolved"><Button id="button"><span id="bold">Partner with us</span></Button></Nav.Link>
               <DarkMode />

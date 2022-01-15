@@ -16,7 +16,7 @@
 
 body.light {
   --background-color: white;
-  --navbar-bg-color: rgba(255, 255, 255, 0.75);
+  --navbar-bg-color: rgba(255, 255, 255, 0.85);
   --text-color: black;
   /* --font-weight: 400; */
   /* helpful for replacing image based on dark mode */
@@ -24,7 +24,7 @@ body.light {
 }
 body.dark {
   --background-color: #0f182a;
-  --navbar-bg-color: rgba(15, 24, 42, 0.75);
+  --navbar-bg-color: rgba(15, 24, 42, 0.85);
   --text-color: white;
   /* --font-weight: 400; */
   /* helpful for replacing image based on dark mode */
@@ -134,7 +134,7 @@ body {
 #nav {
   background: var(--navbar-bg-color);
   /* transition: var(--background-ease); */
-  backdrop-filter: blur(2px);
+  backdrop-filter: blur(10px);
 }
 #navdropdownitem {
   color: #000000;
@@ -146,7 +146,13 @@ body {
   font-family: 'Montserrat', sans-serif;
   margin-top: 8px;
   color: var(--text-color);
+  transition: .5s;
 }
+#navlinkoverridetextcolor:hover {
+  font-weight: 700;
+}
+
+
 #productlabbrand {
   color: var(--text-color);
   font-family: 'Montserrat', sans-serif;
@@ -196,7 +202,7 @@ body {
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
 }
-#partnerbutton {
+/* #partnerbutton {
   box-shadow: 4px 4px 3px #3c3c3c;
   transition: all 0.4s;
   transition-timing-function:cubic-bezier(0.5, 3, 0, 1);
@@ -206,7 +212,7 @@ body {
 #partnerbutton:hover {
   transform: scale(1.1);
   box-shadow: 8px 8px 6px #3c3c3c;
-}
+} */
 
 
 /* INDEX CSS */
@@ -370,7 +376,7 @@ body {
   min-height: 100vh;
   height: fit-content;
   width: fit-content;
-  /* max-width: 100%; */
+  max-width: 100%;
   background-size: cover;
   position: relative;
 }
