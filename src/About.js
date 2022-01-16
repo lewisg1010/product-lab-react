@@ -72,7 +72,7 @@ function About() {
       <Card.Img variant="top" src={bio.photo.url} />
       <Card.Body>
         <Card.Title>
-            <a class="cardtitlefont">{bio.name}</a>
+            <a id="cardtitlefont">{bio.name}</a>
         </Card.Title>
         <Card.Text>
         <p>{bio.title}</p>
