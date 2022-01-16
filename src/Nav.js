@@ -19,12 +19,14 @@ import { Dropdown } from 'bootstrap';
 export default class Navb extends Component {
     render() {
         return(
+          // <Container>
             <Router>
+              
       <Navbar collapseOnSelect expand="lg" fixed="top" id="nav">
         <Container>
           <Navbar.Brand id="productlabbrand"><Link to="/"><Image src="/sitehomelogogeneral.svg" alt="Product Lab Logo" id="homelogo"></Image></Link> Product Lab</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" id="navbartoggle" />
-          <Navbar.Collapse id="basic-navbar-nav">
+          <Navbar.Collapse className="basic-navbar-nav" id="nogrow">
             <Nav className="me-auto">
               <Nav.Link eventKey="1" as={Link} to={"/"} id="navlinkoverridetextcolor" className="underline2">Home</Nav.Link>
               <Nav.Link eventKey="2" as={Link} to={"/about"} id="navlinkoverridetextcolor" className="underline2">About</Nav.Link>
@@ -55,6 +57,7 @@ export default class Navb extends Component {
       </Routes>
       </div>
       </Router>
+      // </Container>
         )
     }
 }
