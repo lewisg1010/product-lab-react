@@ -187,7 +187,7 @@ const Home = () => {
 
 
 
-<h3>Who are we?</h3>
+<h3 id="homepushdown">Who are we?</h3>
 <p>Product Lab is Harvard&apos;s first product management organization. Through training programs, real-world product experience, and industry mentorship, we introduce product management to problem-solvers from all backgrounds and help them grow into future product leaders.</p>
 <Button id="button" href="/getinvolved">Get involved</Button>
 
