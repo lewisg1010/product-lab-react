@@ -16,7 +16,7 @@
 
 body.light {
   --background-color: white;
-  --navbar-bg-color: rgba(255, 255, 255, 0.85);
+  --navbar-bg-color: rgba(240, 240, 240, 0.85);
   --text-color: black;
   --stroke-color: black;
   --navlogo: url('../public/newestlightlogo.png');
@@ -26,7 +26,7 @@ body.light {
 }
 body.dark {
   --background-color: #0f182a;
-  --navbar-bg-color: rgba(15, 24, 42, 0.85);
+  --navbar-bg-color: rgba(24, 33, 50, 0.85);
   --text-color: white;
   --stroke-color: #ffe665;
   --navlogo: url('../public/newestdarklogo.png');
@@ -151,6 +151,8 @@ body {
 
 #nav {
   background: var(--navbar-bg-color);
+  padding-top: 0px;
+  padding-bottom: 0px;
   /* transition: var(--background-ease); */
   backdrop-filter: blur(10px);
 }
@@ -175,7 +177,7 @@ body {
     .underline2:after {
       content: "";
       position: absolute;
-      background-color: #ffe665;
+      background-color: var(--stroke-color);
       height: 3px;
       width: 0;
       left: 0;
@@ -201,7 +203,7 @@ body {
 .underline:after {
   content: "";
   position: absolute;
-  background-color: #ffe665;
+  background-color: var(--stroke-color);
   height: 3px;
   width: 0;
   left: 0;
@@ -545,10 +547,7 @@ body {
     display: none;
   }
 }
-#forsmallscreenonly{
-  width: min(800px, 70vw);
-  transform: translate(10%, 0);
-}
+
 @media screen and (min-width: 1310px) {
   #forsmallscreenonly {
     display: none;
@@ -570,6 +569,63 @@ body {
     padding-right: 1vw;
   }
 }
+/* #clientpmobile {
+  width: 100vw;
+  max-width: 100vw;
+  left: 50%;
+  text-align: center;
+  transform: translate(12.5%, 0);
+  padding-left: 10vw;
+  padding-right: 10vw;
+  line-height: 2;
+}
+@media screen and (max-width: 500px) {
+  #clientpmobile {
+    padding-left: 1vw;
+    padding-right: 1vw;
+  }
+} */
+
+
+@media screen and (min-width: 1311px) {
+  #clientpmobile {
+    display: none;
+  }
+}
+
+#marginz {
+  padding-left: 40px;
+  padding-right: 40px;
+}
+@media screen and (min-width: 690px) {
+  #marginz {
+    padding-left: 25vw;
+    padding-right: 25vw;
+  }
+}
+#divmedynamicspace {
+  padding-top: 3vw;
+  padding-bottom: 3vw;
+}
+@media screen and (max-width: 830px) {
+  #divmedynamicspace {
+    padding-top: 1vw;
+    padding-bottom: 1vw;
+  }
+}
+@media screen and (max-width: 670px) {
+  #divmedynamicspace {
+    padding-top: 0vw;
+    padding-bottom: 0vw;
+  }
+}
+
+/* #mobileitemz {
+  max-width: 75vw;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+} */
 
 /* #linecontainer {
   display: grid;
@@ -610,7 +666,6 @@ body {
 #line2 {
   /* display: inline-block; */
   position: absolute;
-  left: 10px;
   width: 50px;
   height: auto;
   stroke: var(--text-color);
@@ -620,7 +675,50 @@ body {
     display: none;
   }
 }
+#line3 {
+  /* display: inline-block; */
+  position: absolute;
+  width: 50px;
+  height: auto;
+  stroke: var(--text-color);
+}
+@media screen and (min-width: 1311px) {
+  #line3 {
+    display: none;
+  }
+}
+.leftline {
+  left: 5vw;
+}
+@media screen and (max-width: 700px) {
+  .leftline {
+    left: 20px;
+  }
+}
+@media screen and (max-width: 500px) {
+  .leftline {
+    left: 4px;
+  }
+}
+.rightline {
+  right: 5vw;
+}
+@media screen and (max-width: 700px) {
+  .rightline {
+    right: 20px;
+  }
+}
+@media screen and (max-width: 500px) {
+  .rightline {
+    right: 4px;
+  }
+}
+
+
 #path2 {
+  stroke: var(--stroke-color);
+}
+#path3 {
   stroke: var(--stroke-color);
 }
 
@@ -650,10 +748,10 @@ body {
 }
 @media screen and (max-width: 1310px) {
   #uvps {
-    margin-top: 10rem;
+    margin-top: 0rem;
   }
 }
-@media screen and (max-width: 846px) {
+/* @media screen and (max-width: 846px) {
   #uvps {
     margin-top: 12rem;
   }
@@ -662,6 +760,31 @@ body {
   #uvps {
     margin-top: 8rem;
   }
+} */
+
+#uvpicon {
+  width: max(10vw, 300px);
+  height: auto;
+}
+#uvpicon:hover {
+  transition: all 0.4s;
+  transition-timing-function: cubic-bezier(0.5, 3, 0, 1);
+  transform: scale(1.1);
+}
+
+#stars {
+  height: max(20vh, 150px);
+  width: auto;
+}
+#stars:hover {
+  transition: all 0.4s;
+  transition-timing-function: cubic-bezier(0.5, 3, 0, 1);
+  transform: scale(1.1);
+}
+
+#pad {
+  padding-left: 15vw;
+  padding-right: 15vw;
 }
 
 
