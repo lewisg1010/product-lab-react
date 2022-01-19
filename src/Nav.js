@@ -16,7 +16,9 @@ import Switch from '@mui/material/Switch';
 import Post from './Post';
 import { Dropdown } from 'bootstrap';
 
+
 export default class Navb extends Component {
+    
     render() {
         return(
           // <Container>
@@ -24,7 +26,7 @@ export default class Navb extends Component {
               
       <Navbar collapseOnSelect expand="lg" fixed="top" id="nav">
         <Container>
-          <Navbar.Brand id="productlabbrand"><Link to="/"><Image src="/sitehomelogogeneral.svg" alt="Product Lab Logo" id="homelogo"></Image></Link> Product Lab</Navbar.Brand>
+          <Navbar.Brand id="productlabbrand"><Link to="/"><div id="homelogo"></div></Link></Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" id="navbartoggle" />
           <Navbar.Collapse className="basic-navbar-nav" id="nogrow">
             <Nav className="me-auto">

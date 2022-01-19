@@ -26,7 +26,7 @@ const Blog = () => {
   <h3 class="center">A showcase for the projects and ideas of our members</h3>
   <div id="divmesomespacesmall" />
 
-  <Container fluid id="alignfeatured">
+  <Container fluid>
   
   <Row xs={1} sm={1} md={2} lg={3} xl={4} className="g-5 align-items-center">
   {data.posts.map(post => (

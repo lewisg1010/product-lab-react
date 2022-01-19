@@ -25,11 +25,11 @@ const Post = () => {
     }, [slug]);
     return(
 <div id="postcontainer">
-  <h3>Post Page</h3>
+<div id="divmesomespacesmall"></div>
   {data.posts[0] && (
       <React.Fragment>
-          <h1>{data.posts[0].title}</h1>
-          <p>{data.posts[0].custom_excerpt}</p>
+          <h1 id="bold">{data.posts[0].title}</h1>
+          <h6 id="italic">{data.posts[0].custom_excerpt}</h6>
           <div dangerouslySetInnerHTML={{ __html: data.posts[0].html}} class="postbody"></div>
       </React.Fragment>
   )}

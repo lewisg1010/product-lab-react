@@ -53,10 +53,11 @@ function About() {
                 ) : (
                     <div>
                     <section>
+                    <div id="divmesomespacesmall"></div>
                     <h1>About Product Lab</h1>
                     <div id="divmesomespacesmall" />
-                      <p>Launched in September 2021, Product Lab is the first student organization dedicated to the education and advancement of product management at Harvard. Our group was founded with support from Harvard Computer Society as well as faculty leaders in the PM discipline at Harvard Business School. Product Lab aims to expand access to resources & hands-on experiences in product management.</p>
-                      <p>Through training programs, industry experience, and mentorship, Product Lab helps creative problem solvers from diverse backgrounds grow into future product leaders.</p>
+                      <p id="textchunk">Launched in September 2021, Product Lab is Harvard College's first Product Management organization.</p>
+                      <p id="textchunk">Through training programs, industry experience, and mentorship, Product Lab helps creative problem solvers from diverse backgrounds grow into future product leaders.</p>
                   </section>
                   <section>
                     <div id="divmesomespacesmall" />

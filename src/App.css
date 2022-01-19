@@ -19,6 +19,7 @@ body.light {
   --navbar-bg-color: rgba(255, 255, 255, 0.85);
   --text-color: black;
   --stroke-color: black;
+  --navlogo: url('../public/newestlightlogo.png');
   /* --font-weight: 400; */
   /* helpful for replacing image based on dark mode */
   /* --image: url("../day.jpg"); */
@@ -28,6 +29,7 @@ body.dark {
   --navbar-bg-color: rgba(15, 24, 42, 0.85);
   --text-color: white;
   --stroke-color: #ffe665;
+  --navlogo: url('../public/newestdarklogo.png');
   /* --font-weight: 400; */
   /* helpful for replacing image based on dark mode */
   /* --image: url("../night.jpg"); */
@@ -131,6 +133,19 @@ body {
 #temporarilypushdown {
   margin-top: 20vh;
 }
+
+#textchunk {
+  padding-left: 15vw;
+  padding-right: 15vw;
+  line-height: 2;
+}
+@media screen and (max-width: 500px) {
+  #textchunk {
+    padding-left: 5vw;
+    padding-right: 5vw;
+  }
+}
+
 
 /* NAVBAR CSS */
 
@@ -371,7 +386,7 @@ body {
   animation-delay: 1.5s;
   animation-fill-mode: forwards;
 }
-#step3group{
+#step3group {
   opacity: 0;
   animation: fadeIn 1s;
   animation-delay: 2.5s;
@@ -396,15 +411,6 @@ body {
   animation-fill-mode: forwards;
 }
 
-
-
-#productlabbrand {
-  color: var(--text-color);
-  font-family: 'Montserrat', sans-serif;
-  transition: background 0.5s ease-in-out;
-  padding-top: 3px;
-  padding-bottom: 0px;
-}
 #navbartoggle {
   background: white;
 }
@@ -432,14 +438,21 @@ body {
   }
 }  */
 #homelogo {
-  max-height: 4rem;
-  max-width: 13rem;
+  width: 125px;
+  min-height: 60px;
   cursor: pointer;
-  transition: transform .2s;
+  background-image: var(--navlogo);
+  background-size: cover;
+  transition: transform .7s ease-in-out;
 }
 #homelogo:hover {
-  transform: scale(1.1);
+    transform: rotate(360deg);
 }
+#productlabbrand {
+  width: 125px;
+  min-height: 60px;
+}
+
 #navlinkalign {
   margin-top: 8px;
 }
@@ -547,6 +560,15 @@ body {
   width: 75vw;
   left: 50%;
   transform: translate(12.5%, 0);
+  padding-left: 10vw;
+  padding-right: 10vw;
+  line-height: 2;
+}
+@media screen and (max-width: 500px) {
+  #clientp {
+    padding-left: 1vw;
+    padding-right: 1vw;
+  }
 }
 
 /* #linecontainer {
@@ -621,7 +643,7 @@ body {
   border-radius: 25px;
 }
 #uvps {
-  margin-top: 219rem;
+  margin-top: 210rem;
   background-color: rgba(0, 0, 0, 0);
   position: relative;
   z-index: 1;
@@ -644,7 +666,7 @@ body {
 
 
 #uvpcard {
-  min-height: 35vh;
+  min-height: 43vh;
   min-width: max(18vw, 300px);
   max-width: 18vw;
   box-shadow: 8px 8px 6px #3c3c3c;
@@ -666,20 +688,40 @@ max-width: 100vw;
 }
 @media screen and (min-width: 200px) {
   #centeredrow {
-    padding-left: 0vw;
+    padding-left: 3vw;
   }
 }
-@media screen and (min-width: 550px) {
+@media screen and (min-width: 388px) {
+  #centeredrow {
+    padding-left: 5vw;
+  }
+}
+@media screen and (min-width: 412px) {
+  #centeredrow {
+    padding-left: 7.5vw;
+  }
+}
+@media screen and (min-width: 500px) {
+  #centeredrow {
+    padding-left: 15vw;
+  }
+}
+@media screen and (min-width: 614px) {
   #centeredrow {
     padding-left: 20vw;
   }
 }
-@media screen and (min-width: 767px) {
+@media screen and (min-width: 768px) {
   #centeredrow {
-    padding-left: 0vw;
+    padding-left: 3vw;
   }
 }
 @media screen and (min-width: 1200px) {
+  #centeredrow {
+    padding-left: 6.5vw;
+  }
+}
+@media screen and (min-width: 1500px) {
   #centeredrow {
     padding-left: 9vw;
   }
@@ -691,11 +733,97 @@ max-width: 100vw;
 
 /* STUDENTS PAGE CSS */
 
-#studentspics {
-  margin-left: 5vw;
-  width: 20vw;
+#studentanimation {
+  display: grid;
+  place-items: center;
+}
+
+#studentgraphic {
+  width: max(20vw, 400px);
   height: auto;
 }
+@media screen and (max-width: 991px) {
+  #studentgraphic {
+  width: 90vw;
+  height: auto;
+  }
+}
+#leftguy {
+  opacity: 0;
+  animation: fadeInRight 1.5s;
+  animation-delay: 1s;
+  animation-fill-mode: forwards;
+}
+#leftgirl {
+  opacity: 0;
+  animation: fadeInRight 1.5s;
+  animation-delay: 0.25s;
+  animation-fill-mode: forwards;
+}
+#rightguy {
+  opacity: 0;
+  animation: fadeInLeft 1.5s;
+  animation-delay: 0.5s;
+  animation-fill-mode: forwards;
+}
+#rightgirl {
+  opacity: 0;
+  animation: fadeInLeft 1.5s;
+  animation-delay: 0.75s;
+  animation-fill-mode: forwards;
+}
+
+#studentspics {
+  width: max(30vw, 325px);
+  height: auto;
+  box-shadow: 8px 8px 6px #3c3c3c;
+}
+#centereddiv {
+  display: grid;
+  place-items: center;
+}
+#studentsitemtext {
+  line-height: 2;
+}
+
+#bigbutton {
+  box-shadow: 4px 4px 3px #3c3c3c;
+  width: 200px;
+  height: 50px;
+  padding-top: 15px;
+  background-color: #ffe665;
+  border-radius: 25px;
+  color: black;
+  font-weight: bold;
+  border: none;
+  transition: all 0.4s;
+  transition-timing-function:cubic-bezier(0.5, 3, 0, 1);
+}
+#bigbutton:hover {
+  transform: scale(1.1);
+  box-shadow: 8px 8px 6px #3c3c3c;
+  background-color: #ffe665;
+}
+
+#simpleshadow:hover {
+  transition: all 0.4s;
+  transition-timing-function: cubic-bezier(0.5, 3, 0, 1);
+  transform: scale(1.3);
+}
+
+#centertextchunk {
+  text-align: center;
+  padding-left: 22vw;
+  padding-right: 22vw;
+  line-height: 2;
+}
+@media screen and (max-width: 500px) {
+  #centertextchunk {
+    padding-left: 5vw;
+    padding-right: 5vw;
+  }
+}
+
 
 
 /* CONTENT PAGES CSS */
@@ -792,7 +920,7 @@ max-width: 100vw;
   min-height: 100vh;
   height: fit-content;
   width: fit-content;
-  max-width: 100%;
+  width: 100vw;
   background-size: cover;
   position: relative;
 }
@@ -802,6 +930,11 @@ max-width: 100vw;
     padding-right: 8vw;
   }
 }
+
+#italic {
+  font-style: italic;
+}
+
 .postbody {
   padding-top: 30px;
   font-weight: 400;
@@ -828,6 +961,13 @@ max-width: 100vw;
 #faqcard:hover {
     transform: scale(1.1);
     box-shadow: 8px 8px 6px #3c3c3c;
+}
+
+#question {
+  opacity: 0;
+  animation: fadeInLeft 1.5s;
+  animation-delay: 0.5s;
+  animation-fill-mode: forwards;
 }
 
 /* GET INVOLVED PAGE CSS */
