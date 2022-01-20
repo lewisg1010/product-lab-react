@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import axios from 'axios';
-import Tilt from 'react-parallax-tilt';
-import Moment from 'react-moment';
-import { Link, useParams } from 'react-router-dom';
-import { Card, Row, Col, Container, Image } from 'react-bootstrap';
+import { useParams } from 'react-router-dom';
 
 
 const Post = () => {

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Card, Row, Col, Container, Image } from 'react-bootstrap';
+import { Row, Col, Container, Image } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Tilt from 'react-parallax-tilt';
 import { Parallax } from 'react-scroll-parallax';
@@ -86,7 +86,7 @@ export default class Students extends Component {
 </div>
 
     <div id="divmesomespace"></div>
-    <h1 className="center bold bigger">Our initiatives</h1>
+    <h1 className="center bold">Our initiatives</h1>
     <div id="divmesomespacesmall"></div>
     
     <Container fluid>

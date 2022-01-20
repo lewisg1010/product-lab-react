@@ -1,24 +1,11 @@
-import React, { Component, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import { request } from 'graphql-request';
-import PastEvents from './PastEvents';
 import Card from 'react-bootstrap/Card';
-import Tilt from 'react-parallax-tilt';
-import Moment from 'react-moment';
-import Nav from 'react-bootstrap/Nav'
-import NavDropdown from 'react-bootstrap/NavDropdown'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Container from 'react-bootstrap/Container';
-import Button from 'react-bootstrap/Button';
-// import Parallax from 'react-rellax'
-import Accordion from '@mui/material/Accordion';
-import AccordionSummary from '@mui/material/AccordionSummary';
-import AccordionDetails from '@mui/material/AccordionDetails';
-import Typography from '@mui/material/Typography';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Fade from 'react-reveal/Fade';
-
 
 function Faqs() {
 

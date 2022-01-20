@@ -4,7 +4,7 @@ import axios from 'axios';
 import Tilt from 'react-parallax-tilt';
 import Moment from 'react-moment';
 import { Link } from 'react-router-dom';
-import { Card, Row, Col, Container, Image } from 'react-bootstrap';
+import { Card, Row, Col, Container } from 'react-bootstrap';
 import Zoom from 'react-reveal/Zoom';
 
 const Blog = () => {

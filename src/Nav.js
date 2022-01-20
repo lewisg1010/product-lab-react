@@ -3,7 +3,7 @@ import './App.css';
 import About from './About';
 import Clients from './Clients';
 import Home from './Home';
-import { Navbar, Image, Container, NavDropdown, Nav } from 'react-bootstrap';
+import { Navbar, Container, NavDropdown, Nav } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Students from './Students';
@@ -12,9 +12,7 @@ import Blog from './Blog';
 import Faqs from './Faqs';
 import Getinvolved from './Getinvolved';
 import DarkMode from './DarkMode';
-import Switch from '@mui/material/Switch';
 import Post from './Post';
-import { Dropdown } from 'bootstrap';
 
 
 export default class Navb extends Component {

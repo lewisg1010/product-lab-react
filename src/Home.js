@@ -4,16 +4,10 @@ import './App.css';
 import axios from 'axios';
 import Tilt from 'react-parallax-tilt';
 import Moment from 'react-moment';
-import { Card, Row, Col, Container, Image } from 'react-bootstrap';
+import { Card, Row, Col, Container } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import { Parallax } from 'react-scroll-parallax';
 import Fade from 'react-reveal/Fade';
-
-// const logo = document.querySelectorAll("#hometextanimation path");
-// console.log(logo);
-// for(let i = 0; i<logo.length; i++) {
-//     console.log(`Letter ${i} is ${logo[i].getTotalLength()}`);
-// }
 
 const Home = () => {
 
@@ -33,7 +27,6 @@ const Home = () => {
     return(
 <div id="container">
 
-{/* <Tilt id="tilt" tiltMaxAngleX={5} tiltMaxAngleY={5}><Image src="/plscreenlogo.svg" alt="Product Lab Logo"></Image></Tilt> */}
 <div id="landinganimation">
 <svg id="hometextanimation" width="1341" height="165" viewBox="0 0 1341 165" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M67.6481 11.6C80.7921 11.6 92.1694 13.7907 101.78 18.172C111.532 22.5533 119.023 28.772 124.252 36.828C129.481 44.884 132.096 54.424 132.096 65.448C132.096 76.3307 129.481 85.8707 124.252 94.068C119.023 102.124 111.532 108.343 101.78 112.724C92.1694 116.964 80.7921 119.084 67.6481 119.084H37.7561V160H3.41211V11.6H67.6481ZM65.7401 91.1C76.0574 91.1 83.9014 88.9093 89.2721 84.528C94.6428 80.0053 97.3281 73.6453 97.3281 65.448C97.3281 57.1093 94.6428 50.7493 89.2721 46.368C83.9014 41.8453 76.0574 39.584 65.7401 39.584H37.7561V91.1H65.7401Z" stroke-width="5"/>

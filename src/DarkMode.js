@@ -1,8 +1,7 @@
 import React from "react";
-import './DarkMode.css';
 import Switch from '@mui/material/Switch';
 import { styled } from '@mui/material/styles';
-import Tooltip, { TooltipProps, tooltipClasses } from '@mui/material/Tooltip';
+import Tooltip, { tooltipClasses } from '@mui/material/Tooltip';
 
 const BootstrapTooltip = styled(({ className, ...props }) => (
     <Tooltip {...props} arrow classes={{ popper: className }} />
@@ -101,15 +100,8 @@ const DarkMode = () => {
     };
 
     return (
-        // <button 
-        // className={theme === "dark" ? clickedClass : ""}
-        // id="darkMode"
-        // onClick={(e) => switchTheme(e)}></button>
         <BootstrapTooltip title="Hit the lights?">
         <MaterialUISwitch className={theme === "dark" ? clickedClass : ""} onClick={(e) => switchTheme(e)}></MaterialUISwitch>
-        {/* <button className={theme === "dark" ? clickedClass : ""}
-        id="darkMode"
-        onClick={(e) => switchTheme(e)}></button> */}
         </BootstrapTooltip>
     );
 
