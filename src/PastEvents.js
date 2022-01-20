@@ -51,7 +51,7 @@ function PastEvents() {
         return (
             <div>
                 {!events ? (
-                    'Loading'
+                    ''
                 ) : (
                     <Container fluid>
                     <Row xs={1} sm={1} md={2} lg={2} xl={3} className="g-1 align-items-center d-flex card-block">

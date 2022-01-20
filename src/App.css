@@ -5,14 +5,7 @@
 :root {
   --blue: blue;
   --white: white;
-  /* --background-ease: background 0.5s ease-in-out; */
 }
-
-/* body {
-  color: var(--text-color);
-  font-weight: var(--font-weight);
-  transition: background 0.3s ease-in-out, color 0.6s ease-in-out;
-} */
 
 body.light {
   --background-color: white;
@@ -21,10 +14,8 @@ body.light {
   --stroke-color: black;
   --navlogo: url('../public/newestlightlogo.png');
   --gradient-text: -webkit-linear-gradient(135deg, #FA0177, #7621BF);
-  /* --font-weight: 400; */
-  /* helpful for replacing image based on dark mode */
-  /* --image: url("../day.jpg"); */
 }
+
 body.dark {
   --background-color: #0f182a;
   --navbar-bg-color: rgba(24, 33, 50, 0.85);
@@ -32,19 +23,11 @@ body.dark {
   --stroke-color: #ffe665;
   --navlogo: url('../public/newestdarklogo.png');
   --gradient-text: -webkit-linear-gradient(135deg, #FF4D41, #F8C025, #FF4D41);
-  /* --font-weight: 400; */
-  /* helpful for replacing image based on dark mode */
-  /* --image: url("../night.jpg"); */
 }
-/* #imagefromlineabove {
-  transition: background-image 0.7s ease-in-out;
-  background-image: var(--image);
-} */
 
 #fillparallaxbg {
   background: var(--background-color);
 }
-
 
 #button {
   box-shadow: 4px 4px 3px #3c3c3c;
@@ -64,7 +47,6 @@ body.dark {
 #container {
   background: var(--background-color);
   color: var(--text-color);
-  /* transition: var(--background-ease); */
   font-family: 'Montserrat', sans-serif;
   padding-top: 12vh;
   padding-bottom: 25vh;
@@ -75,33 +57,6 @@ body.dark {
   background-size: cover;
 }
 
-/* 
-body,
-body[data-theme="light"] {
-  --color-text-primary: #000000;
-  --color-text-secondary: #000000;
-  --color-bg-primary: #ffffff;
-  --color-bg-navbar-mobile: white;
-  --color-bg-toggle: #1e90ff;
-}
-body[data-theme="dark"] {
-  --color-text-primary: #e3e3e3;
-  --color-text-secondary: #e3e3e3;
-  --color-bg-primary: #001e3d;
-  --color-bg-navbar-mobile: white;
-  --color-bg-toggle: #a9a9a9;
-}
-body {
-  background: var(--color-bg-primary);
-  color: var(--color-text-primary);
-  font-family: 'Montserrat', sans-serif;
-  transition: background 0.5s ease-in-out;
-}
-
-#alignfeatured {
-  padding-left: 5%;
-  padding-top: 3%;
-  } */
 #shadowy {
   box-shadow: 8px 8px 6px #3c3c3c;
   /* position relative enables me to bottom align the 'last updated' text */
@@ -109,16 +64,13 @@ body {
   background-color: var(--background-color);
   color: var(--text-color);
   border-color: var(--text-color);
-  /* next line is what makes all the blog cards the same height
-  min-height: 42vh; */
   cursor: pointer;
 }
 
-
-  #divmesomespace {
-      padding-top: 4rem;
-      padding-bottom: 4rem;
-    }
+#divmesomespace {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
 
 #divmesomespacebig {
   padding-top: 15vh;
@@ -137,25 +89,20 @@ body {
   }
 }
 
-
 #cardtitlefont {
   font-weight: 700;
   text-decoration: none;
   color: var(--text-color);
 }
 
-    #cardtextfont {
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 300;
-      color: var(--text-color);
-      font-size: 0.7rem;
+#cardtextfont {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  color: var(--text-color);
+  font-size: 0.7rem;
 /* bottom aligns the text with 3px padding */
-      position: absolute;
-      bottom: 3px;
-    }
-
-#temporarilypushdown {
-  margin-top: 20vh;
+  position: absolute;
+  bottom: 3px;
 }
 
 #textchunk {
@@ -177,46 +124,42 @@ body {
   background: var(--navbar-bg-color);
   padding-top: 0px;
   padding-bottom: 0px;
-  /* transition: var(--background-ease); */
   backdrop-filter: blur(10px);
 }
+
 #navdropdownitem {
   color: #000000;
   font-family: 'Montserrat', sans-serif;
   transition: background 0.5s ease-in-out;
   color: black;
 }
+
 #navlinkoverridetextcolor {
   font-family: 'Montserrat', sans-serif;
   margin-top: 8px;
   color: var(--text-color);
 }
 
-  @media screen and (min-width: 991px) {
-    .underline2 {
-      transition: .5s;
-      position: relative;
-      padding: 0 2px;
-    }
-    .underline2:after {
-      content: "";
-      position: absolute;
-      background-color: var(--stroke-color);
-      height: 3px;
-      width: 0;
-      left: 0;
-      bottom: -8px;
-      transition: 0.3s;
-    }
-    .underline2:hover:after {
-      width: 100%;
-    }
-    }
-
-
-
-
-
+@media screen and (min-width: 991px) {
+  .underline2 {
+    transition: .5s;
+    position: relative;
+    padding: 0 2px;
+  }
+  .underline2:after {
+    content: "";
+    position: absolute;
+    background-color: var(--stroke-color);
+    height: 3px;
+    width: 0;
+    left: 0;
+    bottom: -8px;
+    transition: 0.3s;
+  }
+  .underline2:hover:after {
+    width: 100%;
+  }
+  }
 
 @media screen and (min-width: 991px) {
 .underline {
@@ -262,7 +205,6 @@ body {
   height: auto;
   }
 }
-
 
 #hometextanimation path:nth-child(1) {
   stroke-dasharray: 508px;
@@ -441,28 +383,6 @@ body {
   background: white;
 }
 
-/* @media screen and (max-width: 991px) {
-  #nav {
-  background: var(--color-bg-navbar-mobile);
-  }
-} */
-/* #navlinkoverridetextcolor {
-  color: var(--color-text-primary);
-  font-family: 'Montserrat', sans-serif;
-  transition: background 0.5s ease-in-out;
-  margin-top: 8px;
-}
-@media screen and (max-width: 991px) {
-  #navlinkoverridetextcolor {
-    color: black;
-  }
-}
-
-@media screen and (max-width: 991px) {
-  #productlabbrand {
-    color: #000000;
-  }
-}  */
 #homelogo {
   width: 125px;
   min-height: 60px;
@@ -486,19 +406,6 @@ body {
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
 }
-/* #partnerbutton {
-  box-shadow: 4px 4px 3px #3c3c3c;
-  transition: all 0.4s;
-  transition-timing-function:cubic-bezier(0.5, 3, 0, 1);
-  background: rgb(205, 25, 255);
-  border: none;
-}
-#partnerbutton:hover {
-  transform: scale(1.1);
-  box-shadow: 8px 8px 6px #3c3c3c;
-} */
-
-
 
 
 /* HOME PAGE CSS */
@@ -531,7 +438,6 @@ body {
 }
 
 #limitwidth {
-  /* max-width: 100rem; */
   overflow: hidden;
 }
 
@@ -552,11 +458,6 @@ body {
   -webkit-text-fill-color: transparent;
 }
 
-
-
-
-
-
 #gradienttext3 {
   background: var(--gradient-text);
   background-clip: text;
@@ -571,10 +472,6 @@ body {
     font-size: 10vw;
   }
 }
-
-
-
-
 
 
 /* ABOUT PAGE CSS */
@@ -1105,6 +1002,13 @@ max-width: 100vw;
 
 /* EVENTS PAGE CSS */
 
+#pasteventfade {
+  opacity: 0;
+  animation: fadeInUp 1s;
+  animation-delay: 2s;
+  animation-fill-mode: forwards;
+}
+
 #upcomingeventscard {
   /* next line is what makes all the blog cards the same height */
     min-height: fit-content;
@@ -1144,6 +1048,7 @@ max-width: 100vw;
 }
 .right {
   text-align: end;
+  padding-right: -20px;
 }
 
 #pasteventscard {

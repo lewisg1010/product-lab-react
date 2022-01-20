@@ -61,7 +61,7 @@ function Events() {
                 </Roll>
                 <div id="divmesomespacesmall" />
                 {!events ? (
-                    'Loading'
+                    ''
                 ) : (
                         <Container fluid>
                         <Row xs={1} sm={1} md={2} lg={2} xl={3} className="g-1 align-items-center d-flex card-block">
@@ -91,7 +91,7 @@ function Events() {
                         </Row>
                         </Container>
                 )}
-                <h1 className="center bold bigger">Past Events</h1>
+                <h1 className="center bold bigger" id="pasteventfade">Past Events</h1>
                 <div id="divmesomespacesmall" />
                 <PastEvents />
             </div>

@@ -67,7 +67,7 @@ function About() {
                     <div id="divmesomespacesmall" />
                   </section>
                   
-    <Container fluid id="alignfeatured">
+    <Container fluid>
     <Row xs={1} sm={1} md={2} lg={2} xl={3} className="g-3 align-items-center d-flex card-block">
         {bios.map((bio, i) => (
     <Slide bottom cascade>

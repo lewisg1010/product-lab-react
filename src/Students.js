@@ -119,7 +119,7 @@ export default class Students extends Component {
           
         <Col>
         <div id="limitwidth">
-        <Parallax className="custom-class" x={[0, -30]}>
+        <Parallax className="custom-class" x={[10, -30]}>
         <h2 className="bold right" id="gradienttextsub">Spring Semester</h2>
         </Parallax>
         </div>

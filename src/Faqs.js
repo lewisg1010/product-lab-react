@@ -113,7 +113,7 @@ function Faqs() {
                 {!faqs ? (
                     'Loading'
                 ) : (
-                        <Container fluid id="alignfeatured">
+                        <Container fluid>
                         <Row xs={1} sm={1} md={1} lg={1} xl={1} className="g-1 align-items-center d-flex card-block">
                     
                             {faqs.map((faq, i) => (
