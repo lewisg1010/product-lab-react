@@ -2,16 +2,17 @@ import React from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navb from './Nav';
-import DarkMode from './DarkMode';
-import About from './About';
+import { ParallaxProvider } from 'react-scroll-parallax';
 
 
 function App() {
 
   return (
-      <div className="App">
+    <ParallaxProvider>
+    <div className="App">
         <Navb />
-      </div>
+    </div>
+    </ParallaxProvider>
   );
 }
 

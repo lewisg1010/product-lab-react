@@ -19,6 +19,8 @@ import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { Route } from "react-router-dom";
 import { ExternalLink } from 'react-external-link';
+import Roll from 'react-reveal/Roll';
+import Slide from 'react-reveal/Slide';
 
 
 
@@ -54,15 +56,19 @@ function Events() {
 
         return (
             <div id="container">
-                <h1 class="center">Upcoming Events</h1>
+                <Roll top>
+                <h1 className="center bold" id="gradienttext">Upcoming Events</h1>
+                </Roll>
                 <div id="divmesomespacesmall" />
                 {!events ? (
                     'Loading'
                 ) : (
-                        <Container fluid id="alignfeatured">
+                        <Container fluid>
                         <Row xs={1} sm={1} md={2} lg={2} xl={3} className="g-1 align-items-center d-flex card-block">
-                    
+
                             {events.map((event, i) => (
+                                
+                                <Slide bottom cascade>
                                 <Col key={event.name}>
                                 <Card id="upcomingeventscard">
                                   <Card.Img variant="top" src={event.photo.url} id="upcomingeventsphoto"/>
@@ -79,11 +85,13 @@ function Events() {
                                 </Card>
                                 <div id="divmesomespace"></div>
                                 </Col>
+                                </Slide>
                             ))}
+                         
                         </Row>
                         </Container>
                 )}
-                <h1 class="center">Past Events</h1>
+                <h1 className="center bold bigger">Past Events</h1>
                 <div id="divmesomespacesmall" />
                 <PastEvents />
             </div>

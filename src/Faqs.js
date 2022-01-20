@@ -17,7 +17,7 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-
+import Fade from 'react-reveal/Fade';
 
 
 function Faqs() {
@@ -45,7 +45,7 @@ function Faqs() {
 
         return (
             <div id="container">
-                <h1 class="center">Frequently asked questions</h1>
+                <h1 className="center bold" id="gradienttext">Frequently asked questions</h1>
                 <div id="studentanimation">
                 <svg id="studentgraphic" width="845" height="596" viewBox="0 0 845 596" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g id="undraw_questions_re_1fy7 1" clip-path="url(#clip0_477_367)">
@@ -118,6 +118,7 @@ function Faqs() {
                     
                             {faqs.map((faq, i) => (
                                 
+                                <Fade bottom cascade>
                                 <Col key={faq.question}>
                                 <Card style={{"height" : '120%', width: '75vw'}} id="faqcard">
                                   <Card.Body>
@@ -132,6 +133,7 @@ function Faqs() {
                                 </Card>
                                 <div id="divmesomespacesmall"></div>
                                 </Col>
+                                </Fade>
 
                             ))}
                         </Row>

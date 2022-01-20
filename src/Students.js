@@ -3,13 +3,16 @@ import './App.css';
 import { Card, Row, Col, Container, Image } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Tilt from 'react-parallax-tilt';
+import { Parallax } from 'react-scroll-parallax';
+import Fade from 'react-reveal/Fade';
+import Zoom from 'react-reveal/Zoom';
 
 export default class Students extends Component {
     render() {
         return (
         <div id="container">
 <div id="divmesomespacesmall"></div>
-<h1 className="center">Students</h1>
+<h1 className="center bold" id="gradienttext">Students</h1>
 
 <div id="studentanimation">
 <svg id="studentgraphic" width="733" height="639" viewBox="0 0 733 639" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -83,15 +86,21 @@ export default class Students extends Component {
 </div>
 
     <div id="divmesomespace"></div>
-    <h1 className="center">Our initiatives</h1>
+    <h1 className="center bold bigger">Our initiatives</h1>
     <div id="divmesomespacesmall"></div>
     
     <Container fluid>
       <Row xs={1} sm={1} md={2} lg={2} xl={2} className="g-5 align-items-center">
+
         <Col>
-        <h2 id="bold">Fall Semester</h2>
+        <div id="limitwidth">
+        <Parallax className="custom-class" x={[0, 40]}>
+        <h2 className="bold" id="gradienttextsub">Fall Semester</h2>
+        </Parallax>
+        </div>
+        <Fade bottom>
         <div id="studentsitemtext">
-        <li>Fall Semester Comp: Series of product management workshops, speaker events, and a final project</li>
+        <li><span className="bold">Fall Semester Comp:</span> Series of product management workshops, speaker events, and a final project</li>
         <ul>
           <li>Led by industry professionals, alumni, and students</li>
           <li>Topics range from breaking into PM to design thinking, user research, and product roadmapping</li>
@@ -99,49 +108,67 @@ export default class Students extends Component {
           <li>Students become Product Lab members upon successful completion of comp</li>
         </ul>
         </div>
+        </Fade>
         </Col>
-          
+        
+        <Fade bottom>
         <Col>
           <div id="centereddiv"><Tilt><Image src="/boardphoto.JPG" alt="Product Lab Board Photo" id="studentspics"></Image></Tilt></div>
         </Col>
+        </Fade>
           
         <Col>
-        <h2 id="bold">Spring Semester</h2>
+        <div id="limitwidth">
+        <Parallax className="custom-class" x={[-10, -40]}>
+        <h2 className="bold right" id="gradienttextsub">Spring Semester</h2>
+        </Parallax>
+        </div>
+        <Fade bottom>
         <div id="studentsitemtext">
           <ul>
-            <li>Product Consulting Projects: Product Lab members are divided into case teams and paired with a company to gain real-world product experience.</li>
+            <li><span className="bold">Product Consulting Projects:</span> Product Lab members are divided into case teams and paired with a company to gain real-world product experience.</li>
           </ul>
         </div>
+        </Fade>
         </Col>
-
+        
+        <Fade bottom>
         <Col>
         <div id="centereddiv"><Tilt><Image src="/teamleadmeeting.JPG" alt="Product Lab Case Team Lead Meeting" id="studentspics"></Image></Tilt></div>
         </Col>
+        </Fade>
 
         <Col>
         <div id="studentsitemtext">
-        <h2 id="bold">All the time</h2>
+        <h2 className="bold" id="gradienttextsub">All the time</h2>
+        <Fade bottom>
         <ul>
           <li>Socials</li>
           <li>Speaker events</li>
           <li>Networking opportunities</li>
           <li>Interview prep and career resources</li>
         </ul>
+        </Fade>
         </div>
         </Col>
-
+        
+        <Fade bottom>
         <Col>
         <div id="centereddiv"><Tilt><Image src="/cookiesocial.jpg" alt="Insomnia Cookie Social" id="studentspics"></Image></Tilt></div>
         </Col>
+        </Fade>
 
       </Row>
     </Container>
     <div id="divmesomespace"></div>
-    <h1 id="center">Our Values: What Product Lab is About</h1>
+    <Fade bottom>
+    <h1 className="bold bigger" id="center">Our Values: What Product Lab is About</h1>
+    </Fade>
     <div id="divmesomespacesmall"></div>
     <Container fluid>
       <Row xs={1} sm={1} md={1} lg={1} xl={1} className="g-5 align-items-center">
-          
+      <Fade bottom cascade>
+
         <Col>
         <div id="centereddiv"><Tilt>
         <svg id="simpleshadow" width="167" height="167" viewBox="0 0 167 167" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -914,13 +941,16 @@ export default class Students extends Component {
         <p id="centertextchunk">No gatekeeping here :) We want to give everyone toolkits and opportunities to explore and break into product management.</p>
         </div>
         </Col>
-
+        
+        </Fade>
       </Row>
     </Container>
 
 
     <div id="divmesomespace"></div>
+    <Zoom top>
     <div id="centereddiv"><Button id="bigbutton" href="/getinvolved">Get involved</Button></div>
+    </Zoom>
     </div>
         )
     }

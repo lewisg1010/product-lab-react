@@ -15,6 +15,8 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import Slide from 'react-reveal/Slide';
+import Fade from 'react-reveal/Fade';
 
 
 function About() {
@@ -54,20 +56,21 @@ function About() {
                     <div>
                     <section>
                     <div id="divmesomespacesmall"></div>
-                    <h1>About Product Lab</h1>
+                    <h1 className="center bold" id="gradienttext">About Product Lab</h1>
                     <div id="divmesomespacesmall" />
                       <p id="textchunk">Launched in September 2021, Product Lab is Harvard College's first Product Management organization.</p>
                       <p id="textchunk">Through training programs, industry experience, and mentorship, Product Lab helps creative problem solvers from diverse backgrounds grow into future product leaders.</p>
                   </section>
                   <section>
                     <div id="divmesomespacesmall" />
-                    <h1>Board Members</h1>
+                    <h1 className="bold">Board Members</h1>
                     <div id="divmesomespacesmall" />
                   </section>
                   
     <Container fluid id="alignfeatured">
     <Row xs={1} sm={1} md={2} lg={2} xl={3} className="g-3 align-items-center d-flex card-block">
         {bios.map((bio, i) => (
+    <Slide bottom cascade>
     <Col key={bio.name}>
     <Card style={{"height" : '120%', width: '20rem'}} id="aboutcard">
       <Card.Img variant="top" src={bio.photo.url} />
@@ -96,13 +99,14 @@ function About() {
     </Card>
     <div id="divmesomespace"></div>
     </Col>
+    </Slide>
         ))}
     </Row>
     </Container>
                     </div>
                 )}
                 <section>
-  <h1>Our Advisory Board</h1>
+  <h1 className="bold">Our Advisory Board</h1>
   <div id="divmesomespacesmall" />
 </section>
 
@@ -119,10 +123,10 @@ function About() {
             <p>Professor of Entrepreneurship at Harvard Business School & Faculty Chair of Harvard Innovation Lab. Author of &quot;The Fail-Safe Startup&quot;.</p>
             </Card.Text>
           </Card.Body>
-          
         </Card>
         <div id="divmesomespace"></div>
         </Col>
+
         <Col>
         <Card style={{"height" : '120%', width: '18rem'}} id="advisorcard">
           <Card.Img variant="top" src={'./deborahphoto.png'} />
@@ -137,6 +141,7 @@ function About() {
         </Card>
         <div id="divmesomespace"></div>
         </Col>
+
         <Col>
         <Card style={{"height" : '120%', width: '18rem'}} id="advisorcard">
           <Card.Img variant="top" src={'./jeffphoto.png'} />

@@ -6,6 +6,8 @@ import Tilt from 'react-parallax-tilt';
 import Moment from 'react-moment';
 import { Card, Row, Col, Container, Image } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
+import { Parallax } from 'react-scroll-parallax';
+import Fade from 'react-reveal/Fade';
 
 // const logo = document.querySelectorAll("#hometextanimation path");
 // console.log(logo);
@@ -14,6 +16,7 @@ import Button from 'react-bootstrap/Button';
 // }
 
 const Home = () => {
+
     const [data, setData] = useState({posts: []});
     useEffect(() => {
         const fetchData = async () => {
@@ -149,41 +152,62 @@ const Home = () => {
 
 {/* END */}
 
-
-
-<h3 id="homepushdown">Who are we?</h3>
-<p>Product Lab is Harvard&apos;s first product management organization. Through training programs, real-world product experience, and industry mentorship, we introduce product management to problem-solvers from all backgrounds and help them grow into future product leaders.</p>
-<Button id="button" href="/getinvolved">Get involved</Button>
-
-
-<section id="homesection">
-<h3>For companies</h3>
-<p>Each spring, Product Lab collaborates with a limited number of corporate partners to complete product-focused projects over the course of the semester. Sometimes, projects entail Product Lab designing and documenting entire products and features from scratch. Other times, Product Lab conducts user research and usability testing to help improve existing products.</p>
-<p>As a corporate partner, you will be given a team of 4-8 Product Lab team members. All teams contain several APMs and one Team Lead. All Product Lab team members have successfully completed a 12-week PM bootcamp led by industry leaders, and many have prior PM internship experience.</p>
-<Button id="button" href="/clients">Learn more</Button>
+<section id="homepushdown">
+<div id="limitwidth">
+<Parallax className="custom-class" x={[-15, 20]}>
+<h3 id="gradienttext" className="center bold">Who are we?</h3>
+</Parallax>
+</div>
+<Fade bottom big>
+<p className="center" id="homep">Product Lab is Harvard&apos;s first product management organization. Through training programs, real-world product experience, and industry mentorship, we introduce product management to problem-solvers from all backgrounds and help them grow into future product leaders.</p>
+<div id="centereddiv"><Button id="button" href="/getinvolved">Get involved</Button></div>
+</Fade>
 </section>
 
 <section id="homesection">
-<h3>For students</h3>
-<p>Our mission is to increase access to product education and help students from all backgrounds break into PM.</p>
-<p>As a Product Lab member, you&apos;ll gain industry experience, receive exclusive career resources, build a portfolio of product projects, and access a growing community of peers, mentors, and employers.</p>
-<Button id="button" href="/students">Learn more</Button>
+<div id="limitwidth">
+<Parallax className="custom-class" x={[15, -20]}>
+<h3 className="center bold" id="gradienttext">For companies</h3>
+</Parallax>
+</div>
+<Fade bottom>
+<p className="center" id="homep">Each spring, Product Lab collaborates with a limited number of corporate partners to complete product-focused projects over the course of the semester. Sometimes, projects entail Product Lab designing and documenting entire products and features from scratch. Other times, Product Lab conducts user research and usability testing to help improve existing products.</p>
+<p className="center" id="homep">As a corporate partner, you will be given a team of 4-8 Product Lab team members. All teams contain several APMs and one Team Lead. All Product Lab team members have successfully completed a 12-week PM bootcamp led by industry leaders, and many have prior PM internship experience.</p>
+<div id="centereddiv"><Button id="button" href="/clients">Learn more</Button></div>
+</Fade>
+</section>
+
+
+<section id="homesection">
+<div id="limitwidth">
+<Parallax className="custom-class" x={[-15, 20]}>
+<h3 className="center bold" id="gradienttext">For students</h3>
+</Parallax>
+</div>
+<Fade bottom>
+<p className="center" id="homep">Our mission is to increase access to product education and help students from all backgrounds break into PM.</p>
+<p className="center" id="homep">As a Product Lab member, you&apos;ll gain industry experience, receive exclusive career resources, build a portfolio of product projects, and access a growing community of peers, mentors, and employers.</p>
+</Fade>
+<div id="centereddiv"><Button id="button" href="/students">Learn more</Button></div>
 </section>
 
 <section id="homesection">
-<h3 class="center">Featured Blog Posts</h3>
+<Fade bottom>
+<h1 className="center bold bigger">Featured Blog Posts</h1>
+</Fade>
 <div id="divmesomespacesmall" />
 <Container fluid>
 <Row xs={1} sm={1} md={2} lg={3} xl={4} className="g-5 align-items-center">
 {data.posts.map(post => (
     <Col key={post.id}>
+    <div id="centereddiv2">
     <Tilt style={{ height: 250, width: 250 }}>
     <Link className="App-link" to={`/blog/post/${post.slug}`}>
     <Card style={{"height" : '120%', width: '18rem' }} id="shadowy">
     <Card.Img variant="top" src={post.feature_image} />
     <Card.Body>
     <Card.Title>
-        <a>{post.title}</a>
+        <p id="blogtitlefont">{post.title}</p>
     </Card.Title>
     <Card.Text>
     <a id="cardtextfont">Posted: <Moment format="MMM DD, YYYY">{post.updated_at}</Moment></a>
@@ -192,7 +216,8 @@ const Home = () => {
     </Card>
     </Link>
     </Tilt>
-    <div id="divmesomespace"></div>
+    </div>
+    <div id="divmesomespacebig"></div>
     </Col>
     ))}
 </Row>

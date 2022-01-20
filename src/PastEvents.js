@@ -15,6 +15,7 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import Slide from 'react-reveal/Slide';
 // import Moment from 'react-moment';
 
 
@@ -55,6 +56,8 @@ function PastEvents() {
                     <Container fluid>
                     <Row xs={1} sm={1} md={2} lg={2} xl={3} className="g-1 align-items-center d-flex card-block">
                             {events.map((event, i) => (
+
+                                <Slide bottom cascade>
                                 <Col key={events.name}>
                                 <Card style={{"height" : '120%', width: '18rem'}} id="pasteventscard">
                                   <Card.Img variant="top" src={event.photo.url} />
@@ -81,6 +84,7 @@ function PastEvents() {
                                 </Card>
                                 <div id="divmesomespace"></div>
                                 </Col>
+                                </Slide>
                             ))}
                         </Row>
                         </Container>
