@@ -94,7 +94,7 @@ export default class Students extends Component {
 
         <Col>
         <div id="limitwidth">
-        <Parallax className="custom-class" x={[0, 40]}>
+        <Parallax className="custom-class" x={[0, 30]}>
         <h2 className="bold" id="gradienttextsub">Fall Semester</h2>
         </Parallax>
         </div>
@@ -119,7 +119,7 @@ export default class Students extends Component {
           
         <Col>
         <div id="limitwidth">
-        <Parallax className="custom-class" x={[-10, -40]}>
+        <Parallax className="custom-class" x={[0, -30]}>
         <h2 className="bold right" id="gradienttextsub">Spring Semester</h2>
         </Parallax>
         </div>
@@ -162,7 +162,7 @@ export default class Students extends Component {
     </Container>
     <div id="divmesomespace"></div>
     <Fade bottom>
-    <h1 className="bold bigger" id="center">Our Values: What Product Lab is About</h1>
+    <h1 className="bold" id="center">Our Values: What Product Lab is About</h1>
     </Fade>
     <div id="divmesomespacesmall"></div>
     <Container fluid>

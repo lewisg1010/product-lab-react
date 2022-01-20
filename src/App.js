@@ -8,7 +8,7 @@ import { ParallaxProvider } from 'react-scroll-parallax';
 function App() {
 
   return (
-    <ParallaxProvider>
+    <ParallaxProvider id="fillparallaxbg">
     <div className="App">
         <Navb />
     </div>

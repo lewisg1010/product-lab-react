@@ -332,7 +332,7 @@ function Clients() {
     <section id="uvps">
 
       <Container fluid>
-      <h1 id="bold" className="bigger">Why Product Lab?</h1>
+      <h1 id="bold">Why Product Lab?</h1>
       <h4>Our unique value propositions</h4>
       <div id="divmesomespacesmall"></div>
       <Row xs={1} sm={1} md={1} lg={1} xl={1} className="g-5 align-items-center">

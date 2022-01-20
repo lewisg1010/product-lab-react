@@ -158,7 +158,7 @@ const Home = () => {
 <h3 id="gradienttext" className="center bold">Who are we?</h3>
 </Parallax>
 </div>
-<Fade bottom big>
+<Fade bottom>
 <p className="center" id="homep">Product Lab is Harvard&apos;s first product management organization. Through training programs, real-world product experience, and industry mentorship, we introduce product management to problem-solvers from all backgrounds and help them grow into future product leaders.</p>
 <div id="centereddiv"><Button id="button" href="/getinvolved">Get involved</Button></div>
 </Fade>
@@ -193,13 +193,13 @@ const Home = () => {
 
 <section id="homesection">
 <Fade bottom>
-<h1 className="center bold bigger">Featured Blog Posts</h1>
+<h1 className="center bold">Featured Blog Posts</h1>
 </Fade>
 <div id="divmesomespacesmall" />
 <Container fluid>
 <Row xs={1} sm={1} md={2} lg={3} xl={4} className="g-5 align-items-center">
 {data.posts.map(post => (
-    <Col key={post.id}>
+    <Col key={post.id} id="padblog">
     <div id="centereddiv2">
     <Tilt style={{ height: 250, width: 250 }}>
     <Link className="App-link" to={`/blog/post/${post.slug}`}>
@@ -217,7 +217,6 @@ const Home = () => {
     </Link>
     </Tilt>
     </div>
-    <div id="divmesomespacebig"></div>
     </Col>
     ))}
 </Row>

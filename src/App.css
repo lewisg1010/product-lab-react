@@ -41,22 +41,10 @@ body.dark {
   background-image: var(--image);
 } */
 
-
-
-.fade-in-section {
-  opacity: 0;
-  transform: translateY(20vh);
-  visibility: hidden;
-  transition: opacity 0.2s ease-out, transform 0.6s ease-out;
-  will-change: opacity, visibility;
+#fillparallaxbg {
+  background: var(--background-color);
 }
 
-.fade-in-section.is-visible {
-  opacity: 1;
-  transform: none;
-  visibility: visible;
-  display: flex; 
-}
 
 #button {
   box-shadow: 4px 4px 3px #3c3c3c;
@@ -136,10 +124,16 @@ body {
   padding-top: 15vh;
   padding-bottom: 15vh;
 }
-@media screen and (min-width: 767px) {
+@media screen and (min-width: 769px) {
   #divmesomespacebig {
     padding-top: 10vh;
     padding-bottom: 10vh;
+  }
+}
+@media screen and (max-width: 450px) {
+  #divmesomespacebig {
+    padding-top: 20vh;
+    padding-bottom: 20vh;
   }
 }
 
@@ -537,7 +531,7 @@ body {
 }
 
 #limitwidth {
-  max-width: 100rem;
+  /* max-width: 100rem; */
   overflow: hidden;
 }
 
@@ -553,16 +547,16 @@ body {
   }
 }
 #gradienttextsub {
-  font-size: 3vw;
   background: var(--gradient-text);
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-@media screen and (max-width: 600px) {
-  #gradienttextsub {
-    font-size: 4vw;
-  }
-}
+
+
+
+
+
+
 #gradienttext3 {
   background: var(--gradient-text);
   background-clip: text;
@@ -574,7 +568,7 @@ body {
 }
 @media screen and (max-width: 600px) {
   .bigger {
-    font-size: 4.5vw;
+    font-size: 10vw;
   }
 }
 
@@ -600,6 +594,12 @@ body {
   #aboutcard:hover {
     transform: scale(1.1);
     box-shadow: 8px 8px 6px #3c3c3c;
+}
+@media screen and (max-width: 1024px) {
+  #aboutcard:hover {
+    transform: none;
+    box-shadow: none;
+  }
 }
 
 #overridefont {
@@ -631,6 +631,13 @@ body {
     transform: scale(1.1);
     box-shadow: 8px 8px 6px #3c3c3c;
 }
+@media screen and (max-width: 1024px) {
+  #advisorcard:hover {
+    transform: none;
+    box-shadow: none;
+  }
+}
+
 
 /* CLIENT PAGE CSS */
 
@@ -896,6 +903,7 @@ body {
 }
 
 
+
 #centeredrow {
 display: flex;
 align-items: center;
@@ -1007,6 +1015,30 @@ max-width: 100vw;
   }
 }
 
+#padblog {
+ padding-bottom: 10vh;
+}
+@media screen and (max-width: 767.5px) {
+  #padblog {
+    padding-bottom: 30vh;
+  }
+}
+@media screen and (max-width: 430px) {
+  #padblog {
+    padding-bottom: 35vh;
+  }
+}
+@media screen and (max-width: 380px) {
+  #padblog {
+    padding-bottom: 40vh;
+  }
+}
+@media screen and (max-width: 350px) {
+  #padblog {
+    padding-bottom: 60vh;
+  }
+}
+
 #studentsitemtext {
   line-height: 2;
 }
@@ -1034,6 +1066,11 @@ max-width: 100vw;
   transition: all 0.4s;
   transition-timing-function: cubic-bezier(0.5, 3, 0, 1);
   transform: scale(1.3);
+}
+@media screen and (max-width: 1024px) {
+  #simpleshadow:hover {
+    transform: none;
+  }
 }
 
 #centertextchunk {
@@ -1083,6 +1120,13 @@ max-width: 100vw;
     transform: scale(1.1);
     box-shadow: 8px 8px 6px #3c3c3c;
 }
+@media screen and (max-width: 1024px) {
+  #upcomingeventscard:hover {
+    transform: none;
+    box-shadow: none;
+  }
+}
+
 
 .bold {
   font-weight: 700;
@@ -1115,6 +1159,12 @@ max-width: 100vw;
   #pasteventscard:hover {
     transform: scale(1.1);
     box-shadow: 8px 8px 6px #3c3c3c;
+}
+@media screen and (max-width: 1024px) {
+  #pasteventscard:hover {
+    transform: none;
+    box-shadow: none;
+  }
 }
 
 #eventaccordian {
@@ -1189,6 +1239,12 @@ max-width: 100vw;
 #faqcard:hover {
     transform: scale(1.1);
     box-shadow: 8px 8px 6px #3c3c3c;
+}
+@media screen and (max-width: 1024px) {
+  #faqcard:hover {
+    transform: none;
+    box-shadow: none;
+  }
 }
 
 #question {

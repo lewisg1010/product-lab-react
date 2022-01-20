@@ -5,7 +5,7 @@ import Tilt from 'react-parallax-tilt';
 import Moment from 'react-moment';
 import { Link } from 'react-router-dom';
 import { Card, Row, Col, Container, Image } from 'react-bootstrap';
-import Slide from 'react-reveal/Slide';
+import Zoom from 'react-reveal/Zoom';
 
 const Blog = () => {
     const [data, setData] = useState({posts: []});
@@ -23,7 +23,9 @@ const Blog = () => {
     }, []);
     return(
 <div id="container">
+ <Zoom bottom>
   <h1 className="center bold" id="gradienttext">Blog</h1>
+  </Zoom>
   <h3 class="center">A showcase for the <span className="bold" id="gradienttext3">projects</span> and <span className="bold" id="gradienttext3">ideas</span> of our members</h3>
   <div id="divmesomespacesmall" />
 
@@ -32,8 +34,7 @@ const Blog = () => {
   <Row xs={1} sm={1} md={2} lg={3} xl={4} className="g-5 align-items-center">
   {data.posts.map(post => (
 
-    <Slide bottom cascade>
-        <Col key={post.id}>
+        <Col key={post.id} id="padblog">
         <div id="centereddiv2">
         <Tilt style={{ height: 250, width: 250 }}>
         <Link className="App-link" to={`/blog/post/${post.slug}`}>
@@ -51,12 +52,11 @@ const Blog = () => {
         </Link>
         </Tilt>
         </div>
-        <div id="divmesomespacebig"></div>
         </Col>
 
-        </Slide>
     ))}
     </Row>
+    <div id="divmesomespacesmall"></div>
     </Container>
 </div>
     )
