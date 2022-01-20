@@ -10,7 +10,7 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import Slide from 'react-reveal/Slide';
+import Fade from 'react-reveal/Fade';
 
 
 function PastEvents() {
@@ -51,8 +51,8 @@ function PastEvents() {
                     <Row xs={1} sm={1} md={2} lg={2} xl={3} className="g-1 align-items-center d-flex card-block">
                             {events.map((event, i) => (
 
-                                <Slide bottom cascade>
-                                <Col key={events.name}>
+                                <Fade cascade>
+                                <Col key={events.name} id="padpastevents">
                                 <Card style={{"height" : '120%', width: '18rem'}} id="pasteventscard">
                                   <Card.Img variant="top" src={event.photo.url} />
                                   <Card.Body>
@@ -76,9 +76,8 @@ function PastEvents() {
                                         </AccordionDetails>
                                     </Accordion>
                                 </Card>
-                                <div id="divmesomespace"></div>
                                 </Col>
-                                </Slide>
+                                </Fade>
                             ))}
                         </Row>
                         </Container>

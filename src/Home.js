@@ -6,10 +6,53 @@ import Tilt from 'react-parallax-tilt';
 import Moment from 'react-moment';
 import { Card, Row, Col, Container } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
-import { Parallax } from 'react-scroll-parallax';
 import Fade from 'react-reveal/Fade';
+import Plx from 'react-plx';
 
 const Home = () => {
+
+    const parallaxData = [
+        {
+          start: 'self',
+          end: 1200,
+          properties: [
+            {
+              startValue: -10,
+              endValue: 25,
+              property: 'translateX',
+              unit: 'vw',
+            },
+          ],
+        },
+      ];
+      const parallaxData2 = [
+        {
+          start: 'self',
+          end: 1600,
+          properties: [
+            {
+              startValue: 10,
+              endValue: -25,
+              property: 'translateX',
+              unit: 'vw',
+            },
+          ],
+        },
+      ];
+      const parallaxData3 = [
+        {
+          start: 'self',
+          end: 2400,
+          properties: [
+            {
+              startValue: -10,
+              endValue: 25,
+              property: 'translateX',
+              unit: 'vw',
+            },
+          ],
+        },
+      ];
 
     const [data, setData] = useState({posts: []});
     useEffect(() => {
@@ -42,8 +85,6 @@ const Home = () => {
 </svg>
 
 <h3 id="athcs">At Harvard Computer Society</h3>
-
-{/* START */}
 
 <svg id="homegraphic" width="934" height="528" viewBox="0 0 934 528" fill="none">
 <g id="homegraphic">
@@ -142,14 +183,11 @@ const Home = () => {
 </div>
 
 
-
-{/* END */}
-
 <section id="homepushdown">
 <div id="limitwidth">
-<Parallax className="custom-class" x={[-15, 20]}>
+<Plx parallaxData={ parallaxData }>
 <h3 id="gradienttext" className="center bold">Who are we?</h3>
-</Parallax>
+</Plx>
 </div>
 <Fade bottom>
 <p className="center" id="homep">Product Lab is Harvard&apos;s first product management organization. Through training programs, real-world product experience, and industry mentorship, we introduce product management to problem-solvers from all backgrounds and help them grow into future product leaders.</p>
@@ -159,9 +197,9 @@ const Home = () => {
 
 <section id="homesection">
 <div id="limitwidth">
-<Parallax className="custom-class" x={[15, -20]}>
+<Plx parallaxData={ parallaxData2 }>
 <h3 className="center bold" id="gradienttext">For companies</h3>
-</Parallax>
+</Plx>
 </div>
 <Fade bottom>
 <p className="center" id="homep">Each spring, Product Lab collaborates with a limited number of corporate partners to complete product-focused projects over the course of the semester. Sometimes, projects entail Product Lab designing and documenting entire products and features from scratch. Other times, Product Lab conducts user research and usability testing to help improve existing products.</p>
@@ -170,12 +208,11 @@ const Home = () => {
 </Fade>
 </section>
 
-
 <section id="homesection">
 <div id="limitwidth">
-<Parallax className="custom-class" x={[-15, 20]}>
+<Plx parallaxData={ parallaxData3 }>
 <h3 className="center bold" id="gradienttext">For students</h3>
-</Parallax>
+</Plx>
 </div>
 <Fade bottom>
 <p className="center" id="homep">Our mission is to increase access to product education and help students from all backgrounds break into PM.</p>

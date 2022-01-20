@@ -56,6 +56,23 @@ body.dark {
   position: relative;
   background-size: cover;
 }
+#studentcontainer {
+  background: var(--background-color);
+  color: var(--text-color);
+  font-family: 'Montserrat', sans-serif;
+  padding-top: 12vh;
+  padding-bottom: 25vh;
+  min-height: 100vh;
+  padding-right: 3.5vw;
+  padding-left: 3vw;
+  position: relative;
+  background-size: cover;
+}
+@media screen and (max-width: 1025px) {
+  #studentcontainer {
+    padding-left: 1px;
+  }
+}
 
 #shadowy {
   box-shadow: 8px 8px 6px #3c3c3c;
@@ -816,6 +833,20 @@ body.dark {
   }
 }
 
+#padpastevents {
+  padding-bottom: 10vh;
+ }
+ @media screen and (max-width: 767.5px) {
+   #padpastevents {
+     padding-bottom: 30vh;
+   }
+ }
+ @media screen and (max-width: 430px) {
+   #padpastevents {
+     padding-bottom: 25vh;
+   }
+ }
+
 #studentsitemtext {
   line-height: 2;
 }
@@ -910,7 +941,6 @@ body.dark {
 }
 .right {
   text-align: end;
-  padding-right: -20px;
 }
 
 #pasteventscard {

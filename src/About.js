@@ -10,7 +10,8 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import Slide from 'react-reveal/Slide';
+import Roll from 'react-reveal/Roll';
+import Zoom from 'react-reveal/Zoom';
 
 
 function About() {
@@ -45,12 +46,14 @@ function About() {
         return (
             <div id="container" class="center">
                 {!bios ? (
-                    'Loading'
+                    ''
                 ) : (
                     <div>
                     <section>
                     <div id="divmesomespacesmall"></div>
+                    <Zoom top>
                     <h1 className="center bold" id="gradienttext">About Product Lab</h1>
+                    </Zoom>
                     <div id="divmesomespacesmall" />
                       <p id="textchunk">Launched in September 2021, Product Lab is Harvard College's first Product Management organization.</p>
                       <p id="textchunk">Through training programs, industry experience, and mentorship, Product Lab helps creative problem solvers from diverse backgrounds grow into future product leaders.</p>
@@ -61,10 +64,10 @@ function About() {
                     <div id="divmesomespacesmall" />
                   </section>
                   
-    <Container fluid>
+    <Container fluid id="limitwidth">
     <Row xs={1} sm={1} md={2} lg={2} xl={3} className="g-3 align-items-center d-flex card-block">
         {bios.map((bio, i) => (
-    <Slide bottom cascade>
+    <Roll top cascade>
     <Col key={bio.name}>
     <Card style={{"height" : '120%', width: '20rem'}} id="aboutcard">
       <Card.Img variant="top" src={bio.photo.url} />
@@ -93,18 +96,18 @@ function About() {
     </Card>
     <div id="divmesomespace"></div>
     </Col>
-    </Slide>
+    </Roll>
         ))}
     </Row>
     </Container>
                     </div>
                 )}
-                <section>
+                <section id="pasteventfade">
   <h1 className="bold">Our Advisory Board</h1>
   <div id="divmesomespacesmall" />
 </section>
 
-<Container fluid>
+<Container fluid id="pasteventfade">
     <Row xs={1} sm={1} md={2} lg={3} xl={3} className="g-1 align-items-center d-flex card-block">
         <Col>
         <Card style={{"height" : '120%', width: '18rem'}} id="advisorcard">

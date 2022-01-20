@@ -23,7 +23,7 @@ function Clients() {
 
 
   let path2 = document.getElementById("path2");
-  let pathLength2 = 15900;
+  let pathLength2 = 15500;
 
   let path3 = document.getElementById("path3");
   let pathLength3 = pathLength2;

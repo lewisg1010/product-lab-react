@@ -10,7 +10,7 @@ import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 import { ExternalLink } from 'react-external-link';
 import Roll from 'react-reveal/Roll';
-import Slide from 'react-reveal/Slide';
+import Fade from 'react-reveal/Fade';
 
 function Events() {
 
@@ -56,7 +56,7 @@ function Events() {
 
                             {events.map((event, i) => (
                                 
-                                <Slide bottom cascade>
+                                <Fade cascade>
                                 <Col key={event.name}>
                                 <Card id="upcomingeventscard">
                                   <Card.Img variant="top" src={event.photo.url} id="upcomingeventsphoto"/>
@@ -73,7 +73,7 @@ function Events() {
                                 </Card>
                                 <div id="divmesomespace"></div>
                                 </Col>
-                                </Slide>
+                                </Fade>
                             ))}
                          
                         </Row>

@@ -23,7 +23,7 @@ const Blog = () => {
     }, []);
     return(
 <div id="container">
- <Zoom bottom>
+ <Zoom top>
   <h1 className="center bold" id="gradienttext">Blog</h1>
   </Zoom>
   <h3 class="center">A showcase for the <span className="bold" id="gradienttext3">projects</span> and <span className="bold" id="gradienttext3">ideas</span> of our members</h3>

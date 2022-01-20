@@ -1,18 +1,50 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './App.css';
 import { Row, Col, Container, Image } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Tilt from 'react-parallax-tilt';
-import { Parallax } from 'react-scroll-parallax';
 import Fade from 'react-reveal/Fade';
 import Zoom from 'react-reveal/Zoom';
+import Plx from 'react-plx';
+import Roll from 'react-reveal/Roll';
 
-export default class Students extends Component {
-    render() {
+  const Students = () => {
+
+    const parallaxData = [
+      {
+        start: 'self',
+        end: 1600,
+        properties: [
+          {
+            startValue: 0,
+            endValue: 25,
+            property: 'translateX',
+            unit: 'vw',
+          },
+        ],
+      },
+    ];
+    const parallaxData2 = [
+      {
+        start: 'self',
+        end: 2400,
+        properties: [
+          {
+            startValue: 0,
+            endValue: -25,
+            property: 'translateX',
+            unit: 'vw',
+          },
+        ],
+      },
+    ];
+  
         return (
-        <div id="container">
+        <div id="studentcontainer">
 <div id="divmesomespacesmall"></div>
+<Roll top>
 <h1 className="center bold" id="gradienttext">Students</h1>
+</Roll>
 
 <div id="studentanimation">
 <svg id="studentgraphic" width="733" height="639" viewBox="0 0 733 639" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -94,9 +126,9 @@ export default class Students extends Component {
 
         <Col>
         <div id="limitwidth">
-        <Parallax className="custom-class" x={[0, 30]}>
+        <Plx parallaxData={ parallaxData }>
         <h2 className="bold" id="gradienttextsub">Fall Semester</h2>
-        </Parallax>
+        </Plx>
         </div>
         <Fade bottom>
         <div id="studentsitemtext">
@@ -119,9 +151,9 @@ export default class Students extends Component {
           
         <Col>
         <div id="limitwidth">
-        <Parallax className="custom-class" x={[10, -30]}>
+        <Plx parallaxData={ parallaxData2 }>
         <h2 className="bold right" id="gradienttextsub">Spring Semester</h2>
-        </Parallax>
+        </Plx>
         </div>
         <Fade bottom>
         <div id="studentsitemtext">
@@ -953,5 +985,6 @@ export default class Students extends Component {
     </Zoom>
     </div>
         )
-    }
 }
+
+export default Students;
