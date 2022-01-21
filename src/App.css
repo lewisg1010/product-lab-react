@@ -12,6 +12,7 @@ body.light {
   --navbar-bg-color: rgba(244, 244, 244, 0.85);
   --text-color: black;
   --stroke-color: black;
+  --post-link: #0052cc;
   --navlogo: url('../public/newestlightlogo.png');
   --gradient-text: -webkit-linear-gradient(135deg, #FA0177, #7621BF);
 }
@@ -21,6 +22,7 @@ body.dark {
   --navbar-bg-color: rgba(24, 33, 50, 0.85);
   --text-color: white;
   --stroke-color: #ffe665;
+  --post-link: #4bc0e0;
   --navlogo: url('../public/newestdarklogo.png');
   --gradient-text: -webkit-linear-gradient(135deg, #FF4D41, #F8C025, #FF4D41);
 }
@@ -546,7 +548,6 @@ body.dark {
 
 /* CLIENT PAGE CSS */
 
-
 #forbigscreenonly{
   text-decoration: none;
 }
@@ -980,6 +981,33 @@ body.dark {
 
 
 /* POST PAGE CSS */
+
+#postbody a
+  {
+      color: var(--post-link);
+  }
+#postbody img
+  {
+      max-width: min(56vw, 600px);
+      height: auto;
+  }
+  @media screen and (max-width: 1000px) {
+    #postbody img {
+      max-width: min(84vw, 600px);
+    }
+  }
+#postbody figure
+  {
+      max-width: min(56vw, 600px);
+      height: auto;
+  }
+  @media screen and (max-width: 1000px) {
+    #postbody figure {
+      max-width: min(84vw, 600px);
+    }
+}
+
+
 
 #postcontainer {
   background: var(--background-color);
