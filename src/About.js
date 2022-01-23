@@ -10,7 +10,7 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import Roll from 'react-reveal/Roll';
+import Fade from 'react-reveal/Fade';
 import Zoom from 'react-reveal/Zoom';
 
 
@@ -67,7 +67,7 @@ function About() {
     <Container fluid id="limitwidth">
     <Row xs={1} sm={1} md={2} lg={2} xl={3} className="g-3 align-items-center d-flex card-block">
         {bios.map((bio, i) => (
-    <Roll top cascade>
+    <Fade cascade>
     <Col key={bio.name}>
     <Card style={{"height" : '120%', width: '20rem'}} id="aboutcard">
       <Card.Img variant="top" src={bio.photo.url} />
@@ -96,7 +96,7 @@ function About() {
     </Card>
     <div id="divmesomespace"></div>
     </Col>
-    </Roll>
+    </Fade>
         ))}
     </Row>
     </Container>
