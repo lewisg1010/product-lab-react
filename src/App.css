@@ -483,6 +483,18 @@ body.dark {
   -webkit-text-fill-color: transparent;
 }
 
+#sponsor {
+  display: grid;
+  place-items: center;
+}
+#sponsor:hover {
+  transform: scale(1.2);
+  transition: 0.3s;
+}
+#rocketblocks {
+  width: 293px;
+  height: auto;
+}
 
 /* ABOUT PAGE CSS */
 
@@ -544,6 +556,8 @@ body.dark {
     box-shadow: none;
   }
 }
+
+
 
 
 /* CLIENT PAGE CSS */
