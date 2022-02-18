@@ -4,10 +4,11 @@ import './App.css';
 import axios from 'axios';
 import Tilt from 'react-parallax-tilt';
 import Moment from 'react-moment';
-import { Card, Row, Col, Container } from 'react-bootstrap';
+import { Card, Row, Col, Container, Image } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Fade from 'react-reveal/Fade';
 import Plx from 'react-plx';
+import { ExternalLink } from 'react-external-link';
 
 const Home = () => {
 
@@ -67,6 +68,8 @@ const Home = () => {
         }
         fetchData();
     }, []);
+
+    const rocketblocks = 'https://www.rocketblocks.me/product-management.php';
     return(
 <div id="container">
 
@@ -219,6 +222,16 @@ const Home = () => {
 <p className="center" id="homep">As a Product Lab member, you&apos;ll gain industry experience, receive exclusive career resources, build a portfolio of product projects, and access a growing community of peers, mentors, and employers.</p>
 </Fade>
 <div id="centereddiv"><Button id="button" href="/students">Learn more</Button></div>
+</section>
+
+<div id="divmesomespacesmall"></div>
+
+<section>
+  <h1 className="center bold">Our Sponsors</h1>
+  <div id="divmesomespacesmall"></div>
+  <ExternalLink href={rocketblocks}><div id="sponsor"><Image src="/rocketblocks.svg" alt="Product Lab Board Photo" id="rocketblocks"></Image></div></ExternalLink>
+
+
 </section>
 
 <section id="homesection">
