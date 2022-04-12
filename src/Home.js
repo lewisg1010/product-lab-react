@@ -229,8 +229,8 @@ const Home = () => {
 <section>
   <h1 className="center bold">Our Sponsors</h1>
   <div id="divmesomespacesmall"></div>
-  <ExternalLink href={rocketblocks}><div id="sponsor"><Image src="/rocketblocks.svg" alt="Product Lab Board Photo" id="rocketblocks"></Image></div></ExternalLink>
-
+  <ExternalLink href={rocketblocks}><div id="sponsor"><Image src="/rocketblocks.svg" alt="Product Lab Board Photo" id="rocketblocks"></Image></div>
+  <p className="center bold" style={{ paddingTop: 10 }}>Product management interview prep</p></ExternalLink>
 
 </section>
 
