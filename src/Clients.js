@@ -386,11 +386,33 @@ function Clients() {
         </Fade>
       </Row>
       </Container>
-      <div id="divmesomespace">
+      <div id="divmesomespace" />
+
+
+      <h1 className="center bold">Past Clients Include...</h1>
+      <div id="divmesomespacesmall"></div>
+      <Row xs={1} sm={1} md={1} lg={3} xl={3} className="g-5 align-items-center">
+
+        <Col>
+          <div id="sponsor"><Image src="/grammarly.png" alt="Product Lab Board Photo" id="rocketblocks"></Image></div>
+        </Col>
+
+        <Col>
+          <div id="sponsor"><Image src="/cisco.png" alt="Product Lab Board Photo" id="rocketblocks"></Image></div>
+        </Col>
+
+        <Col>
+            <h2 id="sponsor" className="center bold">And many more...</h2>
+        </Col>
+
+      </Row>
+
+      <div id="divmesomespace" />
+
       <Zoom top>
       <Button id="button" href="/getinvolved">Become a client</Button>
       </Zoom>
-      </div>
+      
     </section>
 
     </div>

@@ -227,11 +227,28 @@ const Home = () => {
 <div id="divmesomespacesmall"></div>
 
 <section>
-  <h1 className="center bold">Our Sponsors</h1>
+  <h1 className="center bold">Sponsors and Past Clients</h1>
   <div id="divmesomespacesmall"></div>
+  <Row xs={1} sm={1} md={2} lg={2} xl={4} className="g-5 align-items-center">
+
+  <Col>
   <ExternalLink href={rocketblocks}><div id="sponsor"><Image src="/rocketblocks.svg" alt="Product Lab Board Photo" id="rocketblocks"></Image></div>
   <p className="center bold" style={{ paddingTop: 10 }}>Product management interview prep</p></ExternalLink>
+  </Col>
 
+  <Col>
+    <div id="sponsor"><Image src="/grammarly.png" alt="Product Lab Board Photo" id="rocketblocks"></Image></div>
+  </Col>
+
+  <Col>
+    <div id="sponsor"><Image src="/cisco.png" alt="Product Lab Board Photo" id="rocketblocks"></Image></div>
+  </Col>
+
+  <Col>
+      <h2 id="sponsor" className="center bold">And many more...</h2>
+  </Col>
+
+  </Row>
 </section>
 
 <section id="homesection">
