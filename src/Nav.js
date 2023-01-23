@@ -34,7 +34,7 @@ export default class Navb extends Component {
               <Nav.Link eventKey="4" as={Link} to={"/students"} id="navlinkoverridetextcolor" className="underline2">Students</Nav.Link>
               <Nav.Link eventKey="5" as={Link} to={"/events"} id="navlinkoverridetextcolor" className="underline2">Events</Nav.Link>
               <NavDropdown title="Resources" id="navlinkoverridetextcolor" className="underline">
-                <NavDropdown.Item eventKey="6" as={Link} to={"/blog"} id="navdropdownitem">Blog</NavDropdown.Item>
+                {/* <NavDropdown.Item eventKey="6" as={Link} to={"/blog"} id="navdropdownitem">Blog</NavDropdown.Item> */}
                 <NavDropdown.Item eventKey="7" as={Link} to={"/faqs"} id="navdropdownitem">FAQs</NavDropdown.Item>
               </NavDropdown>
               <Nav.Link href="/getinvolved"><Button id="button"><span id="bold">Partner with us</span></Button></Nav.Link>
