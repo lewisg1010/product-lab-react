@@ -251,6 +251,48 @@ const Home = () => {
   </Row>
 </section>
 
+<div id="divmesomespace"></div>
+
+<section>
+  <h1 className="center bold">Our alumni work at places like...</h1>
+  <div id="divmesomespacesmall"></div>
+  <Row xs={1} sm={1} md={2} lg={2} xl={4} className="g-5 align-items-center">
+
+  <Col>
+    <div id="sponsor"><Image src="/microsoft.svg" alt="microsoft logo" id="rocketblocks"></Image></div>
+  </Col>
+
+  <Col>
+    <div id="sponsor"><Image src="/nasa.png" alt="nasa logo" id="rocketblocks"></Image></div>
+  </Col>
+
+  <Col>
+    <div id="sponsor"><Image src="/accenture.png" alt="accenture logo" id="rocketblocks"></Image></div>
+  </Col>
+
+  <Col>
+    <div id="sponsor"><Image src="/sequoia.png" alt="sequoia logo" id="rocketblocks"></Image></div>
+  </Col>
+
+  <Col>
+    <div id="sponsor"><Image src="/atlassian.png" alt="atlassian logo" id="rocketblocks"></Image></div>
+  </Col>
+
+  <Col>
+    <div id="sponsor"><Image src="/apple.png" alt="apple logo" id="rocketblocks"></Image></div>
+  </Col>
+
+  <Col>
+    <div id="sponsor"><Image src="/salesforce.png" alt="salesforce logo" id="rocketblocks"></Image></div>
+  </Col>
+
+  <Col>
+    <div id="sponsor"><Image src="/goldman.png" alt="goldman sachs logo" id="rocketblocks"></Image></div>
+  </Col>
+
+  </Row>
+</section>
+{/* 
 <section id="homesection">
 <Fade bottom>
 <h1 className="center bold">Featured Blog Posts</h1>
@@ -281,7 +323,7 @@ const Home = () => {
     ))}
 </Row>
 </Container>
-</section>
+</section> */}
 </div>
     )
 }
