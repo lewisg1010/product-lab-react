@@ -39,7 +39,22 @@ body.dark {
   border: none;
   transition: all 0.4s;
   transition-timing-function:cubic-bezier(0.5, 3, 0, 1);
+  padding-top: 15px;
+  padding-bottom: 15px;
+  margin-top: 20px; 
+  margin-bottom: 20px;
 }
+
+#partnerbutton {
+    box-shadow: 4px 4px 3px #3c3c3c;
+    background-color: #ffe665;
+    color: black;
+    font-weight: bold;
+    border: none;
+    transition: all 0.4s;
+    transition-timing-function:cubic-bezier(0.5, 3, 0, 1);
+}
+
 #button:hover {
   transform: scale(1.1);
   box-shadow: 8px 8px 6px #3c3c3c;

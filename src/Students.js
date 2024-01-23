@@ -132,12 +132,12 @@ import Roll from 'react-reveal/Roll';
         </div>
         <Fade bottom>
         <div id="studentsitemtext">
-        <li><span className="bold">Fall Semester Comp:</span> Series of product management workshops, speaker events, and a final project</li>
+        <li><span className="bold">Product Fellowship:</span> Series of product management workshops, speaker events, and a final project</li>
         <ul>
           <li>Led by industry professionals, alumni, and students</li>
           <li>Topics range from breaking into PM to design thinking, user research, and product roadmapping</li>
-          <li>At the end of comp, students are divided into teams to complete a product case study project. Members often find that the product case study becomes a valuable portfolio project</li>
-          <li>Students become Product Lab members upon successful completion of comp</li>
+          <li>At the end of fellowship, students are divided into teams to complete a product case study project. Members often find that the product case study becomes a valuable portfolio project</li>
+          <li>Students become Product Lab members upon successful completion of fellowship</li>
         </ul>
         </div>
         </Fade>
@@ -158,7 +158,8 @@ import Roll from 'react-reveal/Roll';
         <Fade bottom>
         <div id="studentsitemtext">
           <ul>
-            <li><span className="bold">Product Consulting Projects:</span> Product Lab members are divided into case teams and paired with a company to gain real-world product experience.</li>
+            <li><span className="bold">Product Consulting Projects:</span> There is a competitive application process to join Product Lab case teams, consisting of a resume drop, a first round interview with deliverable, and a final behavioral interview. 
+            Prior commitment to the fellowship will be taken into consideration and increase likelihood of case team acceptance. Those accepted into case teams will first join as Associate Product Managers, with the potential to work as a Senior Product Manager or Cast Team Lead in future semesters. Case teams are paired with a company to gain real-world product experience.</li>
           </ul>
         </div>
         </Fade>

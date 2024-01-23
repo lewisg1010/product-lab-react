@@ -106,7 +106,7 @@ function Clients() {
             <Col>
             <div id="mobileitemz">
               <h3 id="center" className="bold">3. Project Kickoff</h3>
-              <p>We match you with a team of 4-6 members, who are all product-interested Harvard students. This team consists of one Team Lead and 3-5 Associate Product Managers.</p>
+              <p>We match you with a team of 4-6 members, who are all product-interested Harvard students. This team consists of one Team Lead, one Senior Product Manager, and 3-5 Associate Product Managers.</p>
               <p>The Team Lead assigned to the project sets up a kickoff call to discuss expectations and ask clarifying questions.</p>
               <p>Your case team begins work!</p>
               <div id="divmedynamicspace"></div>

@@ -39,7 +39,7 @@ export default class Navb extends Component {
                 {/* <NavDropdown.Item eventKey="6" as={Link} to={"/blog"} id="navdropdownitem">Blog</NavDropdown.Item> */}
                 <NavDropdown.Item eventKey="7" as={Link} to={"/faqs"} id="navdropdownitem">FAQs</NavDropdown.Item>
               </NavDropdown>
-              <Nav.Link href="/getinvolved"><Button id="button"><span id="bold">Partner with us</span></Button></Nav.Link>
+              <Nav.Link href="/getinvolved"><Button id="partnerbutton"><span id="bold">Partner with us</span></Button></Nav.Link>
               <DarkMode />
             </Nav>
           </Navbar.Collapse>
