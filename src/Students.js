@@ -159,7 +159,7 @@ import Roll from 'react-reveal/Roll';
         <div id="studentsitemtext">
           <ul>
             <li><span className="bold">Product Consulting Projects:</span> There is a competitive application process to join Product Lab case teams, consisting of a resume drop, a first round interview with deliverable, and a final behavioral interview. 
-            Prior commitment to the fellowship will be taken into consideration and increase likelihood of case team acceptance. Those accepted into case teams will first join as Associate Product Managers, with the potential to work as a Senior Product Manager or Cast Team Lead in future semesters. Case teams are paired with a company to gain real-world product experience.</li>
+            Prior commitment to the fellowship will be taken into consideration and increase the likelihood of case team acceptance. Those accepted into case teams will first join as Associate Product Managers, with the potential to work as a Senior Product Manager or Cast Team Lead in future semesters. Case teams are paired with a company to gain real-world product experience.</li>
           </ul>
         </div>
         </Fade>
