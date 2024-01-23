@@ -3,6 +3,7 @@ import './App.css';
 import About from './About';
 import Clients from './Clients';
 import Home from './Home';
+import Apply from './Apply';
 import { Navbar, Container, NavDropdown, Nav } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
@@ -32,7 +33,8 @@ export default class Navb extends Component {
               <Nav.Link eventKey="2" as={Link} to={"/about"} id="navlinkoverridetextcolor" className="underline2">About</Nav.Link>
               <Nav.Link eventKey="3" as={Link} to={"/clients"} id="navlinkoverridetextcolor" className="underline2">Clients</Nav.Link>
               <Nav.Link eventKey="4" as={Link} to={"/students"} id="navlinkoverridetextcolor" className="underline2">Students</Nav.Link>
-              <Nav.Link eventKey="5" as={Link} to={"/events"} id="navlinkoverridetextcolor" className="underline2">Events</Nav.Link>
+              {/* <Nav.Link eventKey="5" as={Link} to={"/events"} id="navlinkoverridetextcolor" className="underline2">Events</Nav.Link> */}
+              <Nav.Link eventKey="5" as={Link} to={"/apply"} id="navlinkoverridetextcolor" className="underline2">Apply</Nav.Link>
               <NavDropdown title="Resources" id="navlinkoverridetextcolor" className="underline">
                 {/* <NavDropdown.Item eventKey="6" as={Link} to={"/blog"} id="navdropdownitem">Blog</NavDropdown.Item> */}
                 <NavDropdown.Item eventKey="7" as={Link} to={"/faqs"} id="navdropdownitem">FAQs</NavDropdown.Item>
@@ -50,7 +52,8 @@ export default class Navb extends Component {
         <Route path="/about" exact component={About} /> 
         <Route path="/clients" exact component={Clients} />
         <Route path="/students" exact component={Students} />
-        <Route path="/events" exact component={Events} />
+        {/* <Route path="/events" exact component={Events} /> */}
+        <Route path="/apply" exact component={Apply} />
         <Route path="/blog" exact component={Blog} />
         <Route path='/blog/post/:slug' exact component={Post} />
         <Route path="/faqs" exact component={Faqs} /> 
