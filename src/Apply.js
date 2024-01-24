@@ -75,7 +75,7 @@ function Apply() {
     </p>
 
     <p id="clientp">
-Still on the fence? Come to our Info Session + Meet/Greet to learn more about our case teams and projects on February 2nd from 4-6 pm in Ticknor Lounge. We will be sending out the location to all students who have indicated interest via the initial application form as well as posting about it on <a href="https://www.instagram.com/harvard.product/">@harvard.product</a> on Instagram so follow for more info. More detailed information about the application is on our Notion page here as well! 
+Still on the fence? Come to our Info Session + Meet/Greet to learn more about our case teams and projects on February 2nd from 4-6 pm in Ticknor Lounge. We will be sending out the location to all students who have indicated interest via the initial application form as well as posting about it on <a href="https://www.instagram.com/harvard.product/">@harvard.product</a> on Instagram so follow for more info. More detailed information about the application is on our <a href="https://five-hill-5b1.notion.site/APM-Applications-S-24-efb62bc2bbce4c3993b62f7dd31f8b25">Notion page</a>here as well! 
     </p>
     See y’all very very soon 🌝
     
