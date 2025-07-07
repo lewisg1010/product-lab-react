@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 
-<Card.Img variant="top" src={bio.photo.url} className="card-photo" />
+<Card.Img variant="top" src={bio.photo.url} className="card-img" />
 
 function Bio({ bios }) {
     const { slug } = useParams();
