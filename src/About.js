@@ -64,7 +64,7 @@ function About() {
 
           <section>
             <div id="divmesomespacesmall" />
-            <h1 className="bold">Board Members</h1>
+            <h1 className="bold">HPL Board Members</h1>
             <div id="divmesomespacesmall" />
           </section>
 
