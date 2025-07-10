@@ -12,6 +12,7 @@ import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Fade from 'react-reveal/Fade';
 import Zoom from 'react-reveal/Zoom';
+import { FaLinkedin, FaEnvelope } from 'react-icons/fa';
 
 function About() {
   const [bios, setBios] = useState(null);
@@ -30,6 +31,8 @@ function About() {
             aboutme
             board
             slug
+            email
+            linkedin
           }
         }`
       );
@@ -70,62 +73,81 @@ function About() {
 
           <Container fluid id="limitwidth">
             <Row xs={1} sm={1} md={2} lg={2} xl={3} className="g-3 align-items-center d-flex card-block">
-            {[...bios]
-  .sort((a, b) => {
-    const isExec = (person) =>
-      person.title?.toLowerCase().includes('president') ||
-      person.title?.toLowerCase().includes('executive');
+              {[...bios]
+                .sort((a, b) => {
+                  const isExec = (person) =>
+                    person.title?.toLowerCase().includes('president') ||
+                    person.title?.toLowerCase().includes('executive');
+                  const rank = (person) => {
+                    if (isExec(person)) return 2;
+                    if (person.board) return 1;
+                    return 0;
+                  };
+                  return rank(b) - rank(a);
+                })
+                .map((bio) => (
+                  <Fade cascade key={bio.slug}>
+                    <Col>
+                      <Card style={{ height: '100%', width: '20rem' }} id="aboutcard">
+                        <div style={{ width: '318px', height: '230px', overflow: 'hidden', margin: 'auto' }}>
+                          <img
+                            src={bio.photo.url}
+                            alt={bio.name}
+                            style={{
+                              width: '100%',
+                              height: '100%',
+                              objectFit: 'cover',
+                              display: 'block'
+                            }}
+                          />
+                        </div>
+                        <Card.Body>
+                          <Card.Title>
+                            <a id="cardtitlefont">{bio.name}</a>
+                          </Card.Title>
+                          <Card.Text><p>{bio.title}</p></Card.Text>
 
-    const rank = (person) => {
-      if (isExec(person)) return 2; // highest rank
-      if (person.board) return 1;
-      return 0;
-    };
+                          <div style={{ display: 'flex', gap: '10px', marginTop: '6px' }}>
+                            {bio.email && (
+                              <a
+                                href={`mailto:${bio.email}`}
+                                className="icon-link"
+                                aria-label="Email"
+                              >
+                                <FaEnvelope size={18} />
+                              </a>
+                            )}
+                            {bio.linkedin && (
+                              <a
+                                href={bio.linkedin}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="icon-link"
+                                aria-label="LinkedIn profile"
+                              >
+                                <FaLinkedin size={20} />
+                              </a>
+                            )}
+                          </div>
+                        </Card.Body>
 
-    return rank(b) - rank(a); // sort descending by rank
-  })
-  .map((bio, i) => (
-
-                <Fade cascade key={bio.slug}>
-                  <Col>
-                    <Card style={{ height: '100%', width: '20rem' }} id="aboutcard">
-                      <div style={{ width: '318px', height: '230px', overflow: 'hidden', margin: 'auto' }}>
-                        <img
-                          src={bio.photo.url}
-                          alt={bio.name}
-                          style={{
-                            width: '100%',
-                            height: '100%',
-                            objectFit: 'cover',
-                            display: 'block'
-                          }}
-                        />
-                      </div>
-                      <Card.Body>
-                        <Card.Title>
-                          <a id="cardtitlefont">{bio.name}</a>
-                        </Card.Title>
-                        <Card.Text>
-                          <p>{bio.title}</p>
-                        </Card.Text>
-                      </Card.Body>
-                      <Accordion id="accordian">
-                        <AccordionSummary
-                          expandIcon={<ExpandMoreIcon id="expandmoreicon" />}
-                          aria-controls="panel1a-content"
-                          id="panel1a-header"
-                        >
-                          <Typography id="overridefont">About {bio.name.split(' ')[0]}</Typography>
-                        </AccordionSummary>
-                        <AccordionDetails>
-                          <Typography id="overridefont">{bio.aboutme}</Typography>
-                        </AccordionDetails>
-                      </Accordion>
-                    </Card>
-                    <div id="divmesomespace"></div>
-                  </Col>
-                </Fade>
-              ))}
+                        <Accordion id="accordian">
+                          <AccordionSummary
+                            expandIcon={<ExpandMoreIcon id="expandmoreicon" />}
+                            aria-controls="panel1a-content"
+                            id="panel1a-header"
+                          >
+                            <Typography id="overridefont">About {bio.name.split(' ')[0]}</Typography>
+                          </AccordionSummary>
+                          <AccordionDetails>
+                            <Typography id="overridefont">{bio.aboutme}</Typography>
+                          </AccordionDetails>
+                        </Accordion>
+                      </Card>
+                      <div id="divmesomespace"></div>
+                    </Col>
+                  </Fade>
+                ))}
             </Row>
           </Container>
         </div>

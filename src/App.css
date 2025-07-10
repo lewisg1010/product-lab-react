@@ -13,6 +13,18 @@
   object-fit: cover;
 }
 
+.linkedin-icon {
+  color: #0072b1;
+  display: inline-block;
+  margin-top: 4px;
+  transition: transform 0.2s ease;
+}
+
+.linkedin-icon:hover {
+  transform: scale(1.1);
+  color: #005582;
+}
+
 body.light {
   --background-color: white;
   --navbar-bg-color: rgba(244, 244, 244, 0.85);
