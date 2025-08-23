@@ -205,8 +205,8 @@ const Home = () => {
 </Plx>
 </div>
 <Fade bottom>
-<p className="center" id="homep">Each spring, Product Lab collaborates with a limited number of corporate partners to complete product-focused projects over the course of the semester. Sometimes, projects entail Product Lab designing and documenting entire products and features from scratch. Other times, Product Lab conducts user research and usability testing to help improve existing products.</p>
-<p className="center" id="homep">As a corporate partner, you will be given a team of 4-8 Product Lab team members. All teams contain several APMs and one Team Lead. All Product Lab team members have successfully completed a 12-week PM bootcamp led by industry leaders, and many have prior PM internship experience.</p>
+<p className="center" id="homep">Each semester, Product Lab collaborates with 2-3 corporate partners to complete product-focused projects over the course of the semester. Sometimes, projects entail Product Lab designing and documenting entire products and features from scratch. Other times, Product Lab conducts user research and usability testing to help improve existing products.</p>
+<p className="center" id="homep">As a corporate partner, you will be given a team of 5-7 Product Lab team members. All teams contain several APMs and one Team Lead. All Product Lab team members have successfully completed a 12-week PM bootcamp led by industry leaders, and many have prior PM internship experience.</p>
 <div id="centereddiv"><Button id="button" href="/clients">Learn more</Button></div>
 </Fade>
 </section>
