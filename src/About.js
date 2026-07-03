@@ -14,6 +14,16 @@ import Fade from 'react-reveal/Fade';
 import { FaLinkedin, FaEnvelope } from 'react-icons/fa';
 import LineArtBackground from './LineArtBackground';
 
+// CMS LinkedIn values are sometimes stored without a scheme (e.g.
+// "www.linkedin.com/in/..."). A bare href like that is treated as a path
+// RELATIVE to the current site, so it resolves to hcsproductlab.org/www.linkedin...
+// Prepend https:// when no scheme is present so the link always goes off-site.
+const externalUrl = (url) => {
+  if (!url) return url;
+  const trimmed = url.trim();
+  return /^https?:\/\//i.test(trimmed) ? trimmed : `https://${trimmed}`;
+};
+
 function About() {
   const [bios, setBios] = useState(null);
 
@@ -123,7 +133,7 @@ function About() {
                             )}
                             {bio.linkedin && (
                               <a
-                                href={bio.linkedin}
+                                href={externalUrl(bio.linkedin)}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="icon-link"
