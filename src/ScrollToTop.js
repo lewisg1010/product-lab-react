@@ -20,9 +20,9 @@ function ScrollToTop({ history }) {
             const nav = document.getElementById('nav');
             if (id === 'faqs') {
               const navH = nav ? nav.getBoundingClientRect().height : 0;
-              // Small positive gap: enough whitespace above the FAQ heading, but
-              // not so much that its top divider scrolls up under the navbar.
-              const FAQ_TOP_GAP = 24;
+              // Gap above the FAQ heading: larger value stops the scroll higher
+              // on the page (less far down), leaving more whitespace on entry.
+              const FAQ_TOP_GAP = 120;
               const top = el.getBoundingClientRect().top + window.pageYOffset - navH - FAQ_TOP_GAP;
               window.scrollTo({ top, behavior: 'smooth' });
             } else {

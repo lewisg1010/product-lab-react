@@ -249,7 +249,7 @@ export function FaqsContent() {
 function Faqs() {
     return (
         <div id="container" className="has-lineart">
-            <LineArtBackground />
+            <LineArtBackground variant="spiral" />
             <FaqsContent />
         </div>
     );

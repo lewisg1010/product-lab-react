@@ -6,7 +6,11 @@ import LineArtBackground from './LineArtBackground';
 
 export default class Getinvolved extends Component {
     // status: 'idle' | 'sending' | 'success' | 'error'
-    state = { status: 'idle' };
+    // emailPinned: once the heading is clicked, the email stays revealed even
+    // after the cursor leaves (hover alone reveals it only while hovering).
+    state = { status: 'idle', emailPinned: false };
+
+    toggleEmail = () => this.setState((s) => ({ emailPinned: !s.emailPinned }));
 
     handleSubmit = async (e) => {
         e.preventDefault();
@@ -29,13 +33,30 @@ export default class Getinvolved extends Component {
     };
 
     render() {
-        const { status } = this.state;
+        const { status, emailPinned } = this.state;
         return (
         <div id="container" className="has-lineart">
-        <LineArtBackground />
+        <LineArtBackground variant="waves" />
         <div id="formposition">
         <div id="divmesomespacesmall"></div>
-        <h3 className="center bold" id="gradienttext">Contact Us</h3>
+        <div className={`contact-title-reveal${emailPinned ? ' is-pinned' : ''}`}>
+            <h3
+                className="center bold contact-title-toggle"
+                id="gradienttext"
+                onClick={this.toggleEmail}
+                role="button"
+                tabIndex={0}
+                aria-expanded={emailPinned}
+                onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); this.toggleEmail(); }
+                }}
+            >
+                Contact Us
+            </h3>
+            <a className="contact-email-fold center" href="mailto:hcs.product.lab@gmail.com">
+                at hcs.product.lab@gmail.com
+            </a>
+        </div>
         <p className="contact-subhead center">
             Ask about us // Bring HPL to your organization<br />
             See when applications open // Share a fun fact

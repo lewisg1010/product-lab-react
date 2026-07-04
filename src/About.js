@@ -55,7 +55,7 @@ function About() {
 
   return (
     <div id="container" className="center has-lineart">
-      <LineArtBackground />
+      <LineArtBackground variant="orbit" />
       {!bios ? (
         ''
       ) : (

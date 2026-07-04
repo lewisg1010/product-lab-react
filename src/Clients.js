@@ -4,6 +4,7 @@ import { Row, Col, Container } from 'react-bootstrap';
 import Fade from 'react-reveal/Fade';
 import { LogoMarquee, clientLogos, splitRows } from './LogoMarquee';
 import LineArtBackground from './LineArtBackground';
+import UvpCardStack from './UvpCardStack';
 
 function Clients() {
 
@@ -149,11 +150,11 @@ function Clients() {
   return (
 <>
 <div id="container" className="center clients-container has-lineart">
-<LineArtBackground className="lineart--bottom" />
+<LineArtBackground className="lineart--bottom" variant="loops" />
     <section>
       <div id="divmesomespacesmall"></div>
     <h1 className="bold" id="gradienttext">Clients</h1>
-    <p id="clientp">Each semester, Product Lab collaborates with 2-3 companies to advance their product vision & strategy. Current clients range from seed-stage startups to Fortune 500 companies.</p>
+    <p id="clientp">Each semester, Product Lab collaborates with 2-3 companies to advance their product vision & strategy.<br />Our clients range from seed-stage startups to Fortune 500 companies.</p>
 
     {/* Past clients scroller — same setup as the Home page sponsor marquee. */}
     <div id="divmesomespacesmall"></div>
@@ -414,63 +415,19 @@ function Clients() {
       <h1 id="bold">Why Product Lab?</h1>
       <h4>Our unique value propositions</h4>
       <div id="divmesomespacesmall"></div>
-      <Row xs={1} sm={1} md={1} lg={1} xl={1} className="g-5 align-items-center">
-        <Fade bottom cascade>
-
-        <Col>
-        <div id="pad">
-        <h1>All-Star Team</h1>
-        <p>Each year, Product Lab recruits talented and creative problem-solvers from Harvard University's student body. All members have completed a 12-week PM bootcamp led by industry professionals and Harvard Business School faculty.</p>
-        </div>
-        <div id="divmesomespacesmall"></div>
-        </Col>
-
-        <Col>
-        <div id="pad">
-        <h1>Unparalleled Commitment</h1>
-        <p>Over the course of a semester, your dedicated case team commits over 400 hours to your project. All students on your case team have indicated that your company matches their personal and professional interests and have conducted research about the product; your team is psyched to be working with you!</p>
-        </div>
-        <div id="divmesomespacesmall"></div>
-        </Col>
-
-        <Col>
-        <div id="pad">
-        <h1>Diverse Skillsets</h1>
-        <p>Each case team contains a diverse range of skillsets and is equipped to tackle many kinds of projects. About one-half of Product Lab's members have technical backgrounds, and many have previously completed PM, SWE, Marketing, and Design internships.</p>
-        </div>
-        <div id="divmesomespacesmall"></div>
-        </Col>
-
-        <Col>
-        <div id="pad">
-        <h1>Outside Perspective</h1>
-        <p>Clients value our perspective as a third-party, as students, and/or as potential users of the very products we're working on. Additionally, Product Lab has access to all of Harvard's unique resources, including students, alumni, and advisors from Harvard Business School.</p>
-        </div>
-        <div id="divmesomespacesmall"></div>
-        </Col>
-
-        <Col>
-        <div id="pad">
-        <h1>Recruitment Opportunities</h1>
-        <p>As a client, you will have access to a pool of exceptional and tech-interested students from Harvard. Opportunities include our resume book as well as priority in hosting workshops and other events.</p>
-        </div>
-        </Col>
-        
-        </Fade>
-      </Row>
+      <UvpCardStack />
       </Container>
-      <div id="divmesomespace" />
 
     </section>
 
     </div>
 
     <a href="/getinvolved" className="become-client-banner" aria-label="Become a Partner">
-      <svg className="become-client-svg" viewBox="0 0 1000 72" preserveAspectRatio="xMidYMax meet" role="img">
-        {/* Baseline sits at the viewBox bottom (y=72 ≈ cap height for 100px
-            Space Grotesk) so there's no empty space beneath the letters — the
-            text sits flush against the footer. textLength stretches it edge to edge. */}
-        <text x="498" y="72" textLength="1012" lengthAdjust="spacingAndGlyphs">Become a Partner</text>
+      <svg className="become-client-svg" viewBox="0 0 1000 76" preserveAspectRatio="xMidYMax meet" role="img">
+        {/* viewBox height (76) is a few units taller than the cap height so the
+            baseline (y=74) can sit slightly lower with room for descenders,
+            nudging the big text down a few px. textLength stretches edge to edge. */}
+        <text x="498" y="80" textLength="1012" lengthAdjust="spacingAndGlyphs">Become a Partner</text>
       </svg>
     </a>
 </>

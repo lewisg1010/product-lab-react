@@ -223,7 +223,15 @@ body.dark {
    empty band sits between the content and the banner. */
 #container.clients-container,
 #studentcontainer.students-container {
-  padding-bottom: var(--space-8);
+  /* Matched minimal gap before the full-bleed banner at the bottom of both. */
+  padding-bottom: var(--space-1);
+  /* The UVP card stack fans peeled cards off to the right. Without this, those
+     off-screen cards widen the page, which (a) spawns a horizontal scrollbar and
+     (b) makes the full-bleed line-art SVG rescale to the new width — reading as
+     the background "jumping" each time a card moves. clip confines the overflow
+     to the viewport edge (pile still shows up to the edge) without creating a
+     scroll container or changing the page's layout size. */
+  overflow-x: clip;
 }
 
 /* Full-bleed clickable "Become a Partner" banner: one giant line spanning the
@@ -1734,6 +1742,121 @@ body.dark #sponsor:hover #rocketblocks.logo-img--whiteout {
   border: 0px;
 }
 
+/* --- "Why Product Lab?" layered TICKET card stack (see UvpCardStack.js) --- */
+/* Fixed-size stage the stack is centered inside. Front card is centered at
+   translateX(0); stacked tabs poke LEFT and the peeled pile fans RIGHT, so the
+   composition balances around the middle. overflow:visible lets the peeled pile
+   spill partially off the stage (and the screen) as requested. */
+.uvp-stack-wrap {
+  --uvp-w: 620px;    /* ticket width  */
+  --uvp-h: 290px;    /* ticket height — between the tall (340) and thin (240) */
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  overflow: visible;
+}
+.uvp-stack {
+  position: relative;
+  width: var(--uvp-w);
+  height: var(--uvp-h);
+  /* Headroom so the upward-fanning peeled pile isn't clipped by the section. */
+  margin: 60px 0 40px;
+}
+/* Each card is a wide horizontal TICKET: left vertical tab + right body. Square
+   corners (no border-radius) so it reads like a ticket/ticket stub. */
+.uvp-card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--uvp-w);
+  height: var(--uvp-h);
+  display: flex;
+  align-items: stretch;
+  text-align: left;
+  padding: 0;
+  border: 1px solid var(--hairline);
+  border-radius: 0;                 /* ticket = square corners */
+  /* Tickets are ALWAYS white with dark text in both themes (like a physical
+     ticket), so they read as white cards on the dark-mode page rather than
+     black-on-black. */
+  background: #ffffff;
+  cursor: pointer;
+  /* Animate transform so peel, fan-out, and restack all glide. */
+  transition: transform 0.5s var(--ease-standard);
+  transform-origin: left center;
+  will-change: transform;
+  overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
+}
+.uvp-card:focus-visible {
+  outline: 3px solid var(--brand-yellow);
+  outline-offset: 3px;
+}
+/* Left vertical TAB: sideways title + number on a brand-yellow spine. */
+.uvp-card__tab {
+  flex: 0 0 58px;
+  display: flex;
+  flex-direction: column-reverse;   /* number at bottom, title reading upward */
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 14px 0;
+  background: var(--brand-yellow);
+}
+.uvp-card__num {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #14181f;
+  letter-spacing: 0.04em;
+}
+/* Sideways title: rotate the text so it runs bottom-to-top along the tab. */
+.uvp-card__title {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.15rem;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  color: #14181f;
+  white-space: nowrap;
+}
+/* Right BODY: normal (horizontal) orientation, with its own heading + paragraph. */
+.uvp-card__body {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 22px 26px;
+  color: #4a5262;                   /* fixed dark body ink (card is always white) */
+  line-height: 1.55;
+  font-size: 0.98rem;
+  overflow: auto;
+}
+.uvp-card__body-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.35rem;
+  line-height: 1.1;
+  color: #14181f;                   /* fixed dark title (card is always white) */
+}
+/* Every card keeps its full body at all times — the front card simply overlaps
+   the ones behind it, and peeled cards show their body in the fanned pile. No
+   opacity toggling, so text never flickers mid-transition and cards stay
+   visually consistent through the animation. */
+
+/* Narrow screens: shrink the ticket so it fits the viewport. Transforms are a
+   mix of px (tabs) and % (peel), so the % peel scales with the smaller card. */
+@media screen and (max-width: 680px) {
+  .uvp-stack-wrap { --uvp-w: 340px; --uvp-h: 300px; }
+  .uvp-card__body { padding: 16px 18px; font-size: 0.92rem; }
+  .uvp-card__body-title { font-size: 1.15rem; }
+  .uvp-card__title { font-size: 1rem; }
+}
+
 /* STUDENTS PAGE CSS */
 
 #studentspics {
@@ -1794,6 +1917,41 @@ body.dark #sponsor:hover #rocketblocks.logo-img--whiteout {
 
 #studentsitemtext {
   line-height: 2;
+  max-width: 34rem;
+  margin: 0 auto;
+  padding: 0 var(--space-4);
+}
+/* The value cards are half-width grid columns, so the site-wide 22vw side
+   padding on #centertextchunk would crush the text to one word per line.
+   Neutralize it here and let #studentsitemtext control the width instead. */
+#studentsitemtext #centertextchunk {
+  padding-left: 0;
+  padding-right: 0;
+  /* Cap the measure and center it so lines wrap to similar widths (instead of
+     running the full card width with a short orphan last line). `balance`
+     evens the per-line lengths across the whole block. */
+  max-width: 30rem;
+  margin-left: auto;
+  margin-right: auto;
+  text-wrap: balance;
+}
+
+/* Values grid: each value sits in its own boxed card. */
+#studentsitemtext.value-card {
+  /* Flat boxes: sharp corners, no shadow — just a hairline border. Taller than
+     the wide rectangle so they read less stretched. Content vertically centered. */
+  width: 100%;
+  max-width: none;
+  min-height: 15rem;
+  margin: 0 auto;
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: var(--paper-raised);
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
 }
 
 #bigbutton {
@@ -2432,6 +2590,39 @@ body.dark #sponsor:hover #rocketblocks.logo-img--whiteout {
 .contact-status--ok { color: #1e7a4d; }
 .contact-status--error { color: #c0392b; }
 
+/* "Contact Us" heading that folds out the email on hover; clicking pins it open
+   so it stays after the cursor leaves. No input box — just the text unfolding. */
+.contact-title-toggle {
+  cursor: pointer;
+  user-select: none;
+}
+.contact-email-fold {
+  display: block;
+  overflow: hidden;
+  text-align: center;
+  text-decoration: none;
+  color: var(--ink-muted);
+  font-size: 1rem;
+  /* Collapsed by default: no height, faded out, nudged up so it "unfolds" down. */
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(-0.4rem);
+  transition: max-height 0.3s var(--ease-standard),
+              opacity 0.25s var(--ease-standard),
+              transform 0.3s var(--ease-standard),
+              margin 0.3s var(--ease-standard);
+  margin-top: 0;
+}
+/* Reveal while hovering the title area, OR once it's been clicked (pinned). */
+.contact-title-reveal:hover .contact-email-fold,
+.contact-title-reveal.is-pinned .contact-email-fold {
+  max-height: 3rem;
+  opacity: 1;
+  transform: translateY(0);
+  margin-top: 0.35rem;
+}
+.contact-email-fold:hover { text-decoration: underline; }
+
 #sitefooter .footer-bottom {
   display: flex;
   flex-wrap: wrap;
@@ -2470,17 +2661,13 @@ body.dark #sponsor:hover #rocketblocks.logo-img--whiteout {
      long as the host establishes a stacking context (.has-lineart below).
      This layer is placed on a whole-PAGE container, so it spans every section:
      the ribbons flow through section seams uninterrupted (nothing clips them
-     mid-page). The only place a line meets an edge is the extreme top/bottom of
-     the whole layer, and the mask below fades those to transparent. */
+     mid-page). Every path enters at x=-160 and exits at x=1600 (outside the
+     0-1440 viewBox), so with preserveAspectRatio="none" both ends are always
+     clipped off-screen at any zoom — no line ever terminates in view, so no
+     edge fade is needed. */
   z-index: -1;
   pointer-events: none;
   overflow: hidden;
-  /* Fade the layer to transparent at its extreme top and bottom, so a ribbon
-     that happens to reach the very top/bottom of the page dissolves instead of
-     hard-cutting. (The left/right ends run off-screen via the SVG slice crop.) */
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 6%, #000 94%, transparent 100%);
-  mask-image: linear-gradient(to bottom, transparent 0, #000 6%, #000 94%, transparent 100%);
-  opacity: 0.4;
 }
 
 /* ONE non-repeating SVG stretched to exactly fill the whole container (no tiles
@@ -2502,16 +2689,14 @@ body.dark #sponsor:hover #rocketblocks.logo-img--whiteout {
   stroke-linejoin: round;
   vector-effect: non-scaling-stroke; /* constant line weight regardless of scale */
 }
+/* NOTE: the draw-in reveal (stroke-dasharray/offset tween) is applied via inline
+   styles from LineArtBackground.js so React re-renders can't wipe it mid-anim —
+   see that component. No class-based rule is needed here. */
 
-/* Bottom-only variant: reveal the art across just the lower region of the page
-   (used where only the final area should be decorated, e.g. Home/Clients). Same
-   single continuous layer — so ribbons still flow across the section seams down
-   there — just masked to appear only in the bottom portion and fade in at ~55%
-   and out at the very bottom. */
-.lineart--bottom {
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0, transparent 55%, #000 68%, #000 95%, transparent 100%);
-  mask-image: linear-gradient(to bottom, transparent 0, transparent 55%, #000 68%, #000 95%, transparent 100%);
-}
+/* Bottom-only variant marker (Home/Clients). The `flow`/`loops` variants now
+   keep all their geometry in the LOWER part of the viewBox, so the art already
+   sits low on those pages — no reveal mask needed. Kept as a no-op hook in case
+   per-page bottom tuning is wanted later. */
 
 /* Whole-page containers that host the line art: establish a stacking context
    (isolation) so the z-index:-1 art stays behind content but above the page

@@ -3,11 +3,13 @@ import './App.css';
 import Button from 'react-bootstrap/Button';
 import timeline from './timeline.jpeg';
 import qrcode from './qrcode.jpeg';
+import LineArtBackground from './LineArtBackground';
 
 function Apply() {
 
   return (
-<div id="container" className="center">
+<div id="container" className="center has-lineart">
+    <LineArtBackground variant="arc" />
     <section>
       <div id="divmesomespacesmall"></div>
     <h1 className="bold" id="gradienttext">Apply</h1>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import './App.css';
 import axios from 'axios';
@@ -9,6 +9,72 @@ import Button from 'react-bootstrap/Button';
 import Fade from 'react-reveal/Fade';
 import { ExternalLink } from 'react-external-link';
 import LineArtBackground from './LineArtBackground';
+
+// Animated stat that counts UP to its target when it first scrolls into view.
+// Handles the mixed stat formats on the Home stats band by splitting each value
+// into: an optional non-digit prefix, the FIRST number (the one that animates),
+// and everything after it (a suffix like "+", "-wk", or the "-8" of a range).
+// Only the first number tweens; the rest is shown verbatim so "300+", "12-wk",
+// and "6-8" all read correctly. Respects prefers-reduced-motion (renders final
+// value immediately). `duration` in ms.
+const CountUpStat = ({ value, duration = 1400 }) => {
+    const ref = useRef(null);
+    const [display, setDisplay] = useState(value);
+
+    useEffect(() => {
+        const m = String(value).match(/^(\D*)(\d+)([\s\S]*)$/);
+        // No leading number to animate (shouldn't happen here) -> show as-is.
+        if (!m) { setDisplay(value); return; }
+        const [, prefix, numStr, suffix] = m;
+        const target = parseInt(numStr, 10);
+
+        const reduce = window.matchMedia
+            && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (reduce) { setDisplay(value); return; }
+
+        const node = ref.current;
+        if (!node) { setDisplay(value); return; }
+
+        let rafId = null;
+        let startTs = null;
+        let started = false;
+
+        const tick = (ts) => {
+            if (startTs === null) startTs = ts;
+            const t = Math.min(1, (ts - startTs) / duration);
+            // easeOutCubic for a lively-then-settling count.
+            const eased = 1 - Math.pow(1 - t, 3);
+            const current = Math.round(eased * target);
+            setDisplay(`${prefix}${current}${suffix}`);
+            if (t < 1) rafId = requestAnimationFrame(tick);
+        };
+
+        const start = () => {
+            if (started) return;
+            started = true;
+            setDisplay(`${prefix}0${suffix}`);
+            rafId = requestAnimationFrame(tick);
+        };
+
+        // Kick off when the stat enters the viewport (so the count is visible).
+        let observer = null;
+        if ('IntersectionObserver' in window) {
+            observer = new IntersectionObserver((entries) => {
+                entries.forEach((e) => { if (e.isIntersecting) start(); });
+            }, { threshold: 0.4 });
+            observer.observe(node);
+        } else {
+            start(); // no IO support -> just animate on mount
+        }
+
+        return () => {
+            if (rafId) cancelAnimationFrame(rafId);
+            if (observer) observer.disconnect();
+        };
+    }, [value, duration]);
+
+    return <span ref={ref}>{display}</span>;
+};
 
 // A single logo cell — identical markup whether it sits in the marquee track
 // or the fallback grid, so both layouts render the logos the same way.
@@ -282,7 +348,7 @@ const Home = () => {
 
     return(
 <div id="container" className="home-container has-lineart">
-<LineArtBackground className="lineart--bottom" />
+<LineArtBackground className="lineart--bottom" variant="flow" />
 
 <div id="landinganimation" className="hero">
   <div
@@ -327,10 +393,10 @@ const Home = () => {
 {/* ===== EDIT STATS HERE: change the number + label in each Col ===== */}
 <section className="stats-band feature-block">
 <Row xs={2} md={4} className="g-4 justify-content-center">
-<Col className="stat"><div className="stat-num">300+</div><div className="stat-label">Alumni</div></Col>
-<Col className="stat"><div className="stat-num">20+</div><div className="stat-label">partner companies</div></Col>
-<Col className="stat"><div className="stat-num">12-wk</div><div className="stat-label">PM bootcamp</div></Col>
-<Col className="stat"><div className="stat-num">6-8</div><div className="stat-label">members per team</div></Col>
+<Col className="stat"><div className="stat-num"><CountUpStat value="300+" /></div><div className="stat-label">Alumni</div></Col>
+<Col className="stat"><div className="stat-num"><CountUpStat value="20+" /></div><div className="stat-label">partner companies</div></Col>
+<Col className="stat"><div className="stat-num"><CountUpStat value="12-wk" /></div><div className="stat-label">PM bootcamp</div></Col>
+<Col className="stat"><div className="stat-num"><CountUpStat value="6-8" /></div><div className="stat-label">members per team</div></Col>
 </Row>
 </section>
 
