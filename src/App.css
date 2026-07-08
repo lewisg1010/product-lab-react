@@ -1,10 +1,61 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600&display=swap');
+/* Typography system: two professional families.
+   - Space Grotesk: display font for headers, nav, buttons, stats, effects.
+   - Inter: body font for paragraphs, descriptions, and general UI text.
+   Montserrat is kept only to pin the big Home "HPL" wordmark (left as-is). */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Montserrat:wght@700;800&display=swap');
 
 /* BODY AND OVERALL CSS */
 
 :root {
   --blue: blue;
   --white: white;
+
+  /* --- Redesign design tokens (mode-independent) --- */
+
+  /* Spacing scale (8px grid) */
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2rem;
+  --space-6: 3rem;
+  --space-8: 4rem;
+  --space-12: 6rem;
+  --space-16: 8rem;
+
+  /* Radii */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 24px;
+  --radius-pill: 999px;
+
+  /* Fluid type scale */
+  --fs-hero: clamp(2.5rem, 6vw, 4.5rem);
+  --fs-h2: clamp(1.75rem, 3.5vw, 2.75rem);
+  --fs-subhead: clamp(1.05rem, 1.6vw, 1.35rem);
+  --fs-stat: clamp(2.25rem, 4.5vw, 3.5rem);
+  --fs-stat-label: clamp(0.85rem, 1.2vw, 1rem);
+  --lh-tight: 1.15;
+  --lh-body: 1.7;
+
+  /* Brand accent */
+  --brand-yellow: #FED353;
+  --brand-yellow-deep: #FED353;
+
+  /* Typography families */
+  --font-display: 'Space Grotesk', 'Montserrat', sans-serif; /* headers, nav, buttons, effects */
+  --font-body: 'Inter', 'Segoe UI', system-ui, sans-serif;   /* paragraphs, descriptions, UI */
+
+  /* Motion */
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Site-wide baseline: body font everywhere, display font for real headings.
+   Page-specific rules below opt individual elements into the display font. */
+body {
+  font-family: var(--font-body);
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
 }
 
 .card-photo {
@@ -26,23 +77,75 @@
 }
 
 body.light {
+  /* Paint the page background on <body> so any area not covered by a container
+     (the footer's top margin, overscroll) follows the theme instead of showing
+     Bootstrap's default white body. Set on the class selector so it outranks
+     Bootstrap Reboot's plain `body { background }`, which loads after us. */
+  background: var(--background-color);
   --background-color: white;
-  --navbar-bg-color: rgba(244, 244, 244, 0.85);
+  --navbar-bg-color: #FED353;
   --text-color: black;
   --stroke-color: black;
   --post-link: #0052cc;
   --navlogo: url('../public/newestlightlogo.png');
   --gradient-text: -webkit-linear-gradient(135deg, #FA0177, #7621BF);
+
+  /* --- Redesign color/shadow tokens (light) --- */
+  --ink: #14181f;
+  --ink-muted: #4a5262;
+  --paper: #ffffff;
+  --paper-raised: #f7f8fa;
+  --hairline: rgba(20, 24, 31, 0.10);
+  --shadow-soft: 0 6px 20px rgba(20, 24, 31, 0.10);
+  --shadow-soft-lg: 0 14px 40px rgba(20, 24, 31, 0.16);
+  --accent-underline: var(--brand-yellow-deep);
+  --btn-primary-bg: var(--brand-yellow);
+  --btn-primary-ink: #14181f;
+  --btn-secondary-bg: transparent;
+  --btn-secondary-ink: #14181f;
+  --btn-secondary-border: rgba(20, 24, 31, 0.30);
+  --hero-secondary-surface: #ffffff;
+  /* "Partner with us" nav button: white chip w/ yellow text in light mode. */
+  --partner-btn-bg: #ffffff;
+  --partner-btn-ink: var(--brand-yellow-deep);
+  /* Nav circular logo: black mark on a white circle in light mode. */
+  --logo-circle-bg: #ffffff;
+  --logo-circle-fg: #000000;
+  --navbar-toggler-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%2820, 24, 31, 0.85%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
 
 body.dark {
-  --background-color: #0f182a;
-  --navbar-bg-color: rgba(24, 33, 50, 0.85);
+  background: var(--background-color);
+  --background-color: #000000;
+  --navbar-bg-color: #FED353;
   --text-color: white;
-  --stroke-color: #ffe665;
+  --stroke-color: #FED353;
   --post-link: #4bc0e0;
   --navlogo: url('../public/newestdarklogo.png');
   --gradient-text: -webkit-linear-gradient(135deg, #FF4D41, #F8C025, #FF4D41);
+
+  /* --- Redesign color/shadow tokens (dark) --- */
+  --ink: #f4f6fb;
+  --ink-muted: #aeb6c6;
+  --paper: #000000;
+  --paper-raised: #16233b;
+  --hairline: rgba(255, 255, 255, 0.12);
+  --shadow-soft: 0 6px 20px rgba(0, 0, 0, 0.45);
+  --shadow-soft-lg: 0 14px 40px rgba(0, 0, 0, 0.55);
+  --accent-underline: var(--brand-yellow);
+  --btn-primary-bg: var(--brand-yellow);
+  --btn-primary-ink: #14181f;
+  --btn-secondary-bg: transparent;
+  --btn-secondary-ink: #f4f6fb;
+  --btn-secondary-border: rgba(255, 255, 255, 0.35);
+  --hero-secondary-surface: var(--paper-raised);
+  /* "Partner with us" nav button: dark chip w/ yellow text in dark mode. */
+  --partner-btn-bg: #000000;
+  --partner-btn-ink: var(--brand-yellow);
+  /* Nav circular logo: white mark on a black circle in dark mode. */
+  --logo-circle-bg: #000000;
+  --logo-circle-fg: #ffffff;
+  --navbar-toggler-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28244, 246, 251, 0.9%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
 
 #fillparallaxbg {
@@ -50,39 +153,63 @@ body.dark {
 }
 
 #button {
-  box-shadow: 4px 4px 3px #3c3c3c;
-  background-color: #ffe665;
-  color: black;
+  box-shadow: var(--shadow-soft);
+  background-color: var(--brand-yellow);
+  color: var(--btn-primary-ink);
   font-weight: bold;
   border: none;
-  transition: all 0.4s;
-  transition-timing-function:cubic-bezier(0.5, 3, 0, 1);
+  border-radius: var(--radius-pill);
+  transition: transform 0.25s var(--ease-standard), box-shadow 0.25s var(--ease-standard);
   padding-top: 15px;
   padding-bottom: 15px;
-  margin-top: 20px; 
+  padding-left: 26px;
+  padding-right: 26px;
+  margin-top: 20px;
   margin-bottom: 20px;
 }
 
 #partnerbutton {
-    box-shadow: 4px 4px 3px #3c3c3c;
-    background-color: #ffe665;
-    color: black;
+    box-shadow: none;
+    background-color: var(--partner-btn-bg);
+    color: var(--partner-btn-ink);
     font-weight: bold;
+    /* Match the nav links' size so the button scales with the rest of the bar. */
+    font-size: 1.35rem;
     border: none;
-    transition: all 0.4s;
-    transition-timing-function:cubic-bezier(0.5, 3, 0, 1);
+    border-radius: 0;
+    transition: opacity 0.25s var(--ease-standard);
 }
 
 #button:hover {
-  transform: scale(1.1);
-  box-shadow: 8px 8px 6px #3c3c3c;
-  background-color: #ffe665;
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: var(--shadow-soft-lg);
+  background-color: var(--brand-yellow);
+}
+
+#partnerbutton:hover {
+  box-shadow: none;
+  background-color: var(--partner-btn-bg);
+  color: var(--partner-btn-ink);
+  border: none;
+  opacity: 0.85;
+}
+
+/* Keep it a flat cutout through Bootstrap's focus/active states (which
+   otherwise re-add a border and box-shadow ring). */
+#partnerbutton:focus,
+#partnerbutton:active,
+#partnerbutton:focus-visible {
+  box-shadow: none;
+  background-color: var(--partner-btn-bg);
+  color: var(--partner-btn-ink);
+  border: none;
+  outline: none;
 }
 
 #container {
   background: var(--background-color);
   color: var(--text-color);
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--font-body);
   padding-top: 12vh;
   padding-bottom: 25vh;
   min-height: 100vh;
@@ -91,10 +218,85 @@ body.dark {
   position: relative;
   background-size: cover;
 }
+/* The Clients page ends on the full-bleed "Become a Partner" banner (a sibling
+   of #container), so drop the container's huge bottom padding — otherwise a big
+   empty band sits between the content and the banner. */
+#container.clients-container,
+#studentcontainer.students-container {
+  /* Matched minimal gap before the full-bleed banner at the bottom of both. */
+  padding-bottom: var(--space-1);
+  /* The UVP card stack fans peeled cards off to the right. Without this, those
+     off-screen cards widen the page, which (a) spawns a horizontal scrollbar and
+     (b) makes the full-bleed line-art SVG rescale to the new width — reading as
+     the background "jumping" each time a card moves. clip confines the overflow
+     to the viewport edge (pile still shows up to the edge) without creating a
+     scroll container or changing the page's layout size. */
+  overflow-x: clip;
+}
+
+/* Full-bleed clickable "Become a Partner" banner: one giant line spanning the
+   whole screen width. Yellow like the footer so the two merge into one block;
+   sits flush against the footer (no gap). Lives OUTSIDE #container so it isn't
+   constrained by the container's side padding. */
+/* The label is an SVG whose text is stretched (textLength) to exactly fill the
+   viewBox width, so it always spans edge to edge regardless of font metrics.
+   preserveAspectRatio keeps the height proportional and bottom-aligned so it
+   sits flush against the footer. */
+.become-client-banner {
+  display: block;
+  width: 100%;
+  padding: 0;
+  background: transparent;
+  text-decoration: none;
+  line-height: 0; /* kill the inline-svg descender gap under the text */
+  transition: opacity 0.2s var(--ease-standard);
+}
+.become-client-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.become-client-svg text {
+  fill: var(--brand-yellow);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 100px;
+  text-anchor: middle;
+  letter-spacing: -0.02em;
+}
+.become-client-banner:hover {
+  opacity: 0.75;
+}
+
+/* Home page ends on the alumni logos; keep only a small gap before the footer
+   (the full #container padding-bottom would leave a large dead space). */
+#container.home-container {
+  /* The hero panel's own top margin (16vh) sets the top black band, so drop the
+     container's default 12vh top padding — otherwise the top band would be far
+     larger than the bottom one. */
+  padding-top: 0;
+  padding-bottom: var(--space-8);
+  /* Full-bleed 100vw children (the heading walls, logo marquees) extend to the
+     viewport edges; clip here so they run flush without spawning a horizontal
+     scrollbar. clip (not hidden) avoids creating a scroll container. */
+  overflow-x: clip;
+}
+/* On the home page the hero panel's own margin creates the black band below it,
+   so the stats band shouldn't add its default large top margin on top. */
+.home-container .stats-band {
+  margin-top: 0;
+}
+/* The container font-family (body) is id-specificity, so it would override the
+   element-level h1-h6 rule. Re-assert the display font for headings inside. */
+#container h1, #container h2, #container h3, #container h4, #container h5, #container h6,
+#studentcontainer h1, #studentcontainer h2, #studentcontainer h3,
+#studentcontainer h4, #studentcontainer h5, #studentcontainer h6 {
+  font-family: var(--font-display);
+}
 #studentcontainer {
   background: var(--background-color);
   color: var(--text-color);
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--font-body);
   padding-top: 12vh;
   padding-bottom: 25vh;
   min-height: 100vh;
@@ -148,7 +350,7 @@ body.dark {
 }
 
 #cardtextfont {
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--font-body);
   font-weight: 300;
   color: var(--text-color);
   font-size: 0.7rem;
@@ -172,24 +374,90 @@ body.dark {
 
 /* NAVBAR CSS */
 
+/* Let the bar content span nearly the full viewport instead of Bootstrap's
+   ~1140px centered container, so there's less empty space on the sides. */
+#nav > .container,
+#sitefooter > .container {
+  max-width: none;
+  width: 100%;
+  padding-left: 3vw;
+  padding-right: 3vw;
+}
+
 #nav {
   background: var(--navbar-bg-color);
-  padding-top: 0px;
-  padding-bottom: 0px;
+  padding-top: 0.6rem;
+  padding-bottom: 0.6rem;
   backdrop-filter: blur(10px);
+  /* The bar is solid yellow in both themes, so force dark-on-yellow for links,
+     underlines, the dropdown, and the hamburger regardless of light/dark mode. */
+  --text-color: #14181f;
+  --stroke-color: #14181f;
+  --hairline: rgba(20, 24, 31, 0.18);
+  --navbar-toggler-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%2820, 24, 31, 0.85%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* Flat, borderless dropdown that blends into the nav bar */
+#nav .dropdown-menu {
+  background: var(--navbar-bg-color);
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  margin-top: 12px;
+  /* Extra top padding drops the menu items lower while the panel stays flush
+     with the navbar (no detached/floating gap). */
+  padding: 8px 0 2px;
+  min-width: 160px;
+  /* Sit above the fixed navbar (Bootstrap z-index 1030) and any page content
+     with its own stacking context, so the hover menu isn't covered. */
+  z-index: 1301;
 }
 
 #navdropdownitem {
-  color: #000000;
-  font-family: 'Montserrat', sans-serif;
-  transition: background 0.5s ease-in-out;
-  color: black;
+  color: var(--text-color);
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.05rem;
+  padding: 3px 18px;
+  transition: opacity 0.2s ease-in-out;
+}
+
+#navdropdownitem:hover,
+#navdropdownitem:focus {
+  background: transparent;
+  color: var(--text-color);
+  opacity: 0.6;
+}
+
+/* Kill Bootstrap's blue highlight on the dropdown item for the current page
+   (.dropdown-item.active / :active default to a blue fill + white text). */
+#navdropdownitem.active,
+#navdropdownitem:active,
+#nav .dropdown-item.active,
+#nav .dropdown-item:active {
+  background: transparent;
+  color: var(--text-color);
+}
+
+/* Desktop hover-open is driven by react-bootstrap state in Nav.js (not a CSS
+   :hover override). This invisible bridge fills the gap between the toggle and
+   the menu so moving the cursor down doesn't fire onMouseLeave and close it. */
+@media screen and (min-width: 992px) {
+  #nav .nav-item.dropdown .dropdown-menu::before {
+    content: "";
+    position: absolute;
+    top: -28px;
+    left: 0;
+    right: 0;
+    height: 28px;
+  }
 }
 
 #navlinkoverridetextcolor {
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--font-display);
   margin-top: 8px;
   color: var(--text-color);
+  font-size: 1.35rem;
 }
 
 @media screen and (min-width: 991px) {
@@ -205,7 +473,7 @@ body.dark {
     height: 3px;
     width: 0;
     left: 0;
-    bottom: -8px;
+    bottom: -2px;
     transition: 0.3s;
   }
   .underline2:hover:after {
@@ -226,7 +494,7 @@ body.dark {
   height: 3px;
   width: 0;
   left: 0;
-  bottom: -8px;
+  bottom: -2px;
   transition: 0.3s;
 }
 .underline:hover:after {
@@ -234,10 +502,35 @@ body.dark {
 }
 }
 
-#landinganimation{
-  display: grid;
-  place-items: center;
+/* Navbar: replace Bootstrap's default blue focus glow and the browser's blue
+   text-selection box with the site's yellow accent. Keyboard focus keeps a
+   visible ring (WCAG 2.4.7); a mouse click shows no ring; nothing stays blue. */
+#nav .nav-link:focus,
+#nav .dropdown-toggle:focus,
+#nav .nav-link:focus-visible,
+#nav .dropdown-toggle:focus-visible {
+  box-shadow: none; /* drop Bootstrap's rgba(13,110,253,.25) glow */
 }
+#partnerbutton:focus,
+#partnerbutton:active,
+#partnerbutton:focus-visible {
+  box-shadow: var(--shadow-soft); /* keep the button's elevation, not the blue glow */
+}
+#nav .nav-link:focus-visible,
+#nav .dropdown-toggle:focus-visible,
+#partnerbutton:focus-visible {
+  outline: 3px solid var(--accent-underline); /* on-brand yellow, matches .btn-*-plab */
+  outline-offset: 2px;
+}
+/* Recolor selected nav text from the UA blue to brand yellow; text stays selectable. */
+#nav ::selection {
+  background: var(--brand-yellow);
+  color: #14181f;
+}
+
+/* #landinganimation is now the hero panel wrapper — see #landinganimation.hero
+   below. (The old line-draw SVG wordmark it used to center was replaced by the
+   WDB-style yellow panel.) */
 
 #nogrow{
   flex-grow: 0;
@@ -323,34 +616,10 @@ body.dark {
   }
 }
 
-#homegraphic {
-  width: max(40vw, 900px);
-  height: auto;
-}
-@media screen and (max-width: 991px) {
-  #homegraphic {
-  width: 90vw;
-  height: auto;
-  }
-}
-#sticky2{
-  opacity: 0;
-  animation: fadeInUp .8s;
-  animation-delay: 1s;
-  animation-fill-mode: forwards;
-}
-#sticky3{
-  opacity: 0;
-  animation: fadeInUp .8s;
-  animation-delay: 1.5s;
-  animation-fill-mode: forwards;
-}
-#sticky4{
-  opacity: 0;
-  animation: fadeInUp .8s;
-  animation-delay: 2s;
-  animation-fill-mode: forwards;
-}
+/* NOTE: the Home hero decorative SVG (#homegraphic and its inner #sticky*,
+   #girl, #guy, #phonegroup, #step*group, #num2 parts) was removed from Home.js.
+   Its id-specific rules are gone; the shared @keyframes below are KEPT because
+   other pages still use them (e.g. #leftguy, #question, #pasteventfade). */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -362,9 +631,6 @@ body.dark {
   }
 }
 
-#girl{
-  animation: fadeInRight 2s;
-}
 @keyframes fadeInRight {
   from {
     opacity: 0;
@@ -374,9 +640,6 @@ body.dark {
     opacity: 1;
     transform: translateX(0);
   }
-}
-#guy{
-  animation: fadeInLeft 2s;
 }
 @keyframes fadeInLeft {
   from {
@@ -388,31 +651,6 @@ body.dark {
     transform: translateX(0);
   }
 }
-#phonegroup{
-  opacity: 0;
-  animation: fadeIn 1s;
-  animation-delay: 4s;
-  animation-fill-mode: forwards;
-}
-#step1group{
-  opacity: 0;
-  animation: fadeIn 1s;
-  animation-delay: 1s;
-  animation-fill-mode: forwards;
-}
-#num2{
-  opacity: 0;
-  animation: fadeIn 1s;
-  animation-delay: 1.5s;
-  animation-fill-mode: forwards;
-}
-#step3group {
-  opacity: 0;
-  animation: fadeIn 1s;
-  animation-delay: 2.5s;
-  animation-fill-mode: forwards;
-}
-
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -424,38 +662,123 @@ body.dark {
 
 #athcs{
   opacity: 0;
-  padding-top: 2vh;
-  font-weight: 400;
   animation: fadeIn 3s;
   animation-delay: 3s;
   animation-fill-mode: forwards;
 }
 
 #navbartoggle {
-  background: white;
+  background: transparent;
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-sm);
+}
+#navbartoggle:focus {
+  box-shadow: 0 0 0 3px rgba(254, 211, 83, 0.4);
+}
+/* Theme-adaptive hamburger icon (was only visible on the old white background) */
+#navbartoggle .navbar-toggler-icon {
+  background-image: var(--navbar-toggler-icon);
 }
 
-#homelogo {
-  width: 125px;
-  min-height: 60px;
+#homelogobtn {
+  padding: 0;
+  border: none;
+  background: transparent;
   cursor: pointer;
-  background-image: var(--navlogo);
-  background-size: cover;
-  transition: transform .7s ease-in-out;
+  line-height: 0;
+  outline: none;
 }
-#homelogo:hover {
-    transform: rotate(360deg);
+/* No focus ring on the logo/theme-toggle button — it was showing as a boxed
+   border that lingered after clicking to switch light/dark mode. */
+#homelogobtn:focus,
+#homelogobtn:focus-visible {
+  outline: none;
+}
+/* Circular logo. The circle background flips by theme (--logo-circle-bg: white
+   in light mode, black in dark). The inner mark uses logomark-white.png (the
+   lightbulb mark centered on a square transparent canvas, matching the
+   logo-white-yellow reference placement) as a CSS mask, filled with
+   --logo-circle-fg — so it paints black on the white circle and white on the
+   black one, independent of the image's own color, and stays centered. */
+#homelogo {
+  width: 56px;
+  height: 56px;
+  cursor: pointer;
+  border-radius: 50%;
+  background-color: var(--logo-circle-bg);
+  display: grid;
+  place-items: center;
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.25s var(--ease-standard), box-shadow 0.25s var(--ease-standard);
+}
+#homelogobtn:hover #homelogo {
+  transform: scale(1.06);
+  box-shadow: var(--shadow-soft-lg);
+}
+#homelogo .homelogo-mark {
+  width: 68%;
+  height: 68%;
+  background-color: var(--logo-circle-fg);
+  -webkit-mask: url('../public/logomark-white.png') center / contain no-repeat;
+  mask: url('../public/logomark-white.png') center / contain no-repeat;
 }
 #productlabbrand {
-  width: 125px;
-  min-height: 60px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 56px;
+}
+/* Two-line "Harvard / Product" wordmark beside the circular logo. Sized so the
+   two lines together are flush with the 56px logo top and bottom: each line's
+   box is 28px tall (2 x 28 = 56). Font-size pushed up so the caps fill the line
+   box (letters touch the logo top/bottom), and a text-stroke in the text color
+   thickens the glyphs beyond the 700 weight for extra boldness. */
+/* Two-line brand lockup: big "PRODUCT" over a smaller "at Harvard College".
+   align-items: stretch makes the column exactly as wide as "PRODUCT" (its widest
+   child); the sub-line then justifies its letters to span that full width. */
+#brandwordmark {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+  height: 56px;
+  font-family: var(--font-display);
+  /* The nav bar forces --text-color dark (it's yellow in both themes), so use
+     --logo-circle-fg instead — the same token the lightbulb mark uses. It's NOT
+     overridden inside #nav, so it stays black in light mode / white in dark
+     mode, making the wordmark flip with the theme like the logo. */
+  color: var(--logo-circle-fg);
+  text-decoration: none;
+}
+#brandwordmark .brandwordmark-main {
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 0.95;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+#brandwordmark .brandwordmark-sub {
+  font-weight: 600;
+  font-size: 12.5px;
+  line-height: 1;
+  margin-top: 2px;
+  white-space: nowrap;
+  /* Stretch the single line so its letters spread edge-to-edge to match the
+     width of PRODUCT above. text-align-last:justify justifies the last (only)
+     line, which plain text-align:justify leaves alone. */
+  text-align: justify;
+  text-align-last: justify;
+}
+#brandwordmark:hover {
+  color: var(--logo-circle-fg);
+  opacity: 0.75;
 }
 
 #navlinkalign {
   margin-top: 8px;
 }
 #bold {
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--font-display);
   font-weight: 700;
 }
 
@@ -469,35 +792,184 @@ body.dark {
 }
 
 #homesection {
-  padding-top: 15vh;
-  padding-bottom: 5vh;
+  padding-top: var(--space-12);
+  padding-bottom: var(--space-6);
 }
 
 #homepushdown {
-  padding-top: 17vh;
+  padding-top: var(--space-12);
 }
 
 #homep {
-  padding-left: 20vw;
-  padding-right: 20vw;
-  line-height: 2;
-}
-@media screen and (max-width: 650px) {
-  #homep {
-    padding-left: 1vw;
-    padding-right: 1vw;
-  }
+  line-height: var(--lh-body);
+  color: var(--ink-muted);
+  text-align: justify;
+  text-justify: inter-word;
 }
 
 #limitwidth {
   overflow: hidden;
 }
 
+/* --- Redesign: staggered feature rows (photo left/right + scrolling title) --- */
+
+/* Each section is a positioning context so the scrolling title can sit behind
+   the content row and tuck under the photo. */
+.feature-row {
+  position: relative;
+  /* Tightened vertical spacing between the three feature sections. */
+  padding: var(--space-6) 0 var(--space-4);
+  /* NOTE: no overflow-x clip here — it used to confine the old sweeping title,
+     but it also clipped the full-bleed .heading-wall back to the padded content
+     box (leaving ~3vw white margins). The horizontal-overflow guard now lives
+     on .home-container so the wall runs flush to the viewport edges. */
+}
+
+/* Full-bleed "wall" of the repeated section title behind the row (z-index 1),
+   passing behind the photo (z-index 3). Three stacked rows of continuously
+   repeating text fill the row edge to edge. It is FULL-BLEED — 100vw pinned to
+   the viewport left edge — so it breaks out of #container's side padding and
+   never clips the text into the white margins (the previous clipping bug). */
+.heading-wall {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 1;
+  /* Break out of the padded container. The wall is centered on .feature-row,
+     which is inset by #container's asymmetric side padding, so a flat 100vw
+     falls a hair short of one edge. Overshoot to 104vw so it always covers
+     both edges; .home-container's overflow-x:clip trims the excess flush. */
+  left: 50%;
+  width: 104vw;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.15em;
+  overflow: hidden;       /* rows scroll horizontally within the wall */
+  pointer-events: none;
+  /* No edge mask: the repeating text runs flush to both viewport edges. */
+}
+.heading-wall__row {
+  overflow: hidden;
+  white-space: nowrap;
+}
+.heading-wall__track {
+  display: inline-flex;
+  width: max-content;
+  will-change: transform;
+  animation: heading-wall-left var(--wall-duration, 38s) linear infinite;
+}
+.heading-wall__track--right {
+  animation-name: heading-wall-right;
+}
+/* Stagger the middle row half a phrase so columns brick rather than align. */
+.heading-wall__track--offset {
+  padding-left: 6vw;
+}
+.heading-wall__word {
+  font-family: var(--font-display);
+  font-weight: 700;
+  /* Small relative to the old single word: a repeating texture, not one title. */
+  font-size: clamp(1.6rem, 4.2vw, 3.4rem);
+  line-height: 1.05;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+  opacity: 0.09;          /* watermark-faint so foreground text stays readable */
+  padding-right: 0.4em;   /* gap between repetitions */
+  text-transform: uppercase;
+}
+/* Two identical halves sit back-to-back; shifting one full half (-50% of the
+   track) lands the copy exactly where the first began -> seamless loop. */
+@keyframes heading-wall-left {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@keyframes heading-wall-right {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .heading-wall__track { animation: none; }
+}
+
+.feature-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  /* Photo and text are equal-width columns pinned to opposite edges, so the
+     inner edge of each always sits on the same guideline. That makes the
+     (justified) text's inner edge line up with the photo edge in the rows
+     above/below it, alternating side to side down the page. */
+  justify-content: space-between;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 3vw;
+}
+
+/* Alternate which side the photo sits on. */
+.feature-row.photo-left .feature-content { flex-direction: row; }
+.feature-row.photo-right .feature-content { flex-direction: row-reverse; }
+
+/* Photo column and text column share the same width so their inner edges align.
+   The text side is the <Fade> wrapper div (the actual flex child), so target it
+   as "the child that isn't the photo". */
+.feature-photo,
+.feature-content > :not(.feature-photo) {
+  flex: 0 0 45%;
+  max-width: 45%;
+}
+.feature-photo {
+  position: relative;
+  z-index: 3; /* above the scrolling title so the title tucks underneath */
+}
+
+.feature-img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 0;
+  box-shadow: var(--shadow-soft-lg);
+  display: block;
+}
+
+.feature-text {
+  /* Fill the 45% text column fully so the justified text's inner edge reaches
+     the guideline shared with the photo column. */
+  width: 100%;
+  min-width: 0;
+}
+
+.feature-cta {
+  margin-top: var(--space-2);
+}
+
+@media screen and (max-width: 900px) {
+  .feature-row { padding: var(--space-4) 0 var(--space-3); }
+  /* Stack on small screens: photo on top, text below, title above the row. */
+  .feature-row.photo-left .feature-content,
+  .feature-row.photo-right .feature-content {
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: var(--space-4);
+  }
+  /* Full width when stacked (override the equal-column 45% split). */
+  .feature-photo,
+  .feature-content > :not(.feature-photo) {
+    flex-basis: auto;
+    max-width: 100%;
+    width: 100%;
+  }
+  /* Keep the heading wall as a faint full-bleed backdrop behind the stacked
+     content on small screens; just ease the repeated text down a bit. */
+  .heading-wall__word { font-size: clamp(1.3rem, 7vw, 2.4rem); }
+}
+
 #gradienttext {
   font-size: 5vw;
-  background: var(--gradient-text);
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--text-color);
 }
 @media screen and (max-width: 600px) {
   #gradienttext {
@@ -505,28 +977,496 @@ body.dark {
   }
 }
 #gradienttextsub {
-  background: var(--gradient-text);
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--text-color);
 }
 
 #gradienttext3 {
-  background: var(--gradient-text);
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--text-color);
 }
+
+/* --- Redesign: Home hero copy + CTAs --- */
+/* --- Redesign: WDB-style hero panel (inset yellow card on dark page) --- */
+#landinganimation.hero {
+  display: block;
+  max-width: none;
+  margin: 0;
+}
+.hero-panel {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0;
+  background: var(--brand-yellow);
+  /* Tall inset card. The black band above and below the yellow panel is set by
+     this single margin value, so top and bottom stay equal. It's large enough
+     to push the panel below the fold on load (see home-container: its top
+     padding and the stats-band top margin are zeroed so nothing else adds to
+     the bands). */
+  min-height: min(78vh, 760px);
+  margin: 16vh 0;
+  /* Shared insets: the content box AND the shimmer grid both anchor to these,
+     so the grid's left + bottom edges line up exactly with the HPL wordmark.
+     Kept small so the content + grid sit close to the panel edges. */
+  --hero-inset-x: clamp(0.75rem, 1.6vw, 1.5rem);
+  --hero-inset-bottom: clamp(0.75rem, 1.6vw, 1.5rem);
+  padding: var(--hero-inset-bottom) var(--hero-inset-x);
+  isolation: isolate;
+}
+
+/* Animated shimmer grid — many small squares glimmering at RANDOM. The grid box
+   is inset to match the HPL content, so its left edge and bottom edge align with
+   the wordmark. Squares are a fixed small size; auto-fill packs the width and
+   align-content:end anchors rows to the bottom edge. */
+.hero-grid {
+  position: absolute;
+  z-index: 0;
+  left: var(--hero-inset-x);
+  right: var(--hero-inset-x);
+  top: var(--hero-inset-bottom);
+  bottom: var(--hero-inset-bottom);
+  display: grid;
+  /* Cell + gap MUST match HERO_CELL/HERO_GAP in Home.js so the measured cell
+     count exactly fills this box (start-aligned, so the top-left cell sits at
+     the box's top-left and rows fill down to the bottom edge). */
+  grid-template-columns: repeat(auto-fill, 30px);
+  grid-auto-rows: 30px;
+  gap: 5px;
+  /* start-x: first column aligns to the box's left edge (= HPL's left edge).
+     end-y: rows pack to the bottom edge (= HPL's bottom edge). Since the cell
+     count is measured to fill the box, the whole area is covered either way;
+     end-anchoring guarantees the bottom row sits exactly on the bottom edge. */
+  justify-content: start;
+  align-content: end;
+  overflow: hidden;
+  pointer-events: none;
+}
+.hero-grid__cell {
+  width: 30px;
+  height: 30px;
+  border-radius: 0;
+  background: #ffffff;
+  opacity: 0.05;
+  /* animation-delay AND animation-duration are set per-cell inline (randomized
+     in Home.js) so squares glimmer independently instead of in a diagonal wave. */
+  animation-name: hero-grid-pulse;
+  animation-timing-function: var(--ease-standard);
+  animation-iteration-count: infinite;
+}
+@keyframes hero-grid-pulse {
+  0%, 100% { opacity: 0.04; }
+  50% { opacity: 0.30; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-grid__cell { animation: none; opacity: 0.08; }
+}
+
+/* Team photo, upper-right (square-cornered like the reference). */
+.hero-photo {
+  position: absolute;
+  z-index: 2;
+  top: clamp(1.5rem, 4vw, 3.5rem);
+  right: clamp(1.5rem, 4vw, 3.5rem);
+  width: min(42%, 560px);
+  aspect-ratio: 16 / 9;
+  box-shadow: var(--shadow-soft-lg);
+  /* Cursor parallax: JS sets --hero-photo-x/y from mouse position (see Home.js).
+     Short transition so the photo tracks the cursor closely (a long ease reads
+     as lag); just enough to smooth between frames and glide back on mouse-out. */
+  --hero-photo-x: 0px;
+  --hero-photo-y: 0px;
+  transform: translate3d(var(--hero-photo-x), var(--hero-photo-y), 0);
+  transition: transform 0.12s linear;
+  will-change: transform;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-photo { transform: none; transition: none; }
+}
+.hero-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Content sits bottom-left: giant wordmark + tagline lockup beside it.
+   align-items: flex-start so the lockup's top edge is flush with the top of
+   the HPL wordmark (the wordmark's tight line-height:0.8 puts its cap-top at
+   its box top, so top-aligning the row lines the two up). */
+.hero-panel-content {
+  position: absolute;
+  z-index: 2;
+  left: var(--hero-inset-x);
+  right: var(--hero-inset-x);
+  bottom: var(--hero-inset-bottom);
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: clamp(1rem, 3vw, 2.5rem);
+}
+.hero-wordmark {
+  margin: 0;
+  color: #0f0f0f;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 0.8;
+  font-size: clamp(4.5rem, 17vw, 15rem);
+}
+.hero-lockup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  max-width: 460px;
+}
+.hero-eyebrow {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: clamp(0.95rem, 1.4vw, 1.2rem);
+  font-weight: 700;
+  font-style: italic;
+  color: #0f0f0f;
+}
+.hero-tagline {
+  margin: 0;
+  font-size: clamp(1.05rem, 1.6vw, 1.4rem);
+  line-height: 1.35;
+  color: #0f0f0f;
+}
+.hero-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+}
+/* Pill buttons on the yellow panel: one light, one dark (WDB reference). */
+.btn.btn-primary-plab,
+.btn.btn-secondary-plab {
+  border-radius: var(--radius-pill);
+  padding: 0.7rem 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  border: 2px solid transparent;
+  box-shadow: none;
+  transition: transform 0.25s var(--ease-standard), box-shadow 0.25s var(--ease-standard),
+    background-color 0.25s var(--ease-standard), border-color 0.25s var(--ease-standard),
+    color 0.25s var(--ease-standard);
+}
+.btn.btn-primary-plab {
+  background: #ffffff;
+  color: #0f0f0f;
+  border-color: #ffffff;
+}
+.btn.btn-primary-plab:hover,
+.btn.btn-primary-plab:focus,
+.btn.btn-primary-plab:active {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-soft);
+  background: #ffffff;
+  color: #0f0f0f;
+  border-color: #ffffff;
+}
+.btn.btn-secondary-plab {
+  background: #0f0f0f;
+  color: #ffffff;
+  border-color: #0f0f0f;
+}
+.btn.btn-secondary-plab:hover,
+.btn.btn-secondary-plab:focus,
+.btn.btn-secondary-plab:active {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-soft);
+  background: #0f0f0f;
+  border-color: #0f0f0f;
+  color: #ffffff;
+}
+.btn.btn-primary-plab:focus-visible,
+.btn.btn-secondary-plab:focus-visible {
+  outline: 3px solid #0f0f0f;
+  outline-offset: 2px;
+}
+
+/* Responsive: stack the panel content on narrow screens so the photo,
+   wordmark, and lockup don't collide. */
+@media screen and (max-width: 900px) {
+  .hero-panel {
+    min-height: 0;
+    padding: clamp(1.25rem, 5vw, 2rem);
+  }
+  .hero-photo {
+    position: static;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    margin-bottom: var(--space-4);
+  }
+  .hero-panel-content {
+    position: static;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-2);
+  }
+  .hero-grid { display: none; }
+}
+@media screen and (max-width: 420px) {
+  .hero-cta {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+}
+
+/* --- Redesign: Home stats band (free-flowing, bold) --- */
+.stats-band {
+  max-width: 1200px;
+  margin: var(--space-12) auto;
+  padding: 0 var(--space-4);
+  background: none;
+  border: none;
+  border-radius: 0;
+}
+.stat {
+  text-align: center;
+  padding: var(--space-2) 0;
+}
+.stat-num {
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  white-space: nowrap;
+}
+.stat-label {
+  margin-top: 0.6rem;
+  font-size: var(--fs-stat-label);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--ink-muted);
+}
+@media screen and (max-width: 576px) {
+  .stats-band {
+    margin: var(--space-8) auto;
+    padding: 0 var(--space-2);
+  }
+}
+
+/* Solid yellow feature blocks: visually separate these sections (stats,
+   sponsors, alumni) from the content above and below. Placed after the
+   .stats-band rules so it overrides them at equal specificity. Yellow reads
+   light in both themes, so force dark ink on everything inside regardless of
+   light/dark mode. */
+.feature-block {
+  background: none;
+  /* Full-bleed: cancel #container's horizontal padding (3vw left / 3.5vw
+     right) with matching negative margins so the block spans the entire
+     viewport width, edge to edge. Keep these in sync with #container if its
+     padding changes. max-width:none overrides the .stats-band cap. Vertical
+     margins still separate the block from the sections above and below. */
+  max-width: none;
+  margin: var(--space-4) -3.5vw var(--space-4) -3vw;
+  padding: var(--space-4) var(--space-4);
+  border-radius: 0;
+  box-shadow: none;
+}
+/* Especially tighten the gap between two adjacent logo sections (Sponsors ->
+   Alumni): drop the second block's top margin so they sit close together. */
+.feature-block + .feature-block {
+  margin-top: 0;
+}
+/* Sponsor/alumni feature-blocks have no background, so their text follows the
+   theme (readable in both light and dark). */
+.feature-block,
+.feature-block h1,
+.feature-block h2,
+.feature-block .stat-num,
+.feature-block .stat-label {
+  color: var(--ink);
+}
+
+/* Restore the full-bleed yellow bar behind the top stats band only (NOT the
+   sponsor/alumni blocks). Targeted with .stats-band.feature-block so it outranks
+   the .feature-block { background: none } above. Yellow reads light in both
+   themes, so force dark ink on the numbers/labels regardless of light/dark. */
+.stats-band.feature-block {
+  background: var(--brand-yellow);
+}
+.stats-band.feature-block .stat-num {
+  color: #14181f;
+}
+.stats-band.feature-block .stat-label {
+  color: rgba(20, 24, 31, 0.72);
+}
+@media screen and (max-width: 576px) {
+  .feature-block {
+    margin-top: var(--space-6);
+    margin-bottom: var(--space-6);
+    padding: var(--space-6) var(--space-2);
+  }
+}
+/* The last feature-block on the Home page (the alumni-logos strip) flows
+   straight into the footer, so drop its bottom margin — otherwise a band of
+   white page background shows between the yellow block and the footer. */
+.home-container .feature-block:last-of-type {
+  margin-bottom: 0;
+}
+/* Two consecutive yellow blocks (Sponsors → Alumni) should sit flush — no white
+   page background showing between them. Zero the second block's top margin AND
+   the first block's bottom margin (a feature-block immediately followed by
+   another), so they butt directly together. */
+.feature-block + .feature-block {
+  margin-top: 0;
+}
+.feature-block:has(+ .feature-block) {
+  margin-bottom: 0;
+}
+
+/* (The old single-word .home-heading watermark was replaced by the full-bleed
+   repeating .heading-wall defined near .feature-row.) */
 
 #sponsor {
   display: grid;
   place-items: center;
-}
-#sponsor:hover {
-  transform: scale(1.1);
-  transition: 0.3s;
+  min-height: 120px;
 }
 #rocketblocks {
-  width: 293px;
+  width: 100%;
+  max-width: 260px;
   height: auto;
+  /* Light mode: darker, higher-contrast grayscale logos (brightness < 1 deepens
+     them; higher opacity keeps them solid, not washed out). */
+  filter: grayscale(100%) brightness(0.55) contrast(1.1);
+  opacity: 0.9;
+  /* Per-logo size multiplier + vertical nudge set inline from Home.js
+     (defaults 1 / 0). Lets one logo be scaled or shifted up/down without
+     affecting the others. translateY before scale so the nudge is in real px. */
+  transform: translateY(var(--logo-offset-y, 0px)) scale(var(--logo-scale, 1));
+  transition: filter 0.3s var(--ease-standard), opacity 0.3s var(--ease-standard), transform 0.3s var(--ease-standard);
+}
+#sponsor:hover #rocketblocks {
+  /* Hover: reveal the logo's true full color. */
+  filter: none;
+  opacity: 1;
+  /* Multiply the hover zoom by the per-logo scale so both compose; keep nudge. */
+  transform: translateY(var(--logo-offset-y, 0px)) scale(calc(var(--logo-scale, 1) * 1.04));
+}
+
+/* Dark mode: INVERT LUMINANCE (one filter, every logo, no per-logo hacks).
+   grayscale(1) drops saturation so a logo becomes pure light/dark values;
+   invert(1) then flips those values — so the WHITEST parts become black and the
+   darkest parts become white. A plain dark wordmark has no bright pixels, so it
+   just lifts to a clean white silhouette (same as before). But a detailed mark
+   (NASA meatball, Grammarly circle, Salesforce, Goldman) keeps its internal
+   contrast: its bright fills/text drop to black against the lifted-light shape,
+   staying readable instead of collapsing into a solid white blob.
+   contrast(1.15) nudges the mid-tones apart so the result stays crisp. */
+body.dark #rocketblocks,
+body.dark #sponsor:hover #rocketblocks {
+  /* brightness(1.25) lifts logos brighter on the dark background. */
+  filter: grayscale(1) invert(1) brightness(1.25) contrast(1.15);
+  opacity: 1;
+}
+
+/* whiteout logos (e.g. Duolingo): force a SOLID white silhouette in dark mode
+   (brightness(0) crushes to black, invert(1) flips to pure white) — one flat
+   shape rather than the two-tone luminance invert. */
+body.dark #rocketblocks.logo-img--whiteout,
+body.dark #sponsor:hover #rocketblocks.logo-img--whiteout {
+  filter: brightness(0) invert(1);
+}
+
+/* --- Infinite horizontal logo marquee (Home sponsors + alumni) ---
+   The track holds two identical halves; each half is the full logo set. Sliding
+   the track left by exactly 50% lands the second half where the first began ->
+   a seamless, gapless loop. Linear timing = constant speed. Pauses on hover so
+   logos stay clickable, and for users who prefer reduced motion. To revert to
+   the old static grid, flip HORIZONTAL_MARQUEE to false in Home.js -- this CSS
+   then goes unused, no need to remove it. */
+.logo-marquee {
+  overflow: hidden;
+  width: 100%;
+  /* Vertical headroom so the hover scale(1.04) doesn't get clipped by
+     overflow:hidden (which clips at the padding box). Needed for scrolling to
+     hide the off-screen track horizontally, but the logos grow on hover
+     vertically — this padding gives them room instead of cutting the top/bottom. */
+  padding-block: 12px;
+  /* Soft-fade both edges so logos ease in/out instead of hard-clipping. */
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 7%, #000 93%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 7%, #000 93%, transparent);
+}
+.logo-marquee__track {
+  display: flex;
+  width: max-content;
+  align-items: center;
+  animation: logo-marquee-scroll var(--marquee-duration, 40s) linear infinite;
+  /* Keep the scroll on the GPU compositor so it stays smooth and doesn't jank
+     while the rest of the page paints. translate3d/backface promote a layer. */
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+}
+.logo-marquee--reverse .logo-marquee__track {
+  animation-direction: reverse;
+}
+.logo-marquee:hover .logo-marquee__track {
+  animation-play-state: paused;
+}
+/* Consistent spacing + BALANCED sizing model. Two problems a logo wall has to
+   solve, and how this handles both:
+   1) Even gaps — each item SHRINK-WRAPS to its logo (width:auto, NOT a fixed
+      box) and carries fixed horizontal padding on both sides. Because the item
+      is exactly as wide as the logo, the gap between any two logos is always
+      2x that padding — no variable empty space inside a box to make gaps look
+      uneven. (A fixed-width box centers narrow logos with big internal margins,
+      which reads as inconsistent spacing even though the boxes are evenly laid
+      out — that was the earlier bug.) Padding-per-item (not a flex `gap`) keeps
+      the two identical halves exactly periodic, so the -50% loop stays seamless.
+   2) Even visual weight — the logo is sized by HEIGHT, then a max-width clamps
+      the very wide wordmarks (SEQUOIA/ATLASSIAN, aspect ~8) so they can't run
+      away; square marks (Apple/NASA/Goldman, aspect ~1) are held by height.
+      Per-logo `scale` in Home.js fine-tunes any individual mark's weight. */
+.logo-marquee__item {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 30px; /* -> 60px between adjacent logos */
+}
+@media screen and (max-width: 600px) {
+  .logo-marquee__item { padding: 0 18px; }
+}
+/* The marquee item wraps the same #sponsor/#rocketblocks logo used by the grid,
+   but the grid's min-height:120px is overkill inside a single-row track. */
+.logo-marquee__item #sponsor {
+  min-height: 0;
+}
+.logo-marquee__item #rocketblocks {
+  width: auto;                        /* shrink-wrap to the logo -> constant gaps */
+  height: clamp(30px, 3.4vw, 40px);   /* common optical height */
+  max-width: clamp(90px, 9vw, 120px); /* cap the very wide wordmarks */
+  object-fit: contain;
+}
+/* Two stacked alumni marquees: give the second row a little breathing room. */
+.logo-marquee + .logo-marquee {
+  margin-top: var(--space-3);
+}
+@keyframes logo-marquee-scroll {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  /* No auto-motion; let the user swipe/scroll the logos horizontally instead. */
+  .logo-marquee { overflow-x: auto; }
+  .logo-marquee__track { animation: none; }
+}
+
+/* Small muted note under the alumni/sponsor marquees. */
+.logo-disclaimer {
+  margin-top: var(--space-4);
+  font-size: 0.72rem;
+  line-height: 1.5;
+  color: var(--ink-muted);
+  max-width: 60ch;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* ABOUT PAGE CSS */
@@ -536,15 +1476,16 @@ body.dark {
     min-height: max(40vh, 400px);
     margin-inline: auto;
     width: 22vw;
-    transition: all 0.4s;
-    transition-timing-function:cubic-bezier(0.5, 3, 0, 1);
+    transition: transform 0.3s var(--ease-standard), box-shadow 0.3s var(--ease-standard);
     background-color: var(--background-color);
     color: var(--text-color);
     border-color: var(--text-color);
     position: relative;
     }
+  /* Gentle lift on hover. The old scale(1.1) with an overshoot bezier briefly
+     blew the card up past its bounds and clipped the top of the photo. */
   #aboutcard:hover {
-    transform: scale(1.1);
+    transform: translateY(-6px) scale(1.02);
     box-shadow: 8px 8px 6px #3c3c3c;
 }
 @media screen and (max-width: 1024px) {
@@ -555,7 +1496,7 @@ body.dark {
 }
 
 #overridefont {
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--font-body);
 }
 
 #accordian {
@@ -617,6 +1558,10 @@ body.dark {
   padding-left: 10vw;
   padding-right: 10vw;
   line-height: 2;
+  /* Avoid lone short "hanging" last lines on every paragraph. `pretty` targets
+     the last few lines and (unlike `balance`) has no line-count cap, so it also
+     fixes the long paragraph. */
+  text-wrap: pretty;
 }
 @media screen and (max-width: 500px) {
   #clientp {
@@ -748,7 +1693,7 @@ body.dark {
   text-align: left;
   width: min(800px, 70vw);
   transform: translate(10%, 0);
-  border: 2px solid #ffd500;
+  border: 2px solid var(--brand-yellow);
   border-radius: 25px;
 }
 #mobilestep {
@@ -757,7 +1702,7 @@ body.dark {
   text-align: left;
   width: min(800px, 70vw);
   transform: translate(10%, 0);
-  border: 2px solid #ffd500;
+  border: 2px solid var(--brand-yellow);
   border-radius: 25px;
 }
 #uvps {
@@ -797,47 +1742,122 @@ body.dark {
   border: 0px;
 }
 
+/* --- "Why Product Lab?" layered TICKET card stack (see UvpCardStack.js) --- */
+/* Fixed-size stage the stack is centered inside. Front card is centered at
+   translateX(0); stacked tabs poke LEFT and the peeled pile fans RIGHT, so the
+   composition balances around the middle. overflow:visible lets the peeled pile
+   spill partially off the stage (and the screen) as requested. */
+.uvp-stack-wrap {
+  --uvp-w: 620px;    /* ticket width  */
+  --uvp-h: 290px;    /* ticket height — between the tall (340) and thin (240) */
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  overflow: visible;
+}
+.uvp-stack {
+  position: relative;
+  width: var(--uvp-w);
+  height: var(--uvp-h);
+  /* Headroom so the upward-fanning peeled pile isn't clipped by the section. */
+  margin: 60px 0 40px;
+}
+/* Each card is a wide horizontal TICKET: left vertical tab + right body. Square
+   corners (no border-radius) so it reads like a ticket/ticket stub. */
+.uvp-card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--uvp-w);
+  height: var(--uvp-h);
+  display: flex;
+  align-items: stretch;
+  text-align: left;
+  padding: 0;
+  border: 1px solid var(--hairline);
+  border-radius: 0;                 /* ticket = square corners */
+  /* Tickets are ALWAYS white with dark text in both themes (like a physical
+     ticket), so they read as white cards on the dark-mode page rather than
+     black-on-black. */
+  background: #ffffff;
+  cursor: pointer;
+  /* Animate transform so peel, fan-out, and restack all glide. */
+  transition: transform 0.5s var(--ease-standard);
+  transform-origin: left center;
+  will-change: transform;
+  overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
+}
+.uvp-card:focus-visible {
+  outline: 3px solid var(--brand-yellow);
+  outline-offset: 3px;
+}
+/* Left vertical TAB: sideways title + number on a brand-yellow spine. */
+.uvp-card__tab {
+  flex: 0 0 58px;
+  display: flex;
+  flex-direction: column-reverse;   /* number at bottom, title reading upward */
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 14px 0;
+  background: var(--brand-yellow);
+}
+.uvp-card__num {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #14181f;
+  letter-spacing: 0.04em;
+}
+/* Sideways title: rotate the text so it runs bottom-to-top along the tab. */
+.uvp-card__title {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.15rem;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  color: #14181f;
+  white-space: nowrap;
+}
+/* Right BODY: normal (horizontal) orientation, with its own heading + paragraph. */
+.uvp-card__body {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 22px 26px;
+  color: #4a5262;                   /* fixed dark body ink (card is always white) */
+  line-height: 1.55;
+  font-size: 0.98rem;
+  overflow: auto;
+}
+.uvp-card__body-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.35rem;
+  line-height: 1.1;
+  color: #14181f;                   /* fixed dark title (card is always white) */
+}
+/* Every card keeps its full body at all times — the front card simply overlaps
+   the ones behind it, and peeled cards show their body in the fanned pile. No
+   opacity toggling, so text never flickers mid-transition and cards stay
+   visually consistent through the animation. */
+
+/* Narrow screens: shrink the ticket so it fits the viewport. Transforms are a
+   mix of px (tabs) and % (peel), so the % peel scales with the smaller card. */
+@media screen and (max-width: 680px) {
+  .uvp-stack-wrap { --uvp-w: 340px; --uvp-h: 300px; }
+  .uvp-card__body { padding: 16px 18px; font-size: 0.92rem; }
+  .uvp-card__body-title { font-size: 1.15rem; }
+  .uvp-card__title { font-size: 1rem; }
+}
+
 /* STUDENTS PAGE CSS */
-
-#studentanimation {
-  display: grid;
-  place-items: center;
-}
-
-#studentgraphic {
-  width: max(20vw, 400px);
-  height: auto;
-}
-@media screen and (max-width: 991px) {
-  #studentgraphic {
-  width: 90vw;
-  height: auto;
-  }
-}
-#leftguy {
-  opacity: 0;
-  animation: fadeInRight 1.5s;
-  animation-delay: 1s;
-  animation-fill-mode: forwards;
-}
-#leftgirl {
-  opacity: 0;
-  animation: fadeInRight 1.5s;
-  animation-delay: 0.25s;
-  animation-fill-mode: forwards;
-}
-#rightguy {
-  opacity: 0;
-  animation: fadeInLeft 1.5s;
-  animation-delay: 0.5s;
-  animation-fill-mode: forwards;
-}
-#rightgirl {
-  opacity: 0;
-  animation: fadeInLeft 1.5s;
-  animation-delay: 0.75s;
-  animation-fill-mode: forwards;
-}
 
 #studentspics {
   width: max(30vw, 325px);
@@ -897,25 +1917,59 @@ body.dark {
 
 #studentsitemtext {
   line-height: 2;
+  max-width: 34rem;
+  margin: 0 auto;
+  padding: 0 var(--space-4);
+}
+/* The value cards are half-width grid columns, so the site-wide 22vw side
+   padding on #centertextchunk would crush the text to one word per line.
+   Neutralize it here and let #studentsitemtext control the width instead. */
+#studentsitemtext #centertextchunk {
+  padding-left: 0;
+  padding-right: 0;
+  /* Cap the measure and center it so lines wrap to similar widths (instead of
+     running the full card width with a short orphan last line). `balance`
+     evens the per-line lengths across the whole block. */
+  max-width: 30rem;
+  margin-left: auto;
+  margin-right: auto;
+  text-wrap: balance;
+}
+
+/* Values grid: each value sits in its own boxed card. */
+#studentsitemtext.value-card {
+  /* Flat boxes: sharp corners, no shadow — just a hairline border. Taller than
+     the wide rectangle so they read less stretched. Content vertically centered. */
+  width: 100%;
+  max-width: none;
+  min-height: 15rem;
+  margin: 0 auto;
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: var(--paper-raised);
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
 }
 
 #bigbutton {
-  box-shadow: 4px 4px 3px #3c3c3c;
+  box-shadow: var(--shadow-soft);
   width: 200px;
   height: 50px;
   padding-top: 15px;
-  background-color: #ffe665;
-  border-radius: 25px;
-  color: black;
+  background-color: var(--brand-yellow);
+  border-radius: var(--radius-pill);
+  color: var(--btn-primary-ink);
   font-weight: bold;
   border: none;
-  transition: all 0.4s;
-  transition-timing-function:cubic-bezier(0.5, 3, 0, 1);
+  transition: transform 0.25s var(--ease-standard), box-shadow 0.25s var(--ease-standard);
 }
 #bigbutton:hover {
-  transform: scale(1.1);
-  box-shadow: 8px 8px 6px #3c3c3c;
-  background-color: #ffe665;
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: var(--shadow-soft-lg);
+  background-color: var(--brand-yellow);
 }
 
 #simpleshadow:hover {
@@ -1023,7 +2077,7 @@ body.dark {
 
 #eventdescription {
   padding-top: 10px;
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--font-body);
 }
 
 
@@ -1059,7 +2113,7 @@ body.dark {
 #postcontainer {
   background: var(--background-color);
   color: var(--text-color);
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--font-body);
   align-content: center;
   padding-top: 9vh;
   padding-bottom: 25vh;
@@ -1098,23 +2152,124 @@ body.dark {
         padding-bottom: 1rem;
       }
 
-#faqcard {
-    transition: transform 0.4s;
-    margin-inline: auto;
-    transition-timing-function: cubic-bezier(0.5, 3, 0, 1);
-    background-color: var(--background-color);
-    color: var(--text-color);
-    border-color: var(--text-color);
-  }
-#faqcard:hover {
-    transform: scale(1.1);
-    box-shadow: 8px 8px 6px #3c3c3c;
+/* FAQ anchor target on the Get Involved page — offset the scroll stop so the
+   fixed navbar doesn't cover the FAQ heading. */
+#faqs {
+  scroll-margin-top: 100px;
 }
-@media screen and (max-width: 1024px) {
-  #faqcard:hover {
-    transform: none;
-    box-shadow: none;
-  }
+
+/* Header block: small eyebrow label + editorial title */
+#faqheader {
+  max-width: 760px;
+  margin: var(--space-3) auto var(--space-6);
+  text-align: center;
+}
+
+#faqeyebrow {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  margin: 0 0 var(--space-1);
+}
+
+#faqtitle {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2rem, 5vw, 3rem);
+  line-height: var(--lh-tight);
+  color: var(--text-color);
+  margin: 0;
+}
+
+/* Category filter tabs — one category shown at a time */
+#faqtabs {
+  max-width: 760px;
+  margin: 0 auto var(--space-4);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.faqtab {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: var(--text-color);
+  background: transparent;
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-pill);
+  padding: 0.5rem 1.25rem;
+  cursor: pointer;
+  transition: color 0.2s var(--ease-standard),
+    background-color 0.2s var(--ease-standard),
+    border-color 0.2s var(--ease-standard);
+}
+
+.faqtab:hover {
+  border-color: var(--text-color);
+}
+
+.faqtab-active {
+  background-color: var(--text-color);
+  border-color: var(--text-color);
+  color: var(--background-color);
+}
+
+/* Centered, comfortably-narrow column for the accordion rows */
+#faqwrap {
+  max-width: 760px;
+  margin-inline: auto;
+  padding-inline: 0;
+  border-top: 1px solid var(--hairline);
+}
+
+/* Flat accordion row: hairline divider, no card, no shadow */
+#faqaccordion {
+  background-color: transparent;
+  color: var(--text-color);
+  border-bottom: 1px solid var(--hairline);
+}
+
+/* Remove MUI's default top divider pseudo-element */
+#faqaccordion:before {
+  display: none;
+}
+
+#faqaccordion .MuiAccordionSummary-root {
+  padding-inline: 0;
+  min-height: 0;
+}
+
+#faqaccordion .MuiAccordionSummary-content {
+  margin-block: 1.15rem;
+}
+
+#faqaccordion .MuiAccordionDetails-root {
+  padding: 0 2.5rem 1.35rem 0;
+}
+
+#faqicon {
+  color: var(--text-color);
+  font-size: 1.4rem;
+}
+
+#faqquestion {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--text-color);
+}
+
+#faqanswer {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 1rem;
+  line-height: var(--lh-body);
+  color: var(--ink-muted);
 }
 
 #question {
@@ -1126,19 +2281,427 @@ body.dark {
 
 /* GET INVOLVED PAGE CSS */
 
-#input {
-  background: rgba(0, 0, 0, 0);
-  border-radius: 15px;
-  border-color: #ffe665;
-  padding: 5px;
-  width: max(33vw, 300px);
-  font-weight: 300;
-  font-family: 'Montserrat', sans-serif;
-  text-align: center;
-  color: var(--text-color);
-}
-
+/* --- Contact Us form (Get Involved page) --- */
 #formposition {
+  /* Constrained, centered column so the form reads as a focused card rather
+     than stretching the full page width. */
+  max-width: 620px;
   margin-inline: auto;
   text-align: center;
+}
+
+/* Rule separating the contact form from the FAQ section below. Uses the
+   theme's text color (at reduced opacity) so it visibly flips light/dark;
+   `opacity: 1` overrides Bootstrap's default faded <hr>. */
+.contact-faq-divider {
+  border: none;
+  border-top: 2px solid var(--text-color);
+  opacity: 0.25;
+  max-width: 760px;
+  margin: var(--space-12) auto var(--space-8);
+}
+
+.contact-subhead {
+  color: var(--ink-muted);
+  font-size: var(--fs-subhead);
+  line-height: var(--lh-body);
+  max-width: 48ch;
+  margin: var(--space-2) auto var(--space-6);
+}
+
+.contact-form {
+  /* Minimal: no panel, border, or shadow — just spaced underline fields. */
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5, 2.5rem);
+}
+
+/* Name + Email sit side by side on wider screens, stack on narrow ones. */
+.contact-field-row {
+  display: flex;
+  gap: var(--space-4);
+}
+.contact-field-row .contact-field {
+  flex: 1 1 0;
+}
+
+.contact-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+.contact-field label {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--ink);
+}
+
+.contact-input {
+  /* Bottom rule only — no box, no rounded corners. */
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--hairline);
+  border-radius: 0;
+  padding: 8px 2px;
+  width: 100%;
+  font-weight: 400;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--text-color);
+  transition: border-color 0.2s var(--ease-standard);
+}
+.contact-input::placeholder {
+  color: var(--ink-muted);
+  opacity: 0.7;
+}
+.contact-input:focus {
+  outline: none;
+  border-bottom-color: var(--brand-yellow);
+}
+.contact-textarea {
+  resize: vertical;
+  min-height: 60px;
+  line-height: var(--lh-body);
+}
+
+/* Minimal submit: flat, squared, no pill shape or shadow. Sits left-aligned
+   under the fields to match the understated underline form. */
+#button.contact-submit {
+  align-self: stretch;
+  width: 100%;
+  background-color: transparent;
+  color: var(--text-color);
+  border: 1px solid var(--text-color);
+  border-radius: 0;
+  box-shadow: none;
+  font-weight: 500;
+  padding: 12px 28px;
+  margin-top: var(--space-2);
+  margin-bottom: 0;
+  transition: background-color 0.2s var(--ease-standard), color 0.2s var(--ease-standard);
+}
+#button.contact-submit:hover {
+  transform: none;
+  box-shadow: none;
+  background-color: var(--text-color);
+  color: var(--background-color);
+}
+
+@media screen and (max-width: 600px) {
+  .contact-field-row {
+    flex-direction: column;
+  }
+}
+
+/* --- Site footer --- */
+#sitefooter {
+  /* No top margin: the padding-top already separates the footer, and dropping
+     it removes the white band that showed between the Home page's last section
+     and the footer. Other pages end in white container padding, so this trim is
+     invisible there. */
+  margin-top: 0;
+  /* Larger top padding than bottom pushes all footer content toward the bottom
+     of the yellow band. */
+  padding: var(--space-3) 0 var(--space-3);
+  /* Yellow footer in BOTH themes. Yellow reads light, so force dark-on-yellow
+     for all footer text/links/inputs/icons by overriding the color tokens the
+     footer's rules reference — and pin the logo to the dark-inked (light-mode)
+     variant so it stays visible. Same technique as the nav bar. */
+  background: var(--brand-yellow);
+  --ink: #14181f;
+  --ink-muted: #3a3f47;
+  --text-color: #14181f;
+  --hairline: rgba(20, 24, 31, 0.22);
+  --background-color: var(--brand-yellow);
+  --navlogo: url('../public/newestlightlogo.png');
+  border-top: none;
+  color: var(--ink);
+  font-family: var(--font-body);
+}
+
+#sitefooter .footer-top {
+  row-gap: var(--space-4);
+}
+
+/* The logo box is 200px tall and centers its art, leaving empty space above the
+   visible mark. Push the link/contact columns down so their headings line up
+   with the TOP of the logo art rather than the top of its (taller) box. */
+@media screen and (min-width: 768px) {
+  #sitefooter .footer-links,
+  #sitefooter .footer-contact {
+    padding-top: var(--space-6);
+  }
+}
+
+/* Logo sits ABOVE the tagline + social; render it large as a footer flourish. */
+#sitefooter .footer-logo {
+  width: 100%;
+  max-width: 360px;
+  height: 200px;
+  margin-top: var(--space-4);
+  margin-bottom: var(--space-4);
+  background-image: var(--navlogo);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: left center;
+}
+
+#sitefooter .footer-tagline {
+  margin-top: 0;
+  max-width: 38ch;
+  color: var(--ink-muted);
+  line-height: 1.65;
+  font-size: 1rem;
+  font-weight: 300;
+}
+
+#sitefooter .footer-social {
+  display: flex;
+  gap: var(--space-3);
+  margin-top: var(--space-3);
+}
+
+#sitefooter .footer-heading {
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  margin-bottom: var(--space-3);
+}
+
+#sitefooter .footer-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#sitefooter .footer-links li {
+  margin-bottom: 0.65rem;
+}
+
+#sitefooter .footer-links a {
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 1.05rem;
+  font-weight: 300;
+  transition: color 0.2s var(--ease-standard);
+}
+
+/* Base icon-link style — used by the About/Leadership bio cards as well as the
+   footer. react-icons render with fill: currentColor, so color follows the
+   theme text color: black in light mode, white in dark mode. */
+.icon-link {
+  display: inline-flex;
+  align-items: center;
+  color: var(--text-color);
+  transition: color 0.2s var(--ease-standard), opacity 0.2s var(--ease-standard);
+}
+.icon-link:hover {
+  color: var(--text-color);
+  opacity: 0.7;
+}
+/* Force every icon to the same rendered size regardless of the inline size
+   prop react-icons sets, so all social/contact icons match. */
+.icon-link svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Footer link hover (text links only; icons handled by .icon-link above). */
+#sitefooter .footer-links a:hover {
+  color: var(--ink);
+}
+
+#sitefooter .footer-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  max-width: 440px;
+}
+
+#sitefooter .footer-form input,
+#sitefooter .footer-form textarea {
+  width: 100%;
+  padding: 8px 2px;
+  border: none;
+  border-bottom: 1px solid var(--hairline);
+  border-radius: 0;
+  background: transparent;
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 300;
+  resize: vertical;
+  transition: border-color 0.2s var(--ease-standard);
+}
+
+#sitefooter .footer-form input::placeholder,
+#sitefooter .footer-form textarea::placeholder {
+  color: var(--ink-muted);
+}
+
+#sitefooter .footer-form input:focus,
+#sitefooter .footer-form textarea:focus {
+  outline: none;
+  border-bottom-color: var(--ink);
+}
+
+#sitefooter .footer-submit {
+  align-self: flex-start;
+  margin-top: var(--space-1);
+  padding: 10px 28px;
+  border: 1px solid var(--ink);
+  background: transparent;
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s var(--ease-standard), color 0.2s var(--ease-standard);
+}
+
+#sitefooter .footer-submit:hover {
+  background: var(--ink);
+  color: var(--background-color);
+}
+
+#sitefooter .footer-thankyou {
+  color: var(--ink);
+  font-weight: 300;
+  margin: 0;
+}
+#sitefooter .footer-formerror {
+  color: #c0392b;
+  font-size: 0.85rem;
+  margin: 0.25rem 0 0;
+}
+
+/* Contact form (Get Involved page) submit feedback. */
+.contact-status {
+  margin: 0.75rem 0 0;
+  font-size: 0.95rem;
+  text-align: center;
+}
+.contact-status--ok { color: #1e7a4d; }
+.contact-status--error { color: #c0392b; }
+
+/* "Contact Us" heading that folds out the email on hover; clicking pins it open
+   so it stays after the cursor leaves. No input box — just the text unfolding. */
+.contact-title-toggle {
+  cursor: pointer;
+  user-select: none;
+}
+.contact-email-fold {
+  display: block;
+  overflow: hidden;
+  text-align: center;
+  text-decoration: none;
+  color: var(--ink-muted);
+  font-size: 1rem;
+  /* Collapsed by default: no height, faded out, nudged up so it "unfolds" down. */
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(-0.4rem);
+  transition: max-height 0.3s var(--ease-standard),
+              opacity 0.25s var(--ease-standard),
+              transform 0.3s var(--ease-standard),
+              margin 0.3s var(--ease-standard);
+  margin-top: 0;
+}
+/* Reveal while hovering the title area, OR once it's been clicked (pinned). */
+.contact-title-reveal:hover .contact-email-fold,
+.contact-title-reveal.is-pinned .contact-email-fold {
+  max-height: 3rem;
+  opacity: 1;
+  transform: translateY(0);
+  margin-top: 0.35rem;
+}
+.contact-email-fold:hover { text-decoration: underline; }
+
+#sitefooter .footer-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--hairline);
+  color: var(--ink-muted);
+  font-size: 0.88rem;
+  font-weight: 300;
+  letter-spacing: 0.02em;
+}
+
+@media (max-width: 767px) {
+  #sitefooter {
+    padding-top: var(--space-4);
+  }
+  #sitefooter .footer-bottom {
+    margin-top: var(--space-4);
+    justify-content: flex-start;
+  }
+}
+
+/* --- Sparse decorative line-art background (LineArtBackground.js) ---
+   Fills its positioned ancestor with thin brand-colored curves at low opacity.
+   Purely decorative and non-interactive; sits behind content. Any section that
+   hosts it must be position: relative so this absolutely-positions to it, and
+   the real content inside should sit above it (z-index or DOM order in a
+   positioned context). */
+.lineart {
+  position: absolute;
+  inset: 0;
+  /* Negative z-index keeps the art above the host's own background but behind
+     all of the host's normal-flow content — so no content needs wrapping, as
+     long as the host establishes a stacking context (.has-lineart below).
+     This layer is placed on a whole-PAGE container, so it spans every section:
+     the ribbons flow through section seams uninterrupted (nothing clips them
+     mid-page). Every path enters at x=-160 and exits at x=1600 (outside the
+     0-1440 viewBox), so with preserveAspectRatio="none" both ends are always
+     clipped off-screen at any zoom — no line ever terminates in view, so no
+     edge fade is needed. */
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* ONE non-repeating SVG stretched to exactly fill the whole container (no tiles
+   = no seams). preserveAspectRatio="none" (set in JS) means the chosen ribbons
+   are always on screen at any page height/zoom; their out-of-viewBox ends still
+   run off the edges. Stroke color set on the paths below. */
+.lineart__svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.lineart__stroke {
+  fill: none;
+  stroke: var(--brand-yellow); /* #FED353, same in both themes */
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke; /* constant line weight regardless of scale */
+}
+/* NOTE: the draw-in reveal (stroke-dasharray/offset tween) is applied via inline
+   styles from LineArtBackground.js so React re-renders can't wipe it mid-anim —
+   see that component. No class-based rule is needed here. */
+
+/* Bottom-only variant marker (Home/Clients). The `flow`/`loops` variants now
+   keep all their geometry in the LOWER part of the viewBox, so the art already
+   sits low on those pages — no reveal mask needed. Kept as a no-op hook in case
+   per-page bottom tuning is wanted later. */
+
+/* Whole-page containers that host the line art: establish a stacking context
+   (isolation) so the z-index:-1 art stays behind content but above the page
+   background, and anchor the absolutely-positioned layer. */
+.has-lineart {
+  position: relative;
+  isolation: isolate;
 }

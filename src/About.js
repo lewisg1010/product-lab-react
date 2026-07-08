@@ -11,8 +11,18 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Fade from 'react-reveal/Fade';
-import Zoom from 'react-reveal/Zoom';
 import { FaLinkedin, FaEnvelope } from 'react-icons/fa';
+import LineArtBackground from './LineArtBackground';
+
+// CMS LinkedIn values are sometimes stored without a scheme (e.g.
+// "www.linkedin.com/in/..."). A bare href like that is treated as a path
+// RELATIVE to the current site, so it resolves to hcsproductlab.org/www.linkedin...
+// Prepend https:// when no scheme is present so the link always goes off-site.
+const externalUrl = (url) => {
+  if (!url) return url;
+  const trimmed = url.trim();
+  return /^https?:\/\//i.test(trimmed) ? trimmed : `https://${trimmed}`;
+};
 
 function About() {
   const [bios, setBios] = useState(null);
@@ -44,25 +54,17 @@ function About() {
   }, []);
 
   return (
-    <div id="container" className="center">
+    <div id="container" className="center has-lineart">
+      <LineArtBackground variant="orbit" />
       {!bios ? (
         ''
       ) : (
         <div>
           <section>
             <div id="divmesomespacesmall"></div>
-            <Zoom top>
-              <h1 className="center bold" id="gradienttext">
-                About Product Lab
-              </h1>
-            </Zoom>
-            <div id="divmesomespacesmall" />
-            <p id="textchunk">
-              Launched in September 2021, Product Lab is Harvard College's first Product Management organization.
-            </p>
-            <p id="textchunk">
-              Through training programs, industry experience, and mentorship, Product Lab helps creative problem solvers from diverse backgrounds grow into future product leaders.
-            </p>
+            <h1 className="center bold" id="gradienttext">
+              Leadership
+            </h1>
           </section>
 
           <section>
@@ -97,6 +99,18 @@ function About() {
                               width: '100%',
                               height: '100%',
                               objectFit: 'cover',
+                              // Natanya Tan's headshot is cropped too high (top of head cut
+                              // off), so shift the crop window up ~30% to reveal it.
+                              objectPosition: bio.name?.toLowerCase().includes('natanya')
+                                ? 'center 20%'
+                                : 'center',
+                              // Maria Tracy's headshot sits smaller in frame than the rest;
+                              // scale it up so her face matches the others' size, and nudge
+                              // it down since scaling from center left her face too high.
+                              transform: bio.name?.toLowerCase().includes('maria')
+                                ? 'scale(1.35) translateY(12%)'
+                                : 'none',
+                              transformOrigin: 'center',
                               display: 'block'
                             }}
                           />
@@ -114,12 +128,12 @@ function About() {
                                 className="icon-link"
                                 aria-label="Email"
                               >
-                                <FaEnvelope size={18} />
+                                <FaEnvelope size={20} />
                               </a>
                             )}
                             {bio.linkedin && (
                               <a
-                                href={bio.linkedin}
+                                href={externalUrl(bio.linkedin)}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="icon-link"
@@ -175,7 +189,6 @@ function About() {
                 </Card.Text>
               </Card.Body>
             </Card>
-            <div id="divmesomespace"></div>
           </Col>
 
           <Col>
@@ -193,7 +206,6 @@ function About() {
                 </Card.Text>
               </Card.Body>
             </Card>
-            <div id="divmesomespace"></div>
           </Col>
 
           <Col>
@@ -211,7 +223,6 @@ function About() {
                 </Card.Text>
               </Card.Body>
             </Card>
-            <div id="divmesomespace"></div>
           </Col>
         </Row>
       </Container>
