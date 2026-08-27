@@ -79,7 +79,7 @@ import LineArtBackground from './LineArtBackground';
         <Col>
         <div id="limitwidth">
         <Plx parallaxData={ parallaxData2 }>
-        <h2 className="bold right" id="gradienttextsub">Spring Semester</h2>
+        <h2 className="bold right" id="gradienttextsub">Fall &amp; Spring Semester</h2>
         </Plx>
         </div>
         <Fade bottom>
