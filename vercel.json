@@ -1,0 +1,14 @@
+{
+  "redirects": [
+    {
+      "source": "/mailing",
+      "destination": "https://docs.google.com/forms/d/e/1FAIpQLSelTqrPxk0q5sgXk-DmhyqiskXoqON0Y0Tr1vnsG14QdxkE4Q/viewform?usp=dialog",
+      "permanent": false
+    },
+    {
+      "source": "/mailing/",
+      "destination": "https://docs.google.com/forms/d/e/1FAIpQLSelTqrPxk0q5sgXk-DmhyqiskXoqON0Y0Tr1vnsG14QdxkE4Q/viewform?usp=dialog",
+      "permanent": false
+    }
+  ]
+}
